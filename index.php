@@ -4,7 +4,7 @@
     phpCAS::client(CAS_VERSION_2_0,'cas-auth.rpi.edu',443,'/cas/');
     phpCAS::setDebug("log.log");
     // SSL!
-    phpCAS::setCasServerCACert("./CACert.pem");//this is relative to the cas client.php file
+    phpCAS::setCasServerCACert("./cacert.pem");//this is relative to the cas client.php file
 
     if (phpCAS::isAuthenticated())
     {
