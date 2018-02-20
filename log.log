@@ -1,0 +1,385 @@
+095D .START phpCAS-1.3.5 ****************** [CAS.php:450]
+095D .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+095D .<= ''
+095D .=> phpCAS::isAuthenticated() [index.php:9]
+095D .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+095D .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+095D .|    |    |    user = `QIANH' [Client.php:1365]
+095D .|    |    <= true
+095D .|    |    user was already authenticated, no need to look for tickets [Client.php:1206]
+095D .|    <= true
+095D .<= true
+ED18 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+ED18 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+ED18 .<= ''
+ED18 .=> phpCAS::isAuthenticated() [index.php:9]
+ED18 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+ED18 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+ED18 .|    |    |    user = `QIANH' [Client.php:1365]
+ED18 .|    |    <= true
+ED18 .|    |    user was already authenticated, no need to look for tickets [Client.php:1206]
+ED18 .|    <= true
+ED18 .<= true
+2CC0 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+2CC0 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+2CC0 .<= ''
+2CC0 .=> phpCAS::isAuthenticated() [index.php:9]
+2CC0 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+2CC0 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+2CC0 .|    |    |    no user found [Client.php:1375]
+2CC0 .|    |    <= false
+2CC0 .|    |    no ticket found [Client.php:1258]
+2CC0 .|    <= false
+2CC0 .<= false
+DD78 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+DD78 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+DD78 .<= ''
+DD78 .=> phpCAS::isAuthenticated() [index.php:9]
+DD78 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+DD78 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+DD78 .|    |    |    user = `QIANH' [Client.php:1365]
+DD78 .|    |    <= true
+DD78 .|    |    user was already authenticated, no need to look for tickets [Client.php:1206]
+DD78 .|    <= true
+DD78 .<= true
+DE52 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+DE52 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+DE52 .<= ''
+DE52 .=> phpCAS::isAuthenticated() [index.php:9]
+DE52 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+DE52 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+DE52 .|    |    |    no user found [Client.php:1375]
+DE52 .|    |    <= false
+DE52 .|    |    no ticket found [Client.php:1258]
+DE52 .|    <= false
+DE52 .<= false
+F27F .START phpCAS-1.3.2 ****************** [CAS.php:450]
+F27F .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+F27F .<= ''
+F27F .=> phpCAS::isAuthenticated() [index.php:9]
+F27F .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+F27F .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+F27F .|    |    |    user = `QIANH' [Client.php:1365]
+F27F .|    |    <= true
+F27F .|    |    user was already authenticated, no need to look for tickets [Client.php:1206]
+F27F .|    <= true
+F27F .<= true
+D0E0 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+D0E0 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+D0E0 .<= ''
+D0E0 .=> phpCAS::isAuthenticated() [index.php:9]
+D0E0 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+D0E0 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+D0E0 .|    |    |    user = `QIANH' [Client.php:1365]
+D0E0 .|    |    <= true
+D0E0 .|    |    user was already authenticated, no need to look for tickets [Client.php:1206]
+D0E0 .|    <= true
+D0E0 .<= true
+E4E3 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+E4E3 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+E4E3 .<= ''
+E4E3 .=> phpCAS::isAuthenticated() [index.php:9]
+E4E3 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+E4E3 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+E4E3 .|    |    |    user = `QIANH' [Client.php:1365]
+E4E3 .|    |    <= true
+E4E3 .|    |    user was already authenticated, no need to look for tickets [Client.php:1206]
+E4E3 .|    <= true
+E4E3 .<= true
+7B7B .START phpCAS-1.3.2 ****************** [CAS.php:450]
+7B7B .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+7B7B .<= ''
+7B7B .=> phpCAS::isAuthenticated() [index.php:9]
+7B7B .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+7B7B .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+7B7B .|    |    |    user = `QIANH' [Client.php:1365]
+7B7B .|    |    <= true
+7B7B .|    |    user was already authenticated, no need to look for tickets [Client.php:1206]
+7B7B .|    <= true
+7B7B .<= true
+445D .START phpCAS-1.3.2 ****************** [CAS.php:450]
+445D .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+445D .<= ''
+445D .=> phpCAS::isAuthenticated() [index.php:9]
+445D .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+445D .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+445D .|    |    |    no user found [Client.php:1375]
+445D .|    |    <= false
+445D .|    |    no ticket found [Client.php:1258]
+445D .|    <= false
+445D .<= false
+5176 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+5176 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+5176 .<= ''
+5176 .=> phpCAS::isAuthenticated() [index.php:9]
+5176 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+5176 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+5176 .|    |    |    no user found [Client.php:1375]
+5176 .|    |    <= false
+5176 .|    |    no ticket found [Client.php:1258]
+5176 .|    <= false
+5176 .<= false
+D163 .START phpCAS-1.3.2 ****************** [CAS.php:450]
+D163 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+D163 .<= ''
+D163 .=> phpCAS::isAuthenticated() [index.php:9]
+D163 .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+D163 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+D163 .|    |    |    no user found [Client.php:1375]
+D163 .|    |    <= false
+D163 .|    |    no ticket found [Client.php:1258]
+D163 .|    <= false
+D163 .<= false
+A3BF .START phpCAS-1.3.2 ****************** [CAS.php:450]
+A3BF .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+A3BF .<= ''
+A3BF .=> phpCAS::isAuthenticated() [index.php:9]
+A3BF .|    => CAS_Client::isAuthenticated() [CAS.php:1151]
+A3BF .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1189]
+A3BF .|    |    |    no user found [Client.php:1375]
+A3BF .|    |    <= false
+A3BF .|    |    no ticket found [Client.php:1258]
+A3BF .|    <= false
+A3BF .<= false
+3D58 .START (2018-02-20 18:16:05) phpCAS-1.3.5 ****************** [CAS.php:468]
+3D58 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+3D58 .<= ''
+3D58 .=> phpCAS::isAuthenticated() [index.php:9]
+3D58 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+3D58 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+3D58 .|    |    |    user = `QIANH' [Client.php:1622]
+3D58 .|    |    <= true
+3D58 .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+3D58 .|    <= true
+3D58 .<= true
+1726 .START (2018-02-20 18:16:16) phpCAS-1.3.5 ****************** [CAS.php:468]
+1726 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+1726 .<= ''
+1726 .=> phpCAS::isAuthenticated() [index.php:9]
+1726 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+1726 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+1726 .|    |    |    no user found [Client.php:1635]
+1726 .|    |    <= false
+1726 .|    |    no ticket found [Client.php:1494]
+1726 .|    <= false
+1726 .<= false
+FD9F .START (2018-02-20 18:16:26) phpCAS-1.3.5 ****************** [CAS.php:468]
+FD9F .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+FD9F .<= ''
+FD9F .=> phpCAS::isAuthenticated() [index.php:9]
+FD9F .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+FD9F .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+FD9F .|    |    |    no user found [Client.php:1635]
+FD9F .|    |    <= false
+FD9F .|    |    no ticket found [Client.php:1494]
+FD9F .|    <= false
+FD9F .<= false
+D0F4 .START (2018-02-20 18:16:27) phpCAS-1.3.5 ****************** [CAS.php:468]
+D0F4 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+D0F4 .<= ''
+D0F4 .=> phpCAS::isAuthenticated() [index.php:9]
+D0F4 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+D0F4 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+D0F4 .|    |    |    no user found [Client.php:1635]
+D0F4 .|    |    <= false
+D0F4 .|    |    no ticket found [Client.php:1494]
+D0F4 .|    <= false
+D0F4 .<= false
+8AE3 .START (2018-02-20 18:16:33) phpCAS-1.3.5 ****************** [CAS.php:468]
+8AE3 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+8AE3 .<= ''
+8AE3 .=> phpCAS::isAuthenticated() [index.php:9]
+8AE3 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+8AE3 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+8AE3 .|    |    |    user = `QIANH' [Client.php:1622]
+8AE3 .|    |    <= true
+8AE3 .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+8AE3 .|    <= true
+8AE3 .<= true
+D79C .START (2018-02-20 18:17:41) phpCAS-1.3.5 ****************** [CAS.php:468]
+D79C .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+D79C .<= ''
+D79C .=> phpCAS::isAuthenticated() [index.php:9]
+D79C .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+D79C .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+D79C .|    |    |    user = `QIANH' [Client.php:1622]
+D79C .|    |    <= true
+D79C .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+D79C .|    <= true
+D79C .<= true
+7D4D .START (2018-02-20 18:17:41) phpCAS-1.3.5 ****************** [CAS.php:468]
+7D4D .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+7D4D .<= ''
+7D4D .=> phpCAS::isAuthenticated() [index.php:9]
+7D4D .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+7D4D .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+7D4D .|    |    |    user = `QIANH' [Client.php:1622]
+7D4D .|    |    <= true
+7D4D .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+7D4D .|    <= true
+7D4D .<= true
+8F74 .START (2018-02-20 18:17:52) phpCAS-1.3.5 ****************** [CAS.php:468]
+8F74 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+8F74 .<= ''
+8F74 .=> phpCAS::isAuthenticated() [index.php:9]
+8F74 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+8F74 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+8F74 .|    |    |    no user found [Client.php:1635]
+8F74 .|    |    <= false
+8F74 .|    |    no ticket found [Client.php:1494]
+8F74 .|    <= false
+8F74 .<= false
+7780 .START (2018-02-20 18:17:54) phpCAS-1.3.5 ****************** [CAS.php:468]
+7780 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+7780 .<= ''
+7780 .=> phpCAS::isAuthenticated() [index.php:9]
+7780 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+7780 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+7780 .|    |    |    no user found [Client.php:1635]
+7780 .|    |    <= false
+7780 .|    |    no ticket found [Client.php:1494]
+7780 .|    <= false
+7780 .<= false
+7D7D .START (2018-02-20 18:17:54) phpCAS-1.3.5 ****************** [CAS.php:468]
+7D7D .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+7D7D .<= ''
+7D7D .=> phpCAS::isAuthenticated() [index.php:9]
+7D7D .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+7D7D .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+7D7D .|    |    |    no user found [Client.php:1635]
+7D7D .|    |    <= false
+7D7D .|    |    no ticket found [Client.php:1494]
+7D7D .|    <= false
+7D7D .<= false
+A94E .START (2018-02-20 18:17:57) phpCAS-1.3.5 ****************** [CAS.php:468]
+A94E .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+A94E .<= ''
+A94E .=> phpCAS::isAuthenticated() [index.php:9]
+A94E .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+A94E .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+A94E .|    |    |    user = `QIANH' [Client.php:1622]
+A94E .|    |    <= true
+A94E .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+A94E .|    <= true
+A94E .<= true
+8E8C .START (2018-02-20 18:23:13) phpCAS-1.3.5 ****************** [CAS.php:468]
+8E8C .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+8E8C .<= ''
+8E8C .=> phpCAS::isAuthenticated() [index.php:9]
+8E8C .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+8E8C .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+8E8C .|    |    |    user = `QIANH' [Client.php:1622]
+8E8C .|    |    <= true
+8E8C .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+8E8C .|    <= true
+8E8C .<= true
+7268 .START (2018-02-20 18:23:54) phpCAS-1.3.5 ****************** [CAS.php:468]
+7268 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+7268 .<= ''
+7268 .=> phpCAS::isAuthenticated() [index.php:9]
+7268 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+7268 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+7268 .|    |    |    user = `QIANH' [Client.php:1622]
+7268 .|    |    <= true
+7268 .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+7268 .|    <= true
+7268 .<= true
+1CCC .START (2018-02-20 18:24:15) phpCAS-1.3.5 ****************** [CAS.php:468]
+1CCC .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+1CCC .<= ''
+1CCC .=> phpCAS::isAuthenticated() [index.php:9]
+1CCC .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+1CCC .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+1CCC .|    |    |    user = `QIANH' [Client.php:1622]
+1CCC .|    |    <= true
+1CCC .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+1CCC .|    <= true
+1CCC .<= true
+852D .START (2018-02-20 18:25:17) phpCAS-1.3.5 ****************** [CAS.php:468]
+852D .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+852D .<= ''
+852D .=> phpCAS::isAuthenticated() [index.php:9]
+852D .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+852D .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+852D .|    |    |    user = `QIANH' [Client.php:1622]
+852D .|    |    <= true
+852D .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+852D .|    <= true
+852D .<= true
+CA73 .START (2018-02-20 18:30:56) phpCAS-1.3.5 ****************** [CAS.php:468]
+CA73 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+CA73 .<= ''
+CA73 .=> phpCAS::isAuthenticated() [index.php:9]
+CA73 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+CA73 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+CA73 .|    |    |    user = `QIANH' [Client.php:1622]
+CA73 .|    |    <= true
+CA73 .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+CA73 .|    <= true
+CA73 .<= true
+9DDE .START (2018-02-20 18:31:22) phpCAS-1.3.5 ****************** [CAS.php:468]
+9DDE .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+9DDE .<= ''
+9DDE .=> phpCAS::isAuthenticated() [index.php:9]
+9DDE .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+9DDE .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+9DDE .|    |    |    user = `QIANH' [Client.php:1622]
+9DDE .|    |    <= true
+9DDE .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+9DDE .|    <= true
+9DDE .<= true
+9319 .START (2018-02-20 18:38:43) phpCAS-1.3.5 ****************** [CAS.php:468]
+9319 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+9319 .<= ''
+9319 .=> phpCAS::isAuthenticated() [index.php:9]
+9319 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+9319 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+9319 .|    |    |    no user found [Client.php:1635]
+9319 .|    |    <= false
+9319 .|    |    no ticket found [Client.php:1494]
+9319 .|    <= false
+9319 .<= false
+94CC .START (2018-02-20 18:38:48) phpCAS-1.3.5 ****************** [CAS.php:468]
+94CC .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+94CC .<= ''
+94CC .=> phpCAS::isAuthenticated() [index.php:9]
+94CC .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+94CC .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+94CC .|    |    |    user = `QIANH' [Client.php:1622]
+94CC .|    |    <= true
+94CC .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+94CC .|    <= true
+94CC .<= true
+8ECF .START (2018-02-20 18:39:25) phpCAS-1.3.5 ****************** [CAS.php:468]
+8ECF .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+8ECF .<= ''
+8ECF .=> phpCAS::isAuthenticated() [index.php:9]
+8ECF .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+8ECF .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+8ECF .|    |    |    user = `QIANH' [Client.php:1622]
+8ECF .|    |    <= true
+8ECF .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+8ECF .|    <= true
+8ECF .<= true
+25FE .START (2018-02-20 18:39:31) phpCAS-1.3.5 ****************** [CAS.php:468]
+25FE .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+25FE .<= ''
+25FE .=> phpCAS::isAuthenticated() [index.php:9]
+25FE .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+25FE .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+25FE .|    |    |    user = `QIANH' [Client.php:1622]
+25FE .|    |    <= true
+25FE .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+25FE .|    <= true
+25FE .<= true
+BDF3 .START (2018-02-20 18:39:40) phpCAS-1.3.5 ****************** [CAS.php:468]
+BDF3 .=> phpCAS::setCasServerCACert('./CACert.pem') [index.php:7]
+BDF3 .<= ''
+BDF3 .=> phpCAS::isAuthenticated() [index.php:9]
+BDF3 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+BDF3 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+BDF3 .|    |    |    user = `QIANH' [Client.php:1622]
+BDF3 .|    |    <= true
+BDF3 .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
+BDF3 .|    <= true
+BDF3 .<= true
