@@ -80,7 +80,7 @@
                 </div> 
                 <div id="secondI">
                     <h2>Individual Information</h2>  
-                    <div class="col-sm-6">          
+                    <div class="col-sm-6"style="padding-left: 20%;">          
                         <p>Name:</p><input type="text" name="name">
                         <p>E-mail:</p><input type="text" name="email">
                         <p>Age:</p><input type="text" name="age">
@@ -92,7 +92,7 @@
                           <option value="graduate">Graduate Student</option>
                     </select>
                     </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;">
+                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month?</p><input type="text" name="budget">
                         <p>How many people are you looking for?</p><input type="text" name="number">
                         <p>Gender: </p><input type="text" name="gender">
@@ -104,7 +104,7 @@
                 </div>
                 <div id="secondG">
                     <h2>Group Information</h2>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6"style="padding-left: 20%;">
                         <p>Name: </p><input type="text" name="gname">
                         <p>E-mail: </p><input type="text" name="gemail">
                         <p>Age: </p><input type="text" name="gage">
@@ -116,7 +116,7 @@
                           <option value="ggraduate">Graduate Student</option>
                         </select>
                     </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;">
+                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month? </p><input type="text" name="gbudget">
                         <p>How many people are you looking for? </p><input type="text" name="gnumber">
                         <p>Gender: </p><input type="text" name="ggender">
