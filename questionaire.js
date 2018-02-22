@@ -96,6 +96,9 @@
                   $("#life").hide();
                   $("#pref").show();
               }
+              if (counter==7){
+                  location.href = 'profile.php';
+              }
               counter+=1;
           }
           $("#button").hide();
