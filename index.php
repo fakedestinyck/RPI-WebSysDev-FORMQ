@@ -8,9 +8,10 @@
 
     if (phpCAS::isAuthenticated())
     {
-        echo "Welcome to FORM Q, " . phpCAS::getUser(). "!";
-
-        echo "<a href='./logout.php'>Logout</a>";
+        // echo "Welcome to FORM Q, " . phpCAS::getUser(). "!";
+        //
+        // echo "<a href='./logout.php'>Logout</a>";
+        header('location: ./questionaire.php');
     }else{
         echo "<a href='./login.php'>Login</a>";
     }
