@@ -9,7 +9,7 @@
     {
         phpCAS::forceAuthentication();
     }else{
-        header('location: ./index.php');
+        header('location: ./questionaire.php');
     }
 
 ?>
