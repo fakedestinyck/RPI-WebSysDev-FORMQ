@@ -76,7 +76,7 @@
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
                     <div class="col-sm-6"><div class="center"><img src="Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
-                    <div class="col-sm-6"><div class="center"><img src="troy.jpg" id="offcampus" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><img src="troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
                 </div> 
                 <div id="secondI">
                     <h2>Individual Information</h2>  
