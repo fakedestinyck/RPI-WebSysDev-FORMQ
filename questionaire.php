@@ -1,3 +1,4 @@
+<?php include_once("checkLogin.php") ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
-      .page-header{ 
+      .page-header{
         color: white;
         margin-top: 0px;
         background-color:darkred;
@@ -22,7 +23,7 @@
       }
       #first{
         text-align: center;
-      } 
+      }
       .center{
         text-align: center;
       }
@@ -67,7 +68,7 @@
         <div class="container">
             <form action="questionaire.php" method="post">
                 <div id="first">
-                    <h2>Grouping</h2> 
+                    <h2>Grouping</h2>
                     <p>Click on an image below to choose group or single</p>
                     <div class="col-sm-6"><img src="group.png" id="groupphoto" style="width:400px;height:400px;"></div>
                     <div class="col-sm-6"><img src="single.png" id="singlephoto" style="width:170px;height:300px;"></div>
@@ -77,10 +78,10 @@
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
                     <div class="col-sm-6"><div class="center"><img src="Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
                     <div class="col-sm-6"><div class="center"><img src="troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
-                </div> 
+                </div>
                 <div id="secondI">
-                    <h2>Individual Information</h2>  
-                    <div class="col-sm-6"style="padding-left: 20%;">          
+                    <h2>Individual Information</h2>
+                    <div class="col-sm-6"style="padding-left: 20%;">
                         <p>Name:</p><input type="text" name="name">
                         <p>E-mail:</p><input type="text" name="email">
                         <p>Age:</p><input type="text" name="age">

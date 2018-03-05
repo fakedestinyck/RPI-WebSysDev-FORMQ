@@ -1,3 +1,4 @@
+<?php include_once("checkLogin.php") ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
-      .page-header{ 
+      .page-header{
         color: white;
         margin-top: 0px;
         background-color:darkred;
@@ -19,7 +20,7 @@
         }
       #first{
           text-align: center;
-      }    
+      }
       body{
           color: black;
           font-family: 'Roboto', sans-serif;
@@ -33,7 +34,7 @@
           color: white;
           text-align: center;
           font-size: 600%;
-          
+
       }
      h2{
           color: darkred;
@@ -41,7 +42,7 @@
           text-align: center;
           font-family: 'Knewave', cursive;
       }
-      
+
       .container{
           margin-bottom:5%;
           padding: 3%;
@@ -51,7 +52,7 @@
           margin-top: 50px;
           border-style: solid;
           border-color:rgba(139,0,0,0.6);
-          
+
       }
       li{
           padding: 5%;
@@ -62,6 +63,7 @@
   <body >
       <h1 class="page-header">Form Q</h1>
         <div class="container">
+            <a href="logout.php">Demo Logout</a>
             <h2>Profile</h2>
             <form action="profile.php" method="post" id="profile">
                 <div class="col-sm-6"style="padding-left: 20%;">
