@@ -15,6 +15,7 @@ h1{
 	color: white;
 	border-radius: 20px;
 	box-shadow: 0 3px 0 0 black;
+	text-align: center;
 }
 .page-header{ 
     color: white;
@@ -22,14 +23,11 @@ h1{
     background-color:darkred;
     font-family: 'Knewave', cursive;
 }
-.center-wrapper {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 .btn-wrapper {
 	text-align: center;
+}
+.center-wrapper {
+	padding-top: 10px;
 }
 .description {
 	text-align: center;
