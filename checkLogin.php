@@ -1,5 +1,4 @@
 <?PHP
-
     include_once("./CAS-1.3.5/CAS.php");
     phpCAS::client(CAS_VERSION_2_0,'cas-auth.rpi.edu',443,'/cas/');
     // SSL!
@@ -7,9 +6,6 @@
 
     if (!phpCAS::isAuthenticated())
     {
-        phpCAS::forceAuthentication();
-    }else{
-        header('location: ./questionaire.php');
+        header("Location: login.php");
     }
-
 ?>

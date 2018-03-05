@@ -1,0 +1,41 @@
+html body {
+	background-color: darkgray;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-size: 600%;
+}
+.log{
+	font-size: 200%;
+	min-height: 100px;
+	min-width: 250px;
+	background: linear-gradient(#900, #600);
+	color: white;
+	border-radius: 20px;
+	box-shadow: 0 3px 0 0 black;
+	text-align: center;
+}
+.page-header{ 
+    color: white;
+    margin-top: 0px;
+    background-color:darkred;
+    font-family: 'Knewave', cursive;
+}
+.btn-wrapper {
+	text-align: center;
+}
+.center-wrapper {
+	padding-top: 10px;
+}
+.description {
+	text-align: center;
+	color: darkred;
+	font-family: 'Knewave', cursive;
+	font-size: 200%;
+}
+.log:hover, .log:focus, .log:active {
+	background: linear-gradient(#600, #300);
+	color: white;
+}

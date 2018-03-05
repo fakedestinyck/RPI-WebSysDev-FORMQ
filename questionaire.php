@@ -1,3 +1,4 @@
+<?php include_once("checkLogin.php") ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
-      .page-header{ 
+      .page-header{
         color: white;
         margin-top: 0px;
         background-color:darkred;
@@ -22,7 +23,7 @@
       }
       #first{
         text-align: center;
-      } 
+      }
       .center{
         text-align: center;
       }
@@ -67,7 +68,7 @@
         <div class="container">
             <form action="questionaire.php" method="post">
                 <div id="first">
-                    <h2>Grouping</h2> 
+                    <h2>Grouping</h2>
                     <p>Click on an image below to choose group or single</p>
                     <div class="col-sm-6"><img src="group.png" id="groupphoto" style="width:400px;height:400px;"></div>
                     <div class="col-sm-6"><img src="single.png" id="singlephoto" style="width:170px;height:300px;"></div>
@@ -76,11 +77,11 @@
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
                     <div class="col-sm-6"><div class="center"><img src="Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
-                    <div class="col-sm-6"><div class="center"><img src="troy.jpg" id="offcampus" style="width:300px;height:300px;"></div></div>
-                </div> 
+                    <div class="col-sm-6"><div class="center"><img src="troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
+                </div>
                 <div id="secondI">
-                    <h2>Individual Information</h2>  
-                    <div class="col-sm-6">          
+                    <h2>Individual Information</h2>
+                    <div class="col-sm-6"style="padding-left: 20%;">
                         <p>Name:</p><input type="text" name="name">
                         <p>E-mail:</p><input type="text" name="email">
                         <p>Age:</p><input type="text" name="age">
@@ -92,7 +93,7 @@
                           <option value="graduate">Graduate Student</option>
                     </select>
                     </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;">
+                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month?</p><input type="text" name="budget">
                         <p>How many people are you looking for?</p><input type="text" name="number">
                         <p>Gender: </p><input type="text" name="gender">
@@ -104,7 +105,7 @@
                 </div>
                 <div id="secondG">
                     <h2>Group Information</h2>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6"style="padding-left: 20%;">
                         <p>Name: </p><input type="text" name="gname">
                         <p>E-mail: </p><input type="text" name="gemail">
                         <p>Age: </p><input type="text" name="gage">
@@ -116,7 +117,7 @@
                           <option value="ggraduate">Graduate Student</option>
                         </select>
                     </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;">
+                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month? </p><input type="text" name="gbudget">
                         <p>How many people are you looking for? </p><input type="text" name="gnumber">
                         <p>Gender: </p><input type="text" name="ggender">
