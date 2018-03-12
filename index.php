@@ -32,8 +32,9 @@
     <body>
         <div class="full-wrapper">
             <h1 class="page-header">Form Q</h1>
-            <div class ="center-wrapper">
-                <div class = "description">Welcome to Form Q. Answer a few questions, and we'll match you with a roommate instantly.</div><br>
+            <div class ="container">
+                <div class = "description">Welcome to Find Our Roommates Questionnaire</div>.<br>
+                <p>Our FORM Q team worked to create a website for Rensselaer students looking to find roommates.  We understand that finding roommates similar in personality and values can be difficult.  This becomes even harder as students become older and no longer want to live on campus.  Our solution works for on campus and off campus living.  Answer a few questions, and we'll match you with a roommate or group instantly.</p>
                 <div class="btn-wrapper">
                     <a href="login.php"><button type="button" class="btn btn-outline-secondary btn-lg log">Begin Your Search</button></a>
                 </div>
