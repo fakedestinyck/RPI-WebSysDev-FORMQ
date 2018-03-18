@@ -383,3 +383,91 @@ BDF3 .|    |    <= true
 BDF3 .|    |    user was already authenticated, no need to look for tickets [Client.php:1416]
 BDF3 .|    <= true
 BDF3 .<= true
+0D51 .START (2018-03-17 04:52:39) phpCAS-1.3.5 ****************** [CAS.php:468]
+0D51 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+0D51 .<= ''
+0D51 .=> phpCAS::isAuthenticated() [index.php:9]
+0D51 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+0D51 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+0D51 .|    |    |    no user found [Client.php:1635]
+0D51 .|    |    <= false
+0D51 .|    |    no ticket found [Client.php:1494]
+0D51 .|    <= false
+0D51 .<= false
+BCE3 .START (2018-03-17 04:52:45) phpCAS-1.3.5 ****************** [CAS.php:468]
+BCE3 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+BCE3 .<= ''
+BCE3 .=> phpCAS::isAuthenticated() [index.php:9]
+BCE3 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+BCE3 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+BCE3 .|    |    |    no user found [Client.php:1635]
+BCE3 .|    |    <= false
+BCE3 .|    |    no ticket found [Client.php:1494]
+BCE3 .|    <= false
+BCE3 .<= false
+90FA .START (2018-03-17 04:52:47) phpCAS-1.3.5 ****************** [CAS.php:468]
+90FA .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+90FA .<= ''
+90FA .=> phpCAS::isAuthenticated() [index.php:9]
+90FA .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+90FA .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+90FA .|    |    |    no user found [Client.php:1635]
+90FA .|    |    <= false
+90FA .|    |    no ticket found [Client.php:1494]
+90FA .|    <= false
+90FA .<= false
+D495 .START (2018-03-17 05:01:50) phpCAS-1.3.5 ****************** [CAS.php:468]
+D495 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+D495 .<= ''
+D495 .=> phpCAS::isAuthenticated() [index.php:9]
+D495 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+D495 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+D495 .|    |    |    no user found [Client.php:1635]
+D495 .|    |    <= false
+D495 .|    |    no ticket found [Client.php:1494]
+D495 .|    <= false
+D495 .<= false
+418E .START (2018-03-17 05:04:38) phpCAS-1.3.5 ****************** [CAS.php:468]
+418E .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+418E .<= ''
+418E .=> phpCAS::isAuthenticated() [index.php:9]
+418E .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+418E .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+418E .|    |    |    no user found [Client.php:1635]
+418E .|    |    <= false
+418E .|    |    no ticket found [Client.php:1494]
+418E .|    <= false
+418E .<= false
+5658 .START (2018-03-17 06:27:26) phpCAS-1.3.5 ****************** [CAS.php:468]
+5658 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+5658 .<= ''
+5658 .=> phpCAS::isAuthenticated() [index.php:9]
+5658 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+5658 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+5658 .|    |    |    no user found [Client.php:1635]
+5658 .|    |    <= false
+5658 .|    |    no ticket found [Client.php:1494]
+5658 .|    <= false
+5658 .<= false
+E48A .START (2018-03-18 14:11:28) phpCAS-1.3.5 ****************** [CAS.php:468]
+E48A .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+E48A .<= ''
+E48A .=> phpCAS::isAuthenticated() [index.php:9]
+E48A .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+E48A .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+E48A .|    |    |    no user found [Client.php:1635]
+E48A .|    |    <= false
+E48A .|    |    no ticket found [Client.php:1494]
+E48A .|    <= false
+E48A .<= false
+9B50 .START (2018-03-18 15:52:15) phpCAS-1.3.5 ****************** [CAS.php:468]
+9B50 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+9B50 .<= ''
+9B50 .=> phpCAS::isAuthenticated() [index.php:9]
+9B50 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+9B50 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+9B50 .|    |    |    no user found [Client.php:1635]
+9B50 .|    |    <= false
+9B50 .|    |    no ticket found [Client.php:1494]
+9B50 .|    <= false
+9B50 .<= false

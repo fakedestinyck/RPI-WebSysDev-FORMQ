@@ -1,0 +1,74 @@
+body{
+  color: black;
+  background-repeat: no-repeat;
+  background-size:cover;
+  font-family: 'Oswald', sans-serif;
+  font-size: 200%;
+  background-color: #E0E0E0; 
+}
+#header{
+        color: white;
+        margin-top: 0px;
+        /* background-color:darkred; */
+        font-family: 'Knewave', cursive;
+        font-size: 130%
+}
+#welcome_msg{
+	text-align: right;
+}
+
+#user_nav{
+	background-color: darkred;
+	position: relative;
+}
+
+#sch_btn{
+	margin-left: 35%;
+}
+
+#groups{
+	height: 100%;
+	width: 350px;
+	position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #E57373;
+    overflow-x: hidden;
+    padding-top: 20px;	
+	margin-top: 3.37%;
+}
+
+#groups a{
+	padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+#groups button{
+	padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+#groups button:hover {
+    color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+    #groups {padding-top: 15px; margin-top: 3.37%;}
+    #groups a {font-size: 18px;}
+}
+
+#requests{
+	margin-left: 500px;
+	padding-bottom: 20px;
+}
+
+#req_heading{
+	margin-left: 500px;
+}
