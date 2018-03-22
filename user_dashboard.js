@@ -5,3 +5,15 @@ $(document).ready(function(){
 		});
 	}); 
 });
+
+function blacklistClick(idno) {
+	if (confirm("Are you sure you want to blacklist this user?")) {
+		$('#' + idno).hide();
+	}
+}
+
+function ignoreClick(idno) {
+	if (confirm("Are you sure you want to ignore this report?")) {
+		$('#' + idno).hide();
+	}
+}
