@@ -2,7 +2,7 @@
   color: white;
   margin-top: 0px;
   background-color:darkred;
-  font-family: 'Knewave', cursive;
+  font-family: 'Playfair Display', serif;
 }
 .slidercontainer{
   width: 25%;
@@ -15,11 +15,10 @@
 }
 body{
   color: black;
-  font-family: 'Roboto', sans-serif;
   background-image: url('bray.jpg');
   background-repeat: no-repeat;
   background-size:cover;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 200%;
 }
 h1{
@@ -31,7 +30,7 @@ h2{
   color: darkred;
   font-size: 400%;
   text-align: center;
-  font-family: 'Knewave', cursive;
+  font-family: 'Playfair Display', serif;
   margin: 2%;
 }
 .container{
@@ -56,7 +55,7 @@ html body {
 .description {
   text-align: center;
   color: darkred;
-  font-family: 'Knewave', cursive;
+  font-family: 'Playfair Display', serif;
   font-size: 200%;
 }
 .log{

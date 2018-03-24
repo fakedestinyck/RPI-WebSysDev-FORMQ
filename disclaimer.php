@@ -7,20 +7,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
       .page-header{
-        color: white;
-        margin-top: 0px;
-        background-color:darkred;
-        font-family: 'Knewave', cursive;
+          color: white;
+          margin-top: 0px;
+          background-color:darkred;
+          font-family: 'Playfair Display', serif;
       }
       body{
           color: black;
-          font-family: 'Roboto', sans-serif;
           background-color:darkred;
-          font-family: 'Oswald', sans-serif;
+          font-family: 'Fira Sans', sans-serif;
           font-size: 200%;
       }
       h1{
@@ -32,7 +31,7 @@
         color: white;
         font-size: 300%;
         text-align: center;
-        font-family: 'Knewave', cursive;
+        font-family: 'Playfair Display', serif;
         margin: 2%;
       }   
     </style>
