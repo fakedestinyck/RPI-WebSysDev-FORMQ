@@ -471,3 +471,36 @@ E48A .<= false
 9B50 .|    |    no ticket found [Client.php:1494]
 9B50 .|    <= false
 9B50 .<= false
+1F16 .START (2018-03-24 17:44:07) phpCAS-1.3.5 ****************** [CAS.php:468]
+1F16 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+1F16 .<= ''
+1F16 .=> phpCAS::isAuthenticated() [index.php:9]
+1F16 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+1F16 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+1F16 .|    |    |    no user found [Client.php:1635]
+1F16 .|    |    <= false
+1F16 .|    |    no ticket found [Client.php:1494]
+1F16 .|    <= false
+1F16 .<= false
+95AF .START (2018-03-24 17:45:55) phpCAS-1.3.5 ****************** [CAS.php:468]
+95AF .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+95AF .<= ''
+95AF .=> phpCAS::isAuthenticated() [index.php:9]
+95AF .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+95AF .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+95AF .|    |    |    no user found [Client.php:1635]
+95AF .|    |    <= false
+95AF .|    |    no ticket found [Client.php:1494]
+95AF .|    <= false
+95AF .<= false
+EC8F .START (2018-03-24 17:46:18) phpCAS-1.3.5 ****************** [CAS.php:468]
+EC8F .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+EC8F .<= ''
+EC8F .=> phpCAS::isAuthenticated() [index.php:9]
+EC8F .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+EC8F .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+EC8F .|    |    |    no user found [Client.php:1635]
+EC8F .|    |    <= false
+EC8F .|    |    no ticket found [Client.php:1494]
+EC8F .|    <= false
+EC8F .<= false
