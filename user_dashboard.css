@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body{
   color: black;
   background-repeat: no-repeat;
@@ -99,4 +103,24 @@ body{
 #reported_users {
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.footer {
+  background-color: darkred;
+  color: white;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px; 
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.footer, .page-wrap:after {
+  height: 50px;
 }
