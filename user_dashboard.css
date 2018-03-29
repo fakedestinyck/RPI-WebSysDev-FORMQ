@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body{
   color: black;
   background-repeat: no-repeat;
@@ -6,9 +10,11 @@ body{
   font-size: 200%;
   background-color: #E0E0E0; 
 }
+#admin-body {
+  padding-top: 65px;
+}
 #header{
         color: white;
-        margin-top: 0px;
         /* background-color:darkred; */
         font-family: 'Knewave', cursive;
         font-size: 130%
@@ -21,7 +27,9 @@ body{
 	background-color: darkred;
 	position: relative;
 }
-
+#admin_nav {
+  background-color: darkred;
+}
 #sch_btn{
 	margin-left: 35%;
 }
@@ -71,4 +79,48 @@ body{
 
 #req_heading{
 	margin-left: 500px;
+}
+
+@media (max-width: 768px) {
+
+  ul.container-fluid li.inline {
+    float: left; /*// make .inline items to float on mobile*/
+  }
+  ul.container-fluid li.last-inline + li {
+    clear: both; /*// avoid next item to float*/
+  }
+  ul.container-fluid li.inline a { /*// fix broken padding*/
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+}
+
+.blackText {
+  color: black;
+}
+
+#reported_users {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.footer {
+  background-color: darkred;
+  color: white;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px; 
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.footer, .page-wrap:after {
+  height: 50px;
 }
