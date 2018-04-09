@@ -24,7 +24,7 @@
       body{
           color: black;
           font-family: 'Roboto', sans-serif;
-          background-image: url('dormpic.jpg');
+          background-image: url('resources/pics/dormpic.jpg');
           background-repeat: no-repeat;
           background-size:cover;
           font-family: 'Oswald', sans-serif;

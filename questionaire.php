@@ -29,7 +29,7 @@
       }
       body{
           color: black;
-          background-image: url('dorm.jpg');
+          background-image: url('resources/pics/dorm.jpg');
           background-repeat: no-repeat;
           background-size:cover;
           font-family: 'Fira Sans', sans-serif;
@@ -69,14 +69,14 @@
                 <div id="first">
                     <h2>Grouping</h2>
                     <p>Click on an image below to choose group or single</p>
-                    <div class="col-sm-6"><img src="group.png" id="groupphoto" style="width:400px;height:400px;"></div>
-                    <div class="col-sm-6"><img src="single.png" id="singlephoto" style="width:170px;height:300px;"></div>
+                    <div class="col-sm-6"><img src="resources/pics/group.png" id="groupphoto" style="width:400px;height:400px;"></div>
+                    <div class="col-sm-6"><img src="resources/pics/single.png" id="singlephoto" style="width:170px;height:300px;"></div>
                 </div>
                 <div id="campus">
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
-                    <div class="col-sm-6"><div class="center"><img src="Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
-                    <div class="col-sm-6"><div class="center"><img src="troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><img src="resources/pics/Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><img src="resources/pics/troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
                 </div>
                 <div id="secondI">
                     <h2>Individual Information</h2>

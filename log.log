@@ -503,4 +503,74 @@ EC8F .|    |    |    no user found [Client.php:1635]
 EC8F .|    |    <= false
 EC8F .|    |    no ticket found [Client.php:1494]
 EC8F .|    <= false
-EC8F .<= false
+EC8F .<= falseAFF0 .START (2018-03-31 01:23:36) phpCAS-1.3.5 ****************** [CAS.php:468]
+AFF0 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+AFF0 .<= ''
+AFF0 .=> phpCAS::isAuthenticated() [index.php:9]
+AFF0 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+AFF0 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+AFF0 .|    |    |    no user found [Client.php:1635]
+AFF0 .|    |    <= false
+AFF0 .|    |    no ticket found [Client.php:1494]
+AFF0 .|    <= false
+AFF0 .<= false
+331D .START (2018-03-31 01:23:42) phpCAS-1.3.5 ****************** [CAS.php:468]
+331D .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+331D .<= ''
+331D .=> phpCAS::isAuthenticated() [index.php:9]
+331D .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+331D .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+331D .|    |    |    no user found [Client.php:1635]
+331D .|    |    <= false
+331D .|    |    no ticket found [Client.php:1494]
+331D .|    <= false
+331D .<= false
+4313 .START (2018-04-07 16:42:33) phpCAS-1.3.5 ****************** [CAS.php:468]
+4313 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+4313 .<= ''
+4313 .=> phpCAS::isAuthenticated() [index.php:9]
+4313 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+4313 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+4313 .|    |    |    no user found [Client.php:1635]
+4313 .|    |    <= false
+4313 .|    |    no ticket found [Client.php:1494]
+4313 .|    <= false
+4313 .<= false
+D6CF .START (2018-04-07 16:44:09) phpCAS-1.3.5 ****************** [CAS.php:468]
+D6CF .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+D6CF .<= ''
+D6CF .=> phpCAS::isAuthenticated() [index.php:9]
+D6CF .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+D6CF .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+D6CF .|    |    |    user = `QIANH' [Client.php:1622]
+D6CF .|    |    <= true
+D6CF .|    |    user was already authenticated, no need to look for tickets [Client.php:1417]
+D6CF .|    <= true
+D6CF .<= true
+54DE .START (2018-04-07 16:44:13) phpCAS-1.3.5 ****************** [CAS.php:468]
+54DE .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+54DE .<= ''
+54DE .=> phpCAS::isAuthenticated() [index.php:9]
+54DE .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+54DE .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+54DE .|    |    |    user = `QIANH' [Client.php:1622]
+54DE .|    |    <= true
+54DE .|    |    user was already authenticated, no need to look for tickets [Client.php:1417]
+54DE .|    <= true
+54DE .<= true
+B44C .START (2018-04-09 16:30:50) phpCAS-1.3.5 ****************** [CAS.php:468]
+B44C .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+B44C .|    => phpCAS::error('CAS_InvalidArgumentException: Certificate file does not exist CAS_Request_CurlRequest') [CAS.php:1628]
+B44C .|    |    CAS_InvalidArgumentException: Certificate file does not exist CAS_Request_CurlRequest in /Users/Fakedestinyck/Sites/websysdev/formq/index.phpon line 7 [CAS.php:566]
+B44C .|    <= ''
+AD60 .START (2018-04-09 16:31:10) phpCAS-1.3.5 ****************** [CAS.php:468]
+AD60 .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:7]
+AD60 .<= ''
+AD60 .=> phpCAS::isAuthenticated() [index.php:9]
+AD60 .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+AD60 .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+AD60 .|    |    |    user = `QIANH' [Client.php:1622]
+AD60 .|    |    <= true
+AD60 .|    |    user was already authenticated, no need to look for tickets [Client.php:1417]
+AD60 .|    <= true
+AD60 .<= true
