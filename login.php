@@ -9,6 +9,8 @@
     {
         phpCAS::forceAuthentication();
     }else{
+        define( 'login', true );
+        include_once("storeretrievedata.php");
         header('location: ./questionaire.php');
     }
 

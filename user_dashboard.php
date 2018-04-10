@@ -1,4 +1,4 @@
-<?php ?>
+<?php include_once("checkLogin.php"); ?>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,7 @@
 			</div>
 			<a href= "#"><button id = "sch_btn" class = "btn btn-danger navbar-btn">Click here to go to the search page!</button></a> <!-- link to search page -->
 			<ul class = "nav navbar-nav navbar-right">
-				<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, test_user!</a></li>
+				<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, <?php echo $user_name;?>!</a></li>
 				<li><a href = "logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
 			</ul>
 		</div>

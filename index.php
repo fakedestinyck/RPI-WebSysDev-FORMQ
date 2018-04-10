@@ -1,6 +1,7 @@
 <?PHP
 
     include_once("./CAS-1.3.5/CAS.php");
+    include_once("connect.php");
     phpCAS::client(CAS_VERSION_2_0,'cas-auth.rpi.edu',443,'/cas/');
     phpCAS::setDebug("log.log");
     // SSL!
@@ -8,9 +9,8 @@
 
     if (phpCAS::isAuthenticated())
     {
-        // echo "Welcome to FORM Q, " . phpCAS::getUser(). "!";
-        //
-        // echo "<a href='./logout.php'>Logout</a>";
+        define( 'login', true );
+        include_once("storeretrievedata.php");
         header('location: ./questionaire.php');
     }
 
