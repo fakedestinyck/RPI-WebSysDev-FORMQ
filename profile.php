@@ -1,4 +1,6 @@
-<?php include_once("checkLogin.php") ?>
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,7 +65,7 @@
   <body >
       <h1 class="page-header">Form Q</h1>
         <div class="container">
-            <a href="logout.php">Demo Logout</a>
+            <a href="api/logout.php">Demo Logout</a>
             <h2>Profile</h2>
             <form action="profile.php" method="post" id="profile">
                 <div class="col-sm-6"style="padding-left: 20%;">

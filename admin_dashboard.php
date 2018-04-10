@@ -1,3 +1,6 @@
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!doctype html>
 <html>
 <head>
@@ -33,7 +36,7 @@
 				<ul class = "nav navbar-nav navbar-right">
 					<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, test_admin!</a></li>
 					<li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>
-					<li><a href = "logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
+					<li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
 				</ul>
 			</div>
 		</div>

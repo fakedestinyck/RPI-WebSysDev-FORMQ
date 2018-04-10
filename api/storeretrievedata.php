@@ -1,8 +1,8 @@
-<?php defined('login') or die('No direct script access.');
-include_once("./CAS-1.3.5/CAS.php");
+<?php defined('login') or die('No direct script access allowed.');
+include_once("../CAS-1.3.5/CAS.php");
 include_once("connect.php");
 if (!phpCAS::isAuthenticated()) {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 $user_exists = false;
 $rcsid = strtolower(phpCAS::getUser());
