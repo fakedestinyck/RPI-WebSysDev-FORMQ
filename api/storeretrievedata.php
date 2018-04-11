@@ -17,6 +17,7 @@ if ($result != null) {
     $_SESSION["role"] = $user_array["role"];
     $encrypt = crypt(md5($user_array["name"].$user_array["email"].$user_array["role"]),md5(md5($user_array["rin"])));
     $_SESSION["token"] = $encrypt;
+    $_SESSION["last_activity"] = time();
     $user_exists = true;
 }
 $_SESSION['rcsid'] = $rcsid;

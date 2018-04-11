@@ -64,42 +64,65 @@
       $("#life").hide();
       $("#pref").hide();
       $("#campus").hide();
+      jQuery.validator.setDefaults({
+          debug: true,
+          success: "valid"
+      });
       function next(){
-        if (counter==2){
+          if (counter==3){
+
+              var form = $("#myform");
+              form.validate();
+              if (form.valid()) {
+                  console.log("valid!");
+              }
+              var name = $("#individual_name").val();
+              var rin = $("#individual_rin").val();
+              var email = $("#individual_email").val();
+              var age = $("#individual_age").val();
+              var year = $("#individual_year").val();
+              var content = {
+                  "name" : name,
+                  "rin" : rin,
+                  "email" : email,
+                  "age" : age,
+                  "year" : year
+              };
+              sendToDatabase(JSON.stringify(content),"user");
+          }
+          if (counter==6){
+              // alert("6");
+              // $("#life").hide();
+              // $("#pref").show();
+          }
+          if (counter==7){
+              alert("7");
+              location.href = 'profile.php';
+          }
+          if (counter==2){
               $("#first").hide();
               $("#secondG").show();
               $("#button").show();
+              counter+=1;
           } else if (counter==1){
               $("#first").hide();
               $("#singlephoto").hide();
               $("#secondI").show();
               $("#button").show();
-              counter=2;
-          }
-          if (counter==3){
-              $("#campus").show();
-              $("#secondI").hide();
-              $("#secondG").hide();
-              $("#button").hide();
+              counter=3;
           }
           if (counter==5){
               $("#campus").hide();
               $("#button").show();
               $("#life").show();
+              counter+=1;
           } else if (counter==4){
               $("#campus").hide();
               $("#button").show();
               $("#life").show();
-              counter=5;
+              counter=6;
           }
-          if (counter==6){
-              $("#life").hide();
-              $("#pref").show();
-          }
-          if (counter==7){
-              location.href = 'profile.php';
-          }
-          counter+=1;
+          // counter+=1;
       }
       $("#button").hide();
       $("#groupphoto").click(function(){
@@ -120,7 +143,6 @@
       });
       $("#button").click(function(){
           next();
-
       });
 
       // post result to database
@@ -128,17 +150,31 @@
           $.ajax({
               url: 'api/storedata.php',
               type: 'post',
-              data: {'action': 'store', 'userid': '11239528343'},
-              success: function(data, status) {
-                  if(data == "ok") {
-                      $('#followbtncontainer').html('<p><em>Following!</em></p>');
-                      var numfollowers = parseInt($('#followercnt').html()) + 1;
-                      $('#followercnt').html(numfollowers);
+              data: {'action': 'store', 'column': column, 'content': content},
+              success: function(data) {
+                  var responseData = data.content;
+                  console.log(responseData);
+                  if (counter==3){
+                      $("#campus").show();
+                      $("#secondI").hide();
+                      $("#secondG").hide();
+                      $("#button").hide();
+                  }
+                  if (counter==6){
+                      alert("6");
+                      $("#life").hide();
+                      $("#pref").show();
+                  }
+                  if (counter==7){
+                      alert("7");
+                      location.href = 'profile.php';
                   }
               },
               error: function(xhr, desc, err) {
                   console.log(xhr);
                   console.log("Details: " + desc + "\nError:" + err);
+                  alert("An error occur: "+err+".\nPlease try again later.");
+                  location.reload();
               }
           });
       }
