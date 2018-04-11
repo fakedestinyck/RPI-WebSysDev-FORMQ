@@ -1,6 +1,6 @@
 <?php
-define( 'check', true );
-include_once("api/checkLogin.php"); ?>
+//define( 'check', true );
+//include_once("api/checkLogin.php"); ?>
 <!doctype html>
 <html>
 <head>
@@ -21,42 +21,42 @@ include_once("api/checkLogin.php"); ?>
 <body id="admin-body">
 
 	<div class ="page-wrap">
-	<nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">
-		<div class = "container-fluid">
-			<div class = "navbar-header">
-				<a class = "navbar-brand" id = "header" href = "index.php">Form Q</a>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                	<span class="sr-only">Toggle navigation</span>
-                	<span class="icon-bar"></span>
-                	<span class="icon-bar"></span>
-                	<span class="icon-bar"></span>
-            	</button>
-			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class = "nav navbar-nav navbar-right">
-					<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, test_admin!</a></li>
-					<li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>
-					<li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">
+		  <div class = "container-fluid">
+        <div class = "navbar-header">
+          <a class = "navbar-brand" id = "header" href = "index.php">Form Q</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+			  </div>
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				  <ul class = "nav navbar-nav navbar-right">
+					  <li><a><span class = "glyphicon glyphicon-user"></span>Welcome, <!-- <?php echo $user_name;?> -->!</a></li>
+					  <li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>
+					  <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
+				  </ul>
+			  </div>
+		  </div>
+	  </nav>
 
-	<h1 class ="hidden-xs" style="margin-left: 7%;">Admin Dashboard</h1>
-	<h3 class="hidden-lg hidden-md hidden-sm" style="margin-left: 7%;">Admin Dashboard</h3>
-	<div id="reported_users" class="panel panel-default">
-		<div class="panel-heading" onclick="removeHidden()"">
-			Reported Users
-			<span id ="symbol" class="pull-right glyphicon glyphicon-plus hidden-lg hidden-md hidden-sm" style="top: 5px;"></span>
-		</div>
-		<ul id ="reported_content" class="list-group hidden-xs">
+	  <h1 class ="hidden-xs" style="margin-left: 7%;">Admin Dashboard</h1>
+	  <h3 class="hidden-lg hidden-md hidden-sm" style="margin-left: 7%;">Admin Dashboard</h3>
+	  <div id="reported_users" class="panel panel-default">
+		  <div class="panel-heading" onclick="removeHidden()"">
+			  Reported Users
+			  <span id ="symbol" class="pull-right glyphicon glyphicon-plus hidden-lg hidden-md hidden-sm" style="top: 5px;"></span>
+		  </div>
+		  <ul id ="reported_content" class="list-group hidden-xs">
   			<li id ="0" class="list-group-item clearfix" style="word-wrap: break-word;">
-      			<span>User 1</span>
-      			<span class="pull-right">
-      				<button class="btn btn-warning blackText" onclick="ignoreClick('0')">Ignore</button>
-      				<button class="btn btn-danger blackText" onclick="banClick('0')">Ban</button>
-      			</span>
-      			<div class="text-muted" style="font-size: 15px;">Number of reports: X</div>
+      	  <span>User 1</span>
+      	  <span class="pull-right">
+      	    <button class="btn btn-warning blackText" onclick="ignoreClick('0')">Ignore</button>
+      	    <button class="btn btn-danger blackText" onclick="banClick('0')">Ban</button>
+      	  </span>
+      	  <div class="text-muted" style="font-size: 15px;">Number of reports: X</div>
   			</li>
   			<li id="1" class="list-group-item">
   				User 2
@@ -135,15 +135,12 @@ include_once("api/checkLogin.php"); ?>
       				<button class="btn btn-danger blackText">Ban</button>
       			</span>
   			</li>
-
-		</ul>
-	</div>
+		  </ul>
+	  </div>
 	</div>
 	<footer class="footer">
 		<div class="container">
-			<form action="aboutus.php">
-				<button class="btn btn-info" style="margin-top: 8px;">About Us</button>
-			</form>
+      <div style="margin-top: 5px;">© 2018 Copyright: <a href ="aboutus.php">FORM Q</a></div>
 		</div>
 	</footer>
 	<script type="text/javascript" src = "admin_dashboard.js"></script>
