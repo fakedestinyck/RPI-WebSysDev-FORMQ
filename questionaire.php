@@ -5,7 +5,6 @@ include_once("api/checkLogin.php"); ?>
 <html lang="en">
   <head>
     <title>FORM QS</title>
-<!--    <link href="lab4.css" rel="stylesheet" type="text/css" />-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
@@ -15,51 +14,51 @@ include_once("api/checkLogin.php"); ?>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
-      .page-header{
-        color: white;
-        margin-top: 0px;
-        background-color:darkred;
-        font-family: 'Playfair Display', serif;
-      }
-      .slidercontainer{
-          width: 25%;
-      }
-      #first{
-        text-align: center;
-      }
-      .center{
-        text-align: center;
-      }
-      body{
-          color: black;
-          background: url('resources/pics/dorm.jpg') no-repeat;
-          background-size:cover;
-          font-family: 'Fira Sans', sans-serif;
-          font-size: 200%;
-      }
-      h1{
-          color: white;
-          text-align: center;
-          font-size: 600%;
-      }
-     h2{
-          color: darkred;
-          font-size: 400%;
-          text-align: center;
-          font-family: 'Playfair Display', serif;
-          margin: 2%;
-      }
-      .container{
-          margin-bottom:5%;
-          padding: 3%;
-          background:rgba(255,255,255,0.8);
-          margin-top: 50px;
-          border: 10px solid rgba(139, 0, 0, 0.8);
-      }
-      /* Floats need to be cleared so the container will wrap correctly. */
-      div.clear {
-          clear:both;
-      }
+        .page-header{
+            color: white;
+            margin-top: 0px;
+            background-color:darkred;
+            font-family: 'Playfair Display', serif;
+        }
+        .slidercontainer{
+            width: 25%;
+        }
+        #first{
+            text-align: center;
+        }
+        .center{
+            text-align: center;
+        }
+        body{
+            color: black;
+            background: url('resources/pics/dorm.jpg') no-repeat;
+            background-size:cover;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 200%;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-size: 600%;
+        }
+        h2{
+            color: darkred;
+            font-size: 400%;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin: 2%;
+        }
+        .container{
+            margin-bottom:5%;
+            padding: 3%;
+            background:rgba(255,255,255,0.8);
+            margin-top: 50px;
+            border: 10px solid rgba(139, 0, 0, 0.8);
+        }
+        /* Floats need to be cleared so the container will wrap correctly. */
+        div.clear {
+            clear:both;
+        }
     </style>
   </head>
   <body >
@@ -186,59 +185,43 @@ include_once("api/checkLogin.php"); ?>
                     </div>
                     <div class = "col-sm-4" style="border-left: 5px solid darkred;border-right: 5px solid darkred;">
                         <p>How strict are you with sticking to a schedule?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="schedule">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="schedule" name="schedule">
                             <div id="scheduleoutput">Output: </div>
                         </div>
                         <p>How much can you handle a mess?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="mess">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="mess" name = "mess">
                             <div id="messoutput">Output: </div>
                         </div>
-                        <p>How much do you drink?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="drink">
+                        <p>How much alcohol do you drink?</p><div class="slidercontainer">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="drink" name="drink">
                             <div id="drinkoutput">Output: </div>
                         </div>
                         <p></p>
                     </div>
                     <div class = "col-sm-4">
                         <p>How much TV do you watch?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="tv">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="tv" name="tv">
                             <div id="tvoutput">Output: </div>
                         </div>
                         <p>How much of a gamer are you?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="gamer">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="gamer" name="gamer">
                             <div id="gameroutput">Output: </div>
                         </div>
                         <p>How sensitive are you to loud music?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="music">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="music" name="music">
                             <div id="musicoutput">Output: </div>
                         </div>
                         <p>How much do you party?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="party">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="party" name="party">
                             <div id="partyoutput">Output: </div>
                         </div>
-                        <p></p>
                     </div>
-                </div>
-                <div id="pref">
-                    <h2>Preferences</h2>
-                    <p>Do you have friends over often? </p><select name="friends">
-                      <option value="friendsall">All the time</option>
-                      <option value="friendsoften">Often</option>
-                      <option value="friendssome">Sometimes</option>
-                      <option value="friendsnever">Never</option>
-                    </select>
-                    <p>Do you want to host parties? </p><select name="friends">
-                      <option value="partiesall">All the time</option>
-                      <option value="partiessoften">Often</option>
-                      <option value="partiesssome">Sometimes</option>
-                      <option value="partiesnever">Never</option>
-                    </select>
-                </div>
+                    <p style="padding: 2%;">Here is a section where you get to customize your response.  Feel free to create a more personal description of yourself, your group or your ideal roommate(s).  Think about this part like a "description" (i.e. 3 girls searching for a 4th female roommate who doesn't smoke...).</p>
+                   <input type="text" id="notes" name="notes" style="padding: 1%; height: 250px; width: 100%;">
+                </div>                
             </form></div>
-            <div style="text-align: center;"><button id="button" class="btn btn-primary">Submit</button></div>
-
+            <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Submit</button></div>
             <div class="clear"></div>
       </div>
-
   </body>
 </html>
