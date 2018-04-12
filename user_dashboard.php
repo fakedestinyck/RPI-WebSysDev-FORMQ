@@ -1,12 +1,11 @@
 <?php
-// define( 'check', true );
-//include_once("api/checkLogin.php"); ?>
-
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Welcome, test_user!</title>
+	<title>User Dashboard</title>
 	<script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -25,27 +24,28 @@
 		<h1>Form Q</h1>
 		<span id = "welcome_msg" align = "right">Welcome, test_user</span>
 	</div>  -->
-	<nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">
-		  <div class = "container-fluid">
-        <div class = "navbar-header">
-          <a class = "navbar-brand" id = "header" href = "index.php">Form Q</a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-			  </div>
-			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				  <ul class = "nav navbar-nav navbar-right">
-					  <li><a><span class = "glyphicon glyphicon-user"></span>Welcome, <!-- <?php echo $user_name;?> -->!</a></li>
-					  <li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>
-					  <li><a href = "admin_dashboard.php"><span>Admin Dashboard ONLY ADMINS</span></a></li>
-					  <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
-				  </ul>
-			  </div>
-		  </div>
-	  </nav>
+<!--	<nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">-->
+<!--		  <div class = "container-fluid">-->
+<!--        <div class = "navbar-header">-->
+<!--          <a class = "navbar-brand" id = "header" href = "index.php">Form Q</a>-->
+<!--          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+<!--            <span class="sr-only">Toggle navigation</span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--          </button>-->
+<!--			  </div>-->
+<!--			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--				  <ul class = "nav navbar-nav navbar-right">-->
+<!--					  <li><a><span class = "glyphicon glyphicon-user"></span>Welcome, --><?php //echo $user_name;?><!--</a></li>-->
+<!--					  <li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>-->
+<!--					  <li><a href = "admin_dashboard.php"><span>Admin Dashboard ONLY ADMINS</span></a></li>-->
+<!--					  <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>-->
+<!--				  </ul>-->
+<!--			  </div>-->
+<!--		  </div>-->
+<!--    </nav>-->
+        <?php include_once('navbar.php'); ?>
 	<!-- <nav id = "user_nav" class = "navbar navbar-inverse" data-spy="affix">
 		<div class = "container-fluid">
 			<div class = "navbar-header">
@@ -116,11 +116,7 @@
 		</div>
 	</div>
 </div>
-	<footer class="footer">
-	<div class="container">
-    	<div style="margin-top: 5px;">© 2018 Copyright: <a href ="aboutus.php">FORM Q</a></div>
-		</div>
-	</footer>
+	<?php include_once('footer.php')?>
 	<script type="text/javascript" src = "user_dashboard.js"></script>
 </body>
 </html>

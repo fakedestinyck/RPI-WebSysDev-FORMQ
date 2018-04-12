@@ -2050,3 +2050,22 @@ ED31 .<= false
 2D09 .|    |    no ticket found [Client.php:1494]
 2D09 .|    <= false
 2D09 .<= false
+57AC .START (2018-04-11 13:15:17) phpCAS-1.3.5 ****************** [CAS.php:468]
+57AC .=> phpCAS::setCasServerCACert('./cacert.pem') [index.php:8]
+57AC .<= ''
+57AC .=> phpCAS::isAuthenticated() [index.php:10]
+57AC .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+57AC .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+57AC .|    |    |    user = `QIANH' [Client.php:1622]
+57AC .|    |    <= true
+57AC .|    |    user was already authenticated, no need to look for tickets [Client.php:1417]
+57AC .|    <= true
+57AC .<= true
+57AC .=> phpCAS::isAuthenticated() [storeretrievedata.php:4]
+57AC .|    => CAS_Client::isAuthenticated() [CAS.php:1145]
+57AC .|    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1393]
+57AC .|    |    |    user = `QIANH' [Client.php:1622]
+57AC .|    |    <= true
+57AC .|    |    user was already authenticated, no need to look for tickets [Client.php:1417]
+57AC .|    <= true
+57AC .<= true
