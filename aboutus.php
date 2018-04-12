@@ -1,4 +1,6 @@
-<?php include_once("checkLogin.php") ?>
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,23 +71,23 @@
           <h2>Who are we?</h2>
           <div class="row">
               <div class="col-md-2 col-md-offset-1"> 
-                  <img src="samad.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
+                  <img src="resources/aboutus/samad.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
                   <p style="font-size:60%">Samad Farooqui is a junior Computer Science (CS) and ITWS dual major. He has experience as a Software Development Intern at Optum, and currently serves as a Resident Assistant at RPI. He served as a Front End Developer for this project.</p>
               </div>
               <div class="col-md-2">
-                  <img src="osama.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
+                  <img src="resources/aboutus/osama.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
                   <p style="font-size:60%">Osama Minhas is a sophomore CS and ITWS dual major. His skills include PHP, SQL, HTML5, CSS, JavaScript, jQuery, C/C++, and Python. He served as a Full Stack Developer for this project. </p>    
               </div>
               <div class="col-md-2">
-                  <img src="omer.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
+                  <img src="resources/aboutus/omer.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
                   <p style="font-size:60%">Omer Osman is a senior ITWS major with a concentration in Management Information Systems. He has experience as an IT Project Management Intern for the New York State Workers’ Compensation Board, a System Administrator for Annur Islamic School, and as Webmaster for RPI’s Muslim Student Association. He served as a Back End Developer for this project.</p> 
               </div>
               <div class="col-md-2">
-                  <img src="caspar.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
+                  <img src="resources/aboutus/caspar.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
                   <p style="font-size:60%">Haochang Qian is a sophomore CS and ITWS dual major. He has experience in Full Stack Development, and Laravel Framework Applications. His skills include Back End Development, PHP, HTML5, CSS, JavaScript, Bootstrap, jQuery, C/C++, Java, PS/ID/AI, and Python. He served as a Back End Developer for this project. </p> 
               </div>
               <div class="col-md-2">
-                  <img src="andrea2.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
+                  <img src="resources/aboutus/andrea2.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
                   <p style="font-size:60%">Andrea O’Brisky is a junior ITWS major. She has experience working for IT Research and Development at Johnson and Johnson, as a Learning Assistant at RPI and as a Website Manager for the Women's Mentoring Program. She served as a Front End Developer for this project.
  </p> 
               </div>

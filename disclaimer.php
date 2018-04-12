@@ -1,4 +1,6 @@
-<?php include_once("checkLogin.php") ?>
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

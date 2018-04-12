@@ -1,6 +1,7 @@
 <?PHP
 
     include_once("./CAS-1.3.5/CAS.php");
+    include_once("api/connect.php");
     phpCAS::client(CAS_VERSION_2_0,'cas-auth.rpi.edu',443,'/cas/');
     phpCAS::setDebug("log.log");
     // SSL!
@@ -8,9 +9,8 @@
 
     if (phpCAS::isAuthenticated())
     {
-        // echo "Welcome to FORM Q, " . phpCAS::getUser(). "!";
-        //
-        // echo "<a href='./logout.php'>Logout</a>";
+        define( 'login', true );
+        include_once("api/storeretrievedata.php");
         header('location: ./questionaire.php');
     }
 
@@ -36,7 +36,7 @@
                 <div class = "description">Welcome to Find Our Roommates Questionnaire</div>.<br>
                 <p>Our FORM Q team worked to create a website for Rensselaer students looking to find roommates.  We understand that finding roommates similar in personality and values can be difficult.  This becomes even harder as students become older and no longer want to live on campus.  Our solution works for on campus and off campus living.  Answer a few questions, and we'll match you with a roommate or group instantly.</p>
                 <div class="btn-wrapper">
-                    <a href="login.php"><button type="button" class="btn btn-outline-secondary btn-lg log">Begin Your Search</button></a>
+                    <a href="api/login.php"><button type="button" class="btn btn-outline-secondary btn-lg log">Begin Your Search</button></a>
                 </div>
             </div>
         </div>

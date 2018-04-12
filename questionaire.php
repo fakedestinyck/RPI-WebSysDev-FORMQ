@@ -1,4 +1,6 @@
-<?php include_once("checkLogin.php") ?>
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="questionaire.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
@@ -29,8 +32,7 @@
       }
       body{
           color: black;
-          background-image: url('dorm.jpg');
-          background-repeat: no-repeat;
+          background: url('resources/pics/dorm.jpg') no-repeat;
           background-size:cover;
           font-family: 'Fira Sans', sans-serif;
           font-size: 200%;
@@ -51,10 +53,8 @@
           margin-bottom:5%;
           padding: 3%;
           background:rgba(255,255,255,0.8);
-          border-width: 10px 10px 10px 10px;
           margin-top: 50px;
-          border-style: solid;
-          border-color:rgba(139,0,0,0.8);
+          border: 10px solid rgba(139, 0, 0, 0.8);
       }
       /* Floats need to be cleared so the container will wrap correctly. */
       div.clear {
@@ -64,33 +64,54 @@
   </head>
   <body >
       <h1 class="page-header">Form Q</h1>
-        <div class="container">
-            <form action="questionaire.php" method="post">
+        <div class="container"><div class="row">
+            <form action="questionaire.php" method="post" id="myform">
                 <div id="first">
                     <h2>Grouping</h2>
                     <p>Click on an image below to choose group or single</p>
-                    <div class="col-sm-6"><img src="group.png" id="groupphoto" style="width:400px;height:400px;"></div>
-                    <div class="col-sm-6"><img src="single.png" id="singlephoto" style="width:170px;height:300px;"></div>
+                    <div class="col-sm-6"><img src="resources/pics/group.png" id="groupphoto" style="width:400px;height:400px;"></div>
+                    <div class="col-sm-6"><img src="resources/pics/single.png" id="singlephoto" style="width:170px;height:300px;"></div>
                 </div>
                 <div id="campus">
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
-                    <div class="col-sm-6"><div class="center"><img src="Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
-                    <div class="col-sm-6"><div class="center"><img src="troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><img src="resources/pics/Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><img src="resources/pics/troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
                 </div>
                 <div id="secondI">
                     <h2>Individual Information</h2>
-                    <div class="col-sm-6"style="padding-left: 20%;">
-                        <p>Name:</p><input type="text" name="name">
-                        <p>E-mail:</p><input type="text" name="email">
-                        <p>Age:</p><input type="text" name="age">
-                        <p>Year in College:</p><select name="year">
-                          <option value="fresman">Freshman</option>
-                          <option value="sophmore">Sophmore</option>
-                          <option value="junior">Junior</option>
-                          <option value="senior">Senior</option>
-                          <option value="graduate">Graduate Student</option>
-                    </select>
+                    <div class="col-sm-6" style="padding-left: 20%;">
+                        <div class="form-group">
+                            <label for="individual_name">Name:</label>
+                            <input type="text" class="form-control" id="individual_name" placeholder="Your name" name="name" required>
+                        </div>
+<!--                        <p>Name:</p><input type="text" name="name">-->
+                        <div class="form-group">
+                            <label for="individual_rin">RIN:</label>
+                            <input type="number" class="form-control" id="individual_rin" placeholder="Your RIN number" name="rin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_email">E-mail:</label>
+                            <input type="email" class="form-control" id="individual_email" placeholder="Your e-mail address" name="email" required>
+                        </div>
+<!--                        <p>E-mail:</p><input type="text" name="email">-->
+                        <div class="form-group">
+                            <label for="individual_age">Age:</label>
+                            <input type="number" class="form-control" id="individual_age" placeholder="Your age" name="age" required>
+                        </div>
+<!--                        <p>Age:</p><input type="text" name="age">-->
+                        <div class="form-group">
+                            <label for="individual_year">Year in College:</label>
+                            <select id="individual_year" class="form-control" name="year">
+                                <option value="freshman">Freshman</option>
+                                <option value="sophomore">Sophomore</option>
+                                <option value="junior">Junior</option>
+                                <option value="senior">Senior</option>
+                                <option value="graduate">Graduate Student</option>
+                            </select>
+                        </div>
+<!--                        <p>Year in College:</p><select name="year">-->
+<!--                    </select>-->
                     </div>
                     <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month?</p><input type="text" name="budget">
@@ -213,8 +234,9 @@
                       <option value="partiesnever">Never</option>
                     </select>
                 </div>
-            </form>
-            <div class="center"><button id="button">Submit</button></div>
+            </form></div>
+            <div style="text-align: center;"><button id="button" class="btn btn-primary">Submit</button></div>
+
             <div class="clear"></div>
       </div>
 
