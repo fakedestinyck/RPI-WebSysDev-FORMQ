@@ -1,4 +1,14 @@
   $(document).ready(function(){
+      membercounter = 1;
+      //ALLOWS USERS TO ENTER MORE RCS ids FOR ADDITIONAL TEAM MEMBERS
+      $("#addbutton").click(function(){
+          if (membercounter<=9){
+              membercounter +=1;
+              $("#toadd").append('<div id="groupmembers"><p>Enter another: </p><input type="text" name="groupmember' + membercounter + '" id ="groupmember' + membercounter + '"><div style="text-align: center;">');
+          } else {
+              alert("You can't make a group larger than 10! Sorry")
+          }
+      });
       //FOR ALL OF THE SLIDERS
       //reference https://www.w3schools.com/howto/howto_js_rangeslider.asp
       //scheduleslider
