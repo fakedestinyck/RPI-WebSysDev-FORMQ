@@ -1,6 +1,3 @@
-<?php
-define( 'check', true );
-include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,6 +48,7 @@ include_once("api/checkLogin.php"); ?>
     </style>
   </head>
   <body >
+  <?php include_once('navbar.php'); ?>
       <h1 class="page-header">Form Q</h1>
       <h2>About FORM Q</h2>
       <div class="format">
