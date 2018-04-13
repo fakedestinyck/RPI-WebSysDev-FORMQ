@@ -152,6 +152,10 @@ class Library_Mongo {
      * @param array $newDoc New data
      * @param array $query Search criteria. If it is an empty array, update all rows
      * @param string $option These options are available:
+     * @param boolean $upAll Whether to update all found data
+     * @param boolean $upsert Whether to insert new data when $query is not found
+     * @param boolean $safe Safe delete? true:wait for server response; false otherwise
+     * @param boolean $fsync Whether sync immediately. Default is decided by the server
      *
      * 'set': Only update specific section（update data. Otherwise insert new data.）.
      * Example: update('user', array('name'=>'Psama'), array('id'=>10806));
@@ -176,11 +180,7 @@ class Library_Mongo {
      * 'replace': Use $newDoc to substitute the data that $query found
      * Example: update('user', array('newid'=>1,'newnames'=>'Osama'), array('id'=>1), 'replace');
      * Which means: Substitute corresponding data with new data: array('newid'=>1,'newnames'=>'name1') where id = 1
-     *
-     * @param boolean $upAll Whether to update all found data
-     * @param boolean $upsert Whether to insert new data when $query is not found
-     * @param boolean $safe Safe delete? true:wait for server response; false otherwise
-     * @param boolean $fsync Whether sync immediately. Default is decided by the server
+
      *
      * @return boolean
      */
@@ -208,16 +208,16 @@ class Library_Mongo {
      * Example: select('user',array('id','name'));
      * Similar to: select id,name from user;
      *
-     * Example: select('user',array('id','name'),array('id'=>1));
+     * Example: select('user',array('id'=>1),array('id','name'));
      * Similar to: select id,name from user where id=1;
      *
-     * Example: select('user',array('id','name'),array('id'=>1),array('num'=>1));
+     * Example: select('user',array('id'=>1),array('id','name'),array('num'=>1));
      * Similar to: select id,name from user where id=1 order by num asc;
      *
-     * Example: select('user',array('id','name'),array('id'=>1),array('num'=>1),10);
+     * Example: select('user',array('id'=>1),array('id','name'),array('num'=>1),10);
      * Similar to: select id,name from user where id=1 order by num asc limit 10;
      *
-     * Example: select('user',array('id','name'),array('id'=>1),array('num'=>1),10,5);
+     * Example: select('user',array('id'=>1),array('id','name'),array('num'=>1),10,5);
      * Similar to: select id,name from user where id=1 order by num asc limit 5,10;
      *
      *
@@ -249,6 +249,60 @@ class Library_Mongo {
             $result[] = $this->_parseArr($row);
         }
         return $result;
+    }
+
+    /**
+     * @param string $colName Collection name
+     * @param string $sectionName The section in which you want to search
+     * @param array $sectionQuery Search criteria inside the section
+     * @param array $fields Returned section name, array(): all sections; array('id','name'): only return "id,name"
+     * @param array $query Search criteria
+     * @param array $sort Sort by, array('id'=>1): sort by id ,ascending; array('id'=>-1): sort by id, descending; array('id'=>1, 'age'=>-1): sort by id then age
+     *
+     * Example: selectSIS('users','user',array('email'=>'em@i.l','name'=>'Psama'),array('id'=>1));
+     * Similar to: select rows in users collection where id = 1 AND where (email=em@i.l and name=Psama in section user)
+     *
+     * @return array
+     */
+    public function selectSIS($colName,$sectionName,$sectionQuery=array(),$fields=array(),$query=array(),$sort=array()){
+        $result = array();
+        $tmpResult = $this->select($colName,$query,array(),$sort,0,0);
+        foreach ($tmpResult as $row){
+            $section = $row[$sectionName];
+            $match = true;
+            foreach ($sectionQuery as $key => $value) {
+                if ($section[$key] != $value) {
+                    $match = false;
+                    break;
+                }
+            }
+            if ($match) {
+                if (count($fields) == 0) {
+                    $result[] = $row;
+                } else {
+                    $resultSection = array();
+                    foreach ($fields as $field) {
+                        $resultSection[$field] = $row[$field];
+                    }
+                    $result[] = $resultSection;
+                }
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * Update data in a specific section in a (some) rows
+     *
+     * @param string $colName Collection name
+     * @param array $newContent New data
+     * @param string $sectionName The section that is to be changed
+     * @param array $query Search criteria. If it is an empty array, update all rows
+     * @param bool $safe Safe delete? true:wait for server response; false otherwise
+     * @param bool $fsync Whether sync immediately. Default is decided by the server
+     */
+    public function updateSIS($colName,$newContent,$sectionName,$query=array(),$safe=false,$fsync=false){
+
     }
 
     /**
