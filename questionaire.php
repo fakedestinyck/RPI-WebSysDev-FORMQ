@@ -1,97 +1,116 @@
-<?php include_once("checkLogin.php") ?>
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>FORM QS</title>
-<!--    <link href="lab4.css" rel="stylesheet" type="text/css" />-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="questionaire.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
-      .page-header{
-        color: white;
-        margin-top: 0px;
-        background-color:darkred;
-        font-family: 'Knewave', cursive;
-      }
-      .slidercontainer{
-          width: 25%;
-      }
-      #first{
-        text-align: center;
-      }
-      .center{
-        text-align: center;
-      }
-      body{
-          color: black;
-          font-family: 'Roboto', sans-serif;
-          background-image: url('dorm.jpg');
-          background-repeat: no-repeat;
-          background-size:cover;
-          font-family: 'Oswald', sans-serif;
-          font-size: 200%;
-      }
-      h1{
-          color: white;
-          text-align: center;
-          font-size: 600%;
-      }
-     h2{
-          color: darkred;
-          font-size: 400%;
-          text-align: center;
-          font-family: 'Knewave', cursive;
-          margin: 2%;
-      }
-      .container{
-          margin-bottom:5%;
-          padding: 3%;
-          background:rgba(255,255,255,0.8);
-          border-width: 10px 10px 10px 10px;
-          margin-top: 50px;
-          border-style: solid;
-          border-color:rgba(139,0,0,0.8);
-      }
-      /* Floats need to be cleared so the container will wrap correctly. */
-      div.clear {
-          clear:both;
-      }
+        .page-header{
+            color: white;
+            margin-top: 0px;
+            background-color:darkred;
+            font-family: 'Playfair Display', serif;
+        }
+        .slidercontainer{
+            width: 25%;
+        }
+        #first{
+            text-align: center;
+        }
+        .center{
+            text-align: center;
+        }
+        body{
+            color: black;
+            background: url('resources/pics/dorm.jpg') no-repeat;
+            background-size:cover;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 200%;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-size: 600%;
+        }
+        h2{
+            color: darkred;
+            font-size: 400%;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin: 2%;
+        }
+        .container{
+            margin-bottom:5%;
+            padding: 3%;
+            background:rgba(255,255,255,0.8);
+            margin-top: 50px;
+            border: 10px solid rgba(139, 0, 0, 0.8);
+        }
+        /* Floats need to be cleared so the container will wrap correctly. */
+        div.clear {
+            clear:both;
+        }
     </style>
   </head>
   <body >
       <h1 class="page-header">Form Q</h1>
-        <div class="container">
-            <form action="questionaire.php" method="post">
+        <div class="container"><div class="row">
+            <form action="questionaire.php" method="post" id="myform">
                 <div id="first">
                     <h2>Grouping</h2>
                     <p>Click on an image below to choose group or single</p>
-                    <div class="col-sm-6"><img src="group.png" id="groupphoto" style="width:400px;height:400px;"></div>
-                    <div class="col-sm-6"><img src="single.png" id="singlephoto" style="width:170px;height:300px;"></div>
+                    <div class="col-sm-6"><img src="resources/pics/group.png" id="groupphoto" style="width:400px;height:400px;"></div>
+                    <div class="col-sm-6"><img src="resources/pics/single.png" id="singlephoto" style="width:170px;height:300px;"></div>
                 </div>
                 <div id="campus">
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
-                    <div class="col-sm-6"><div class="center"><img src="Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
-                    <div class="col-sm-6"><div class="center"><img src="troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><img src="resources/pics/Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><img src="resources/pics/troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
                 </div>
                 <div id="secondI">
                     <h2>Individual Information</h2>
-                    <div class="col-sm-6"style="padding-left: 20%;">
-                        <p>Name:</p><input type="text" name="name">
-                        <p>E-mail:</p><input type="text" name="email">
-                        <p>Age:</p><input type="text" name="age">
-                        <p>Year in College:</p><select name="year">
-                          <option value="fresman">Freshman</option>
-                          <option value="sophmore">Sophmore</option>
-                          <option value="junior">Junior</option>
-                          <option value="senior">Senior</option>
-                          <option value="graduate">Graduate Student</option>
-                    </select>
+                    <div class="col-sm-6" style="padding-left: 20%;">
+                        <div class="form-group">
+                            <label for="individual_name">Name:</label>
+                            <input type="text" class="form-control" id="individual_name" placeholder="Your name" name="name" required>
+                        </div>
+<!--                        <p>Name:</p><input type="text" name="name">-->
+                        <div class="form-group">
+                            <label for="individual_rin">RIN:</label>
+                            <input type="number" class="form-control" id="individual_rin" placeholder="Your RIN number" name="rin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_email">E-mail:</label>
+                            <input type="email" class="form-control" id="individual_email" placeholder="Your e-mail address" name="email" required>
+                        </div>
+<!--                        <p>E-mail:</p><input type="text" name="email">-->
+                        <div class="form-group">
+                            <label for="individual_age">Age:</label>
+                            <input type="number" class="form-control" id="individual_age" placeholder="Your age" name="age" required>
+                        </div>
+<!--                        <p>Age:</p><input type="text" name="age">-->
+                        <div class="form-group">
+                            <label for="individual_year">Year in College:</label>
+                            <select id="individual_year" class="form-control" name="year">
+                                <option value="freshman">Freshman</option>
+                                <option value="sophomore">Sophomore</option>
+                                <option value="junior">Junior</option>
+                                <option value="senior">Senior</option>
+                                <option value="graduate">Graduate Student</option>
+                            </select>
+                        </div>
+<!--                        <p>Year in College:</p><select name="year">-->
+<!--                    </select>-->
                     </div>
                     <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month?</p><input type="text" name="budget">
@@ -105,10 +124,13 @@
                 </div>
                 <div id="secondG">
                     <h2>Group Information</h2>
-                    <div class="col-sm-6"style="padding-left: 20%;">
+                    <div class="col-sm-6"style="padding-left: 20%; border-right: 5px solid darkred;">
                         <p>Name: </p><input type="text" name="gname">
                         <p>E-mail: </p><input type="text" name="gemail">
+                        <div id="groupmembers"><p>Enter individual RCSIDs of group members: </p><input type="text" name="groupmember1" id ="groupmember1"><div style="text-align: center; padding: 2%;"><div id="toadd"></div><button type="button" id="addbutton" name="addbutton" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Add Another Member</button></div></div>
                         <p>Age: </p><input type="text" name="gage">
+                    </div>
+                    <div class="col-sm-6" style="padding-left: 13%">
                         <p>Year in College: </p><select name="gyear">
                           <option value="gfresman">Freshman</option>
                           <option value="gsophmore">Sophmore</option>
@@ -116,8 +138,6 @@
                           <option value="gsenior">Senior</option>
                           <option value="ggraduate">Graduate Student</option>
                         </select>
-                    </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month? </p><input type="text" name="gbudget">
                         <p>How many people are you looking for? </p><input type="text" name="gnumber">
                         <p>Gender: </p><input type="text" name="ggender">
@@ -166,58 +186,44 @@
                     </div>
                     <div class = "col-sm-4" style="border-left: 5px solid darkred;border-right: 5px solid darkred;">
                         <p>How strict are you with sticking to a schedule?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="schedule">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="schedule" name="schedule">
                             <div id="scheduleoutput">Output: </div>
                         </div>
                         <p>How much can you handle a mess?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="mess">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="mess" name = "mess">
                             <div id="messoutput">Output: </div>
                         </div>
-                        <p>How much do you drink?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="drink">
+                        <p>How much alcohol do you drink?</p><div class="slidercontainer">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="drink" name="drink">
                             <div id="drinkoutput">Output: </div>
+                        </div>
+                        <p>How much do you party?</p><div class="slidercontainer">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="party" name="party">
+                            <div id="partyoutput">Output: </div>
                         </div>
                         <p></p>
                     </div>
                     <div class = "col-sm-4">
                         <p>How much TV do you watch?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="tv">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="tv" name="tv">
                             <div id="tvoutput">Output: </div>
                         </div>
                         <p>How much of a gamer are you?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="gamer">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="gamer" name="gamer">
                             <div id="gameroutput">Output: </div>
                         </div>
                         <p>How sensitive are you to loud music?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="music">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="music" name="music">
                             <div id="musicoutput">Output: </div>
                         </div>
-                        <p>How much do you party?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="party">
-                            <div id="partyoutput">Output: </div>
-                        </div>
-                        <p></p>
                     </div>
-                </div>
-                <div id="pref">
-                    <h2>Preferences</h2>
-                    <p>Do you have friends over often? </p><select name="friends">
-                      <option value="friendsall">All the time</option>
-                      <option value="friendsoften">Often</option>
-                      <option value="friendssome">Sometimes</option>
-                      <option value="friendsnever">Never</option>
-                    </select>
-                    <p>Do you want to host parties? </p><select name="friends">
-                      <option value="partiesall">All the time</option>
-                      <option value="partiessoften">Often</option>
-                      <option value="partiesssome">Sometimes</option>
-                      <option value="partiesnever">Never</option>
-                    </select>
-                </div>
-            </form>
-            <div class="center"><button id="button">Submit</button></div>
+                    <div class="clear"></div>
+                    <p style="padding: 2%;">Here is a section where you get to customize your response.  Feel free to create a more personal description of yourself, your group or your ideal roommate(s).  Think about this part like a "description" (i.e. 3 girls searching for a 4th female roommate who doesn't smoke...).</p>
+                   <input type="text" id="notes" name="notes" style="padding: 1%; height: 250px; width: 100%;">
+                </div>                
+            </form></div>
+            <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Submit</button></div>
             <div class="clear"></div>
       </div>
-
   </body>
 </html>

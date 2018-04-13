@@ -1,41 +1,68 @@
-html body {
-	background-color: darkgray;
+.page-header{
+  color: white;
+  margin-top: 0px;
+  background-color:darkred;
+  font-family: 'Playfair Display', serif;
 }
-
+.slidercontainer{
+  width: 25%;
+}
+#first{
+  text-align: center;
+}
+.center{
+  text-align: center;
+}
+body{
+  color: black;
+  background-image: url('bray.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 200%;
+}
 h1{
-    color: white;
-    text-align: center;
-    font-size: 600%;
+  color: white;
+  text-align: center;
+  font-size: 600%;
 }
-.log{
-	font-size: 200%;
-	min-height: 100px;
-	min-width: 250px;
-	background: linear-gradient(#900, #600);
-	color: white;
-	border-radius: 20px;
-	box-shadow: 0 3px 0 0 black;
-	text-align: center;
+h2{
+  color: darkred;
+  font-size: 400%;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  margin: 2%;
 }
-.page-header{ 
-    color: white;
-    margin-top: 0px;
-    background-color:darkred;
-    font-family: 'Knewave', cursive;
+.container{
+  margin-bottom:5%;
+  padding: 3%;
+  background:rgba(255,255,255,0.8);
+  border-width: 10px 10px 10px 10px;
+  margin-top: 50px;
+  border-style: solid;
+  border-color:rgba(139,0,0,0.8);
+}
+/* Floats need to be cleared so the container will wrap correctly. */
+div.clear {
+  clear:both;
+}
+html body {
+  background-color: darkred;
 }
 .btn-wrapper {
-	text-align: center;
-}
-.center-wrapper {
-	padding-top: 10px;
+  text-align: center;
 }
 .description {
-	text-align: center;
-	color: darkred;
-	font-family: 'Knewave', cursive;
-	font-size: 200%;
+  text-align: center;
+  color: darkred;
+  font-family: 'Playfair Display', serif;
+  font-size: 200%;
 }
+.log{
+  background: linear-gradient(#600, #300);
+  color: white; 
+}
+/* https://www.w3schools.com/css/css3_buttons.asp */
 .log:hover, .log:focus, .log:active {
-	background: linear-gradient(#600, #300);
-	color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
