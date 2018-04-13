@@ -124,10 +124,13 @@ include_once("api/checkLogin.php"); ?>
                 </div>
                 <div id="secondG">
                     <h2>Group Information</h2>
-                    <div class="col-sm-6"style="padding-left: 20%;">
+                    <div class="col-sm-6"style="padding-left: 20%; border-right: 5px solid darkred;">
                         <p>Name: </p><input type="text" name="gname">
                         <p>E-mail: </p><input type="text" name="gemail">
+                        <div id="groupmembers"><p>Enter individual RCSIDs of group members: </p><input type="text" name="groupmember1" id ="groupmember1"><div style="text-align: center; padding: 2%;"><div id="toadd"></div><button type="button" id="addbutton" name="addbutton" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Add Another Member</button></div></div>
                         <p>Age: </p><input type="text" name="gage">
+                    </div>
+                    <div class="col-sm-6" style="padding-left: 13%">
                         <p>Year in College: </p><select name="gyear">
                           <option value="gfresman">Freshman</option>
                           <option value="gsophmore">Sophmore</option>
@@ -135,8 +138,6 @@ include_once("api/checkLogin.php"); ?>
                           <option value="gsenior">Senior</option>
                           <option value="ggraduate">Graduate Student</option>
                         </select>
-                    </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
                         <p>What is your budget for housing per month? </p><input type="text" name="gbudget">
                         <p>How many people are you looking for? </p><input type="text" name="gnumber">
                         <p>Gender: </p><input type="text" name="ggender">
@@ -196,6 +197,10 @@ include_once("api/checkLogin.php"); ?>
                             <input type="range" min="1" max="5" value="1" class="slider" id="drink" name="drink">
                             <div id="drinkoutput">Output: </div>
                         </div>
+                        <p>How much do you party?</p><div class="slidercontainer">
+                            <input type="range" min="1" max="5" value="1" class="slider" id="party" name="party">
+                            <div id="partyoutput">Output: </div>
+                        </div>
                         <p></p>
                     </div>
                     <div class = "col-sm-4">
@@ -211,11 +216,8 @@ include_once("api/checkLogin.php"); ?>
                             <input type="range" min="1" max="5" value="1" class="slider" id="music" name="music">
                             <div id="musicoutput">Output: </div>
                         </div>
-                        <p>How much do you party?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="party" name="party">
-                            <div id="partyoutput">Output: </div>
-                        </div>
                     </div>
+                    <div class="clear"></div>
                     <p style="padding: 2%;">Here is a section where you get to customize your response.  Feel free to create a more personal description of yourself, your group or your ideal roommate(s).  Think about this part like a "description" (i.e. 3 girls searching for a 4th female roommate who doesn't smoke...).</p>
                    <input type="text" id="notes" name="notes" style="padding: 1%; height: 250px; width: 100%;">
                 </div>                
