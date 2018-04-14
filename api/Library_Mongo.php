@@ -289,15 +289,17 @@ class Library_Mongo {
      * @param array $fields Returned section name, array(): all sections; array('id','name'): only return "id,name"
      * @param array $query Search criteria
      * @param array $sort Sort by, array('id'=>1): sort by id ,ascending; array('id'=>-1): sort by id, descending; array('id'=>1, 'age'=>-1): sort by id then age
+     * @param int $limit Number of rows of data to get
+     * @param int $skip Skip x rows of data. (Start from row number x)
      *
      * Example: selectSIS('users','user',array('email'=>'em@i.l','name'=>'Psama'),array('id'=>1));
      * Similar to: select rows in users collection where id = 1 AND where (email=em@i.l and name=Psama in section user)
      *
      * @return array
      */
-    public function selectSIS($colName,$sectionName,$sectionQuery=array(),$fields=array(),$query=array(),$sort=array()){
+    public function selectSIS($colName,$sectionName,$sectionQuery=array(),$fields=array(),$query=array(),$sort=array(),$limit=0,$skip=0){
         $result = array();
-        $tmpResult = $this->select($colName,$query,array(),$sort,0,0);
+        $tmpResult = $this->select($colName,$query,array(),$sort,$limit,$skip);
         foreach ($tmpResult as $row){
             $section = $row[$sectionName];
             $match = true;
