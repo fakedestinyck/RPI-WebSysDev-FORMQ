@@ -112,7 +112,7 @@ class Library_Mongo {
      *
      * @param string $colName Collection name
      * @param array $sets Data , like: array('id'=>10086,'name'=>'Psama')
-     * @param boolean $safe Safe mode? true:wait for server response
+     * @param boolean $safe Safe mode? true:wait for server response; false otherwise
      * @param boolean $fsync Whether sync immediately. Default is decided by the server
      *
      * @return boolean
@@ -137,7 +137,7 @@ class Library_Mongo {
      *
      * @return boolean
      */
-    public function save($colName, $sets, $safe=false, $fsync=false){
+    public function save($colName, $sets, $safe=true, $fsync=false){
         $sets = $this->_parseId($sets);
         $ret = $this->_getCol($colName)->save($sets,array('w'=>$safe,'fsync'=>$fsync));
         return $ret;
@@ -184,7 +184,7 @@ class Library_Mongo {
      *
      * @return boolean
      */
-    public function update($colName,$newDoc,$query=array(),$option='set',$upAll=true,$upsert=false,$safe=false,$fsync=false){
+    public function update($colName,$newDoc,$query=array(),$option='set',$upAll=true,$upsert=false,$safe=true,$fsync=false){
         $query = $this->_parseId($query);
         $col = $this->_getCol($colName);
         if($option != 'replace'){
@@ -197,6 +197,35 @@ class Library_Mongo {
             'fsync'=>$fsync,
         );
         return $col->update($query,$newDoc,$options);
+    }
+
+    /**
+     * Update data in a specific section in a (some) rows
+     *
+     * @param string $colName Collection name
+     * @param array $newContent New data
+     * @param string $sectionName The section that is to be changed
+     * @param array $query Search criteria. If it is an empty array, update all rows
+     * @param boolean $upAll Whether to update all found data
+     * @param boolean $upsert Whether to insert new data when $query is not found
+     * @param bool $safe Safe delete? true:wait for server response; false otherwise
+     * @param bool $fsync Whether sync immediately. Default is decided by the server
+     *
+     * @return boolean
+     */
+    public function updateSIS($colName,$newContent,$sectionName,$query=array(),$upAll=false,$upsert=false,$safe=true,$fsync=false){
+        $result = true;
+        $originArray = $this->selectSIS($colName,$sectionName,array(),array('_id',$sectionName),$query);
+        for ($i=0;$i<count($originArray);$i++) {
+            foreach ($newContent as $key => $value) {
+                $originArray[$i][$sectionName][$key] = $value;
+            }
+            $thisResult = $this->update($colName,array($sectionName=>$originArray[$i][$sectionName]),array('_id'=>$originArray[$i]['_id']),'set',$upAll,$upsert,$safe,$fsync);
+            if ($thisResult['err'] != null) {
+                $result = false;
+            }
+        }
+        return $result;
     }
 
     /**
@@ -252,6 +281,8 @@ class Library_Mongo {
     }
 
     /**
+     * Select data from criterion in a specific section
+     *
      * @param string $colName Collection name
      * @param string $sectionName The section in which you want to search
      * @param array $sectionQuery Search criteria inside the section
@@ -289,20 +320,6 @@ class Library_Mongo {
             }
         }
         return $result;
-    }
-
-    /**
-     * Update data in a specific section in a (some) rows
-     *
-     * @param string $colName Collection name
-     * @param array $newContent New data
-     * @param string $sectionName The section that is to be changed
-     * @param array $query Search criteria. If it is an empty array, update all rows
-     * @param bool $safe Safe delete? true:wait for server response; false otherwise
-     * @param bool $fsync Whether sync immediately. Default is decided by the server
-     */
-    public function updateSIS($colName,$newContent,$sectionName,$query=array(),$safe=false,$fsync=false){
-
     }
 
     /**
