@@ -10,7 +10,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-        <link href="user_dashboard.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
@@ -44,7 +43,7 @@
     </style>
     <body>
         <div class = "container" id = "requests_container">
-            <h2 id = "req_heading" style="color: white;">Search</h2>
+            <h2 id = "req_heading" style="color: white;">Match</h2>
             <div id = "requests" class = "panel-group">
                 <div class = "panel panel-danger" id = "request1">
                     <div class = "panel-heading"> Names: <input type="text" name="gname" ></div>
