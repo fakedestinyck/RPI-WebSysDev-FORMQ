@@ -47,7 +47,7 @@
             <h2 id = "req_heading" style="color: white;">Search</h2>
             <div id = "requests" class = "panel-group">
                 <div class = "panel panel-danger" id = "request1">
-                    <div class = "panel-heading"> Name: <input type="text" name="gname"></div>
+                    <div class = "panel-heading"> Names: <input type="text" name="gname" ></div>
                     <div class = "panel-body">
                         <div class="row">
                             <div class="col-sm-4">
@@ -63,7 +63,7 @@
                                 <p>Smoking: <input type="text" name="smoke"></p>
                                 <p>Bedtime: <input type="text" name="bedtime"></p>
                                 <p>Morning/Night Person(s): <input type="text" name="mornnight"></p>
-                                <p>Pets: <input type="text"></p>
+                                <p>Pets: <input type="text" name="pets"></p>
                             </div>
                             <div class="col-sm-4">
                                 <p>On a scale from 1-5 (5 being the most strict): </p>
@@ -76,8 +76,10 @@
                                 <p>Sensitvity to Music: <input type="text" name="music"></p>
                             </div>
                         </div>
-                        <h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;">Advertisement</h2>
-                        <input type="text" id="notes" name="notes" style="margin: .1%; height: 100px; width: 100%;">
+                        <div class="form-group">
+                            <h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;">Advertisement</h2>
+                            <textarea class="form-control" name="notes" rows="8" cols="168"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
