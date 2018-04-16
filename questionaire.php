@@ -10,7 +10,7 @@ include_once("api/checkLogin.php"); ?>
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="questionaire.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
@@ -48,7 +48,7 @@ include_once("api/checkLogin.php"); ?>
             font-family: 'Playfair Display', serif;
             margin: 2%;
         }
-        .container{
+        .container-my{
             margin-bottom:5%;
             padding: 3%;
             background:rgba(255,255,255,0.8);
@@ -61,25 +61,26 @@ include_once("api/checkLogin.php"); ?>
         }
     </style>
   </head>
-  <body >
+  <body>
       <h1 class="page-header">Form Q</h1>
-        <div class="container"><div class="row">
-            <form action="questionaire.php" method="post" id="myform">
-                <div id="first">
+        <div class="container container-my">
+            <div class="row">
+            <form action="questionaire.php" method="post" id="myform" name="myform">
+                <div id="first" class="col-md-12">
                     <h2>Grouping</h2>
                     <p>Click on an image below to choose group or single</p>
                     <div class="col-sm-6"><img src="resources/pics/group.png" id="groupphoto" style="width:400px;height:400px;"></div>
                     <div class="col-sm-6"><img src="resources/pics/single.png" id="singlephoto" style="width:170px;height:300px;"></div>
                 </div>
-                <div id="campus">
+                <div id="campus" class="col-md-12">
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
                     <div class="col-sm-6"><div class="center"><img src="resources/pics/Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
                     <div class="col-sm-6"><div class="center"><img src="resources/pics/troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
                 </div>
-                <div id="secondI">
+                <div id="secondI" class="col-md-12">
                     <h2>Individual Information</h2>
-                    <div class="col-sm-6" style="padding-left: 20%;">
+                    <div class="col-sm-4 col-md-offset-1" style="">
                         <div class="form-group">
                             <label for="individual_name">Name:</label>
                             <input type="text" class="form-control" id="individual_name" placeholder="Your name" name="name" required>
@@ -87,7 +88,7 @@ include_once("api/checkLogin.php"); ?>
 <!--                        <p>Name:</p><input type="text" name="name">-->
                         <div class="form-group">
                             <label for="individual_rin">RIN:</label>
-                            <input type="number" class="form-control" id="individual_rin" placeholder="Your RIN number" name="rin" required>
+                            <input type="number" class="form-control" id="individual_rin" placeholder="Your RIN number" name="rin" required="required">
                         </div>
                         <div class="form-group">
                             <label for="individual_email">E-mail:</label>
@@ -112,42 +113,64 @@ include_once("api/checkLogin.php"); ?>
 <!--                        <p>Year in College:</p><select name="year">-->
 <!--                    </select>-->
                     </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
-                        <p>What is your budget for housing per month?</p><input type="text" name="budget">
-                        <p>How many people are you looking for?</p><input type="text" name="number">
-                        <p>Gender: </p><input type="text" name="gender">
-                        <p>Co-Ed Housing?</p><select name="coed">
-                          <option value="coedyes">Yes</option>
-                          <option value="coedno">No</option>
-                        </select>
+                    <div class="col-sm-4 col-md-offset-1"style="border-left: 5px solid darkred;">
+                        <div class="form-group">
+                            <label for="individual_budget">What is your budget for housing per month?</label>
+                            <input type="text" class="form-control" id="individual_budget" placeholder="Your budget" name="budget" required>
+                        </div>
+<!--                        <p>What is your budget for housing per month?</p><input type="text" name="budget">-->
+                        <div class="form-group">
+                            <label for="individual_number">How many people are you looking for?</label>
+                            <input type="text" class="form-control" id="individual_number" placeholder="Number of people" name="number" required>
+                        </div>
+<!--                        <p>How many people are you looking for?</p><input type="text" name="number">-->
+                        <div class="form-group">
+                            <label for="individual_gender">Gender:</label>
+                            <input type="text" class="form-control" id="individual_gender" placeholder="Your gender" name="gender" required>
+                        </div>
+<!--                        <p>Gender: </p><input type="text" name="gender">-->
+                        <div class="form-group">
+                            <label for="individual_coed">Co-Ed Housing?</label>
+                            <select id="individual_coed" class="form-control" name="coed">
+                                <option value="coedno">No</option>
+                                <option value="coedyes">Yes</option>
+                            </select>
+                        </div>
+<!--                        <p>Co-Ed Housing?</p><select name="coed">-->
+<!--                          -->
+<!--                        </select>-->
                     </div>
                 </div>
-                <div id="secondG">
+                <div id="secondG"  class="col-md-12">
                     <h2>Group Information</h2>
                     <div class="col-sm-6"style="padding-left: 20%; border-right: 5px solid darkred;">
-                        <p>Name: </p><input type="text" name="gname">
-                        <p>E-mail: </p><input type="text" name="gemail">
+                        <p>Name: </p><input type="text" name="gname" id="group_name">
+                        <div class="form-group">
+                            <label for="individual_rin">RIN:</label>
+                            <input type="number" class="form-control" id="group_rin" placeholder="Your RIN number" name="rin" required="required">
+                        </div>
+                        <p>E-mail: </p><input type="text" name="gemail" id="group_email">
                         <div id="groupmembers"><p>Enter individual RCSIDs of group members: </p><input type="text" name="groupmember1" id ="groupmember1"><div style="text-align: center; padding: 2%;"><div id="toadd"></div><button type="button" id="addbutton" name="addbutton" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Add Another Member</button></div></div>
-                        <p>Age: </p><input type="text" name="gage">
+                        <p>Age: </p><input type="text" name="gage" id="group_age">
                     </div>
                     <div class="col-sm-6" style="padding-left: 13%">
-                        <p>Year in College: </p><select name="gyear">
+                        <p>Year in College: </p><select name="gyear" id="group_year">
                           <option value="gfresman">Freshman</option>
                           <option value="gsophmore">Sophmore</option>
                           <option value="gjunior">Junior</option>
                           <option value="gsenior">Senior</option>
                           <option value="ggraduate">Graduate Student</option>
                         </select>
-                        <p>What is your budget for housing per month? </p><input type="text" name="gbudget">
-                        <p>How many people are you looking for? </p><input type="text" name="gnumber">
-                        <p>Gender: </p><input type="text" name="ggender">
-                        <p>Co-Ed Housing? </p><select name="gcoed">
+                        <p>What is your budget for housing per month? </p><input type="text" name="gbudget"  id="group_budge">
+                        <p>How many people are you looking for? </p><input type="text" name="gnumber"  id="group_number">
+                        <p>Gender: </p><input type="text" name="ggender" id="group_gender">
+                        <p>Co-Ed Housing? </p><select name="gcoed" id="group_coed">
                           <option value="gcoedyes">Yes</option>
                           <option value="gcoedno">No</option>
                         </select>
                     </div>
                 </div>
-                <div id="life">
+                <div id="life"  class="col-md-12">
                     <h2>Life Style</h2>
                     <div class = "col-sm-4">
                         <p class="center">Please answer the following</p>
@@ -156,12 +179,12 @@ include_once("api/checkLogin.php"); ?>
                         <p class="center">On a scale from 1-5 rank:</p>
                     </div>
                     <div class = "col-sm-4">
-                        <p>Any allergies? </p><input type="text" name="allergies">
-                        <p>Do you smoke? </p><select name="smoke">
+                        <p>Any allergies? </p><input type="text" name="allergies" id="allergies">
+                        <p>Do you smoke? </p><select name="smoke" id="smoke">
                           <option value="smokeyes">Yes</option>
                           <option value="smokeno">No</option>
                         </select>
-                        <p>What is the latest time you go to bed? </p> <select name="bedtime">
+                        <p>What is the latest time you go to bed? </p> <select name="bedtime" id="bedtime">
                           <option value="bedtime8">8 PM</option>
                           <option value="bedtime9">9 PM</option>
                           <option value="bedtime10">10 PM</option>
@@ -174,12 +197,12 @@ include_once("api/checkLogin.php"); ?>
                           <option value="bedtime5">5 AM</option>
                           <option value="bedtime6">6 AM</option>
                         </select>
-                        <p>Morning Person or Night Person </p><select name="mornnight">
+                        <p>Morning Person or Night Person </p><select name="mornnight" id="mornnight">
                           <option value="morning">Morning</option>
                           <option value="night">Night</option>
                           <option value="mornightnopref">No Preference</option>
                         </select>
-                        <p>Pets? </p><select name="mornnight">
+                        <p>Pets? </p><select name="pets" id="pets">
                           <option value="petsyes">Yes</option>
                           <option value="petsno">No</option>
                         </select>
@@ -220,9 +243,12 @@ include_once("api/checkLogin.php"); ?>
                     <div class="clear"></div>
                     <p style="padding: 2%;">Here is a section where you get to customize your response.  Feel free to create a more personal description of yourself, your group or your ideal roommate(s).  Think about this part like a "description" (i.e. 3 girls searching for a 4th female roommate who doesn't smoke...).</p>
                    <input type="text" id="notes" name="notes" style="padding: 1%; height: 250px; width: 100%;">
-                </div>                
-            </form></div>
-            <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Submit</button></div>
+                </div>
+
+                <div style="text-align: center; padding: 2%;" class="col-md-12"><button id="button" style="background-color:darkred; margin: 2%;" class="btn btn-primary" type="submit">Submit</button></div>
+
+            </form>
+            </div>
             <div class="clear"></div>
       </div>
   </body>

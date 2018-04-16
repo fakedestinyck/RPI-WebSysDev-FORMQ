@@ -1,6 +1,17 @@
 <?php
 define( 'check', true );
-include_once("api/checkLogin.php"); ?>
+include_once("api/checkLogin.php");
+define('profile', true);
+$column = ["user","profile"];
+$columnData = [array("user"=>array()),array("profile"=>array())];
+$user = array();
+$profile = array();
+if ($_SESSION['rcsid'] != null) {
+    include_once("api/readdata.php");
+    $user = $columnData[0]["user"];
+    $profile = $columnData[1]["profile"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,26 +21,29 @@ include_once("api/checkLogin.php"); ?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="questionaire.js"></script>
+<!--    <script type="text/javascript" src="questionaire.js"></script>-->
+      <script type="text/javascript" src="profile.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
       .page-header{
         color: white;
         margin-top: 0px;
         background-color:darkred;
-        font-family: 'Knewave', cursive;
+        font-family: 'Playfair Display', serif;
         }
       #first{
           text-align: center;
       }
       body{
           color: black;
-          font-family: 'Roboto', sans-serif;
-          background-image: url('resources/pics/dormpic.jpg');
-          background-repeat: no-repeat;
+          /*font-family: 'Roboto', sans-serif;*/
+          background: url('resources/pics/dormpic.jpg') no-repeat;
           background-size:cover;
-          font-family: 'Oswald', sans-serif;
+          /*font-family: 'Oswald', sans-serif;*/
+          font-family: 'Fira Sans', sans-serif;
           font-size: 200%;
       }
       h1{
@@ -42,18 +56,16 @@ include_once("api/checkLogin.php"); ?>
           color: darkred;
           font-size: 400%;
           text-align: center;
-          font-family: 'Knewave', cursive;
+          font-family: 'Playfair Display', serif;
       }
 
       .container{
           margin-bottom:5%;
           padding: 3%;
           background:rgba(255,255,255,0.6);
-          border-width: 10px 10px 10px 10px;
-          height: 550px;
+          /*height: 550px;*/
           margin-top: 50px;
-          border-style: solid;
-          border-color:rgba(139,0,0,0.6);
+          border: 10px solid rgba(139, 0, 0, 0.6);
 
       }
       li{
@@ -65,30 +77,58 @@ include_once("api/checkLogin.php"); ?>
   <body >
       <h1 class="page-header">Form Q</h1>
         <div class="container">
-            <a href="api/logout.php">Demo Logout</a>
-            <h2>Profile</h2>
+            <h2 class="col-md-12">Profile</h2>
             <form action="profile.php" method="post" id="profile">
                 <div class="col-sm-6"style="padding-left: 20%;">
-                    <p>Name: </p><input type="text" name="gname">
-                    <p>E-mail: </p><input type="text" name="gemail">
-                    <p>Age: </p><input type="text" name="gage">
-                    <p>Year in College: </p><select name="gyear">
-                        <option value="gfresman">Freshman</option>
-                        <option value="gsophmore">Sophmore</option>
-                        <option value="gjunior">Junior</option>
-                        <option value="gsenior">Senior</option>
-                        <option value="ggraduate">Graduate Student</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="individual_name">Name:</label>
+                        <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="gname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="individual_rin">RIN:</label>
+                        <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="grin" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="individual_email">E-mail:</label>
+                        <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="gemail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="individual_age">Age:</label>
+                        <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="gage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="individual_year">Year in College:</label>
+                        <select id="individual_year" class="form-control" name="gyear">
+                            <option value="freshman">Freshman</option>
+                            <option value="sophomore">Sophomore</option>
+                            <option value="junior">Junior</option>
+                            <option value="senior">Senior</option>
+                            <option value="graduate">Graduate Student</option>
+                        </select>
+                    </div>
                     </div>
                 <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
-                    <p>Budget for housing per month: </p><input type="text" name="gbudget">
-                    <p>The number of people you are looking for: </p><input type="text" name="gnumber">
-                    <p>Gender: </p><input type="text" name="ggender">
-                    <p>Co-Ed Housing? </p><select name="gcoed">
-                      <option value="gcoedyes">Yes</option>
-                      <option value="gcoedno">No</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="individual_budget">What is your budget for housing per month?</label>
+                        <input type="text" class="form-control" id="individual_budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget" name="gbudget" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="individual_number">How many people are you looking for?</label>
+                        <input type="text" class="form-control" id="individual_number" value="<?php echo $profile["number"]; ?>" placeholder="Number of people" name="gnumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="individual_gender">Gender:</label>
+                        <input type="text" class="form-control" id="individual_gender" value="<?php echo $profile["gender"]; ?>" placeholder="Your gender" name="ggender" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="individual_coed">Co-Ed Housing?</label>
+                        <select id="individual_coed" class="form-control" name="gcoed">
+                            <option value="coedno">No</option>
+                            <option value="coedyes">Yes</option>
+                        </select>
+                    </div>
                 </div>
+                <div style="text-align: center;" class="col-md-12"><button id="button" style="background-color:darkred; margin: 2%;" class="btn btn-primary" type="button">Submit</button></div>
             </form>
       </div>
 

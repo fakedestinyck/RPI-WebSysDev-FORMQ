@@ -26,7 +26,6 @@
     }
 
     if (!$is_token_valid) {
-        echo "<script type='text/javascript'>console.log($user_name);;</script>";
         include_once("CAS-1.3.5/CAS.php");
         phpCAS::client(CAS_VERSION_2_0,'cas-auth.rpi.edu',443,'/cas/');
         // SSL!
