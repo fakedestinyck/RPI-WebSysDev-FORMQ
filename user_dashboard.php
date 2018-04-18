@@ -1,6 +1,11 @@
 <?php
 define( 'check', true );
-include_once("api/checkLogin.php"); ?>
+include_once("api/checkLogin.php"); 
+include "api/Library_Mongo.php";
+  use Library_Mongo as Mongo;
+  $dbo = new Mongo();
+  $s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION['rcsid']));
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +70,17 @@ include_once("api/checkLogin.php"); ?>
 		<h1>Groups</h1>
 		<!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
 		<div id = "group_list">
-			<button type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#Modal_group1">Group 1</button>
+			<button type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#Modal_group1"><?php echo $s[0]['group']['name'] ?></button>
+				<p>&emsp;<?php echo $s[0]['user']['name']?></p>
+				<p>&emsp;<?php echo $s[0]['group']['group_members']['member1'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member2'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member3'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member4'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member5'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member6'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member7'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member8'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member9'] ?></p>
 		</div>
 		
 	</div>
@@ -80,7 +95,20 @@ include_once("api/checkLogin.php"); ?>
 		        <h4 class="modal-title">Group Information</h4>
 		      </div>
 		      <div class="modal-body">
-		        <p>Put information built about group here, like number of people, who is in it, stuff from DB.</p>
+		        <p>Group Name: <?php echo $s[0]['group']['name'] ?></p>
+		        <p>Current Number: <?php echo $s[0]['group']['current_num'] ?></p>
+		        <p>Desired Number: <?php echo $s[0]['group']['desired_num'] ?></p>
+		        <p>Members:</p>
+		        <p>&emsp;<?php echo $s[0]['user']['name']?></p>
+				<p>&emsp;<?php echo $s[0]['group']['group_members']['member1'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member2'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member3'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member4'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member5'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member6'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member7'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member8'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member9'] ?></p>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" id = "view_group1"><!-- The IDs here need to be different based on what number group it is for the user.-->Edit Group Info</button>
