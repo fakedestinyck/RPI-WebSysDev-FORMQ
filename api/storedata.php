@@ -28,9 +28,9 @@ if ($action == "store") {
         $thisColumn = $column[$i];
         if ($thisColumn == "group_answers") {
             $thisColumn = "group";
-            $success = $dbo->updateSIS('users',array("group_answers" => $thisContent),$thisColumn,array('_id'=>$id));
+            $success = $dbo->updateSIS('users',array("group_answers" => $thisContent),$thisColumn,array(),array('_id'=>$id));
         } else {
-            $success = $dbo->updateSIS('users',$thisContent,$thisColumn,array('_id'=>$id));
+            $success = $dbo->updateSIS('users',$thisContent,$thisColumn,array(),array('_id'=>$id));
         }
         if ($success != true) {
             $err = true;

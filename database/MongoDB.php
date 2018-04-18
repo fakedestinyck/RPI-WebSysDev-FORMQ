@@ -18,7 +18,7 @@
 			"group_members" => (object)array("member1" => "", "member2" => "", "member3" => "", "member4" => "", "member5" => "", "member6" => "", "member7" => "", "member8" => "", "member9" => ""),
 			"group_answers" => (object)array("q1" => "Dust", "q2" => "smokeno", "q3" => "bedtime12", "q4" => "night", "q5" => "petsno", "q6" => 1, "q7" => 5, "q8" => 1, "q9" => 3, "q10" => 3, "q11" => 3, "q12" => 2, "q13" => "friendssome", "q14" => "partiesnever")
 		),
-		"profile" => (object)array("age" => 21, "year" => 2018, "budget" => 500, "gender" => "Male", "coed" => "no", "on/off campus" => "off campus"),
+		"profile" => (object)array("age" => 21, "year" => 2018, "budget" => 500, "number" => 1, "gender" => "Male", "coed" => "no", "on/off campus" => "off campus"),
 		"answers" => (object)array("q1" => "Dust", "q2" => "smokeno", "q3" => "bedtime12", "q4" => "night", "q5" => "petsno", "q6" => 1, "q7" => 5, "q8" => 1, "q9" => 3, "q10" => 3, "q11" => 3, "q12" => 2, "q13" => "friendssome", "q14" => "partiesnever")
 	);
 

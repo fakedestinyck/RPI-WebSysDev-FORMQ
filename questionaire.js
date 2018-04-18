@@ -138,6 +138,7 @@
                   column = ["user","profile"];
 
               }
+              console.log(JSON.stringify(column));
               sendToDatabase(JSON.stringify(content),JSON.stringify(column));
 
           }
