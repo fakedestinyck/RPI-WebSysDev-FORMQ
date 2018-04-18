@@ -38,7 +38,7 @@
             clear:both;
         }
         input[type=text]{
-            float: right; 
+            float: right;
         }
     </style>
     <body>

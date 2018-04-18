@@ -205,6 +205,7 @@ class Library_Mongo {
      * @param string $colName Collection name
      * @param array $newContent New data
      * @param string $sectionName The section that is to be changed
+     * @param array $sectionQuery Search criteria inside the section
      * @param array $query Search criteria. If it is an empty array, update all rows
      * @param boolean $upAll Whether to update all found data
      * @param boolean $upsert Whether to insert new data when $query is not found
@@ -213,9 +214,9 @@ class Library_Mongo {
      *
      * @return boolean
      */
-    public function updateSIS($colName,$newContent,$sectionName,$query=array(),$upAll=false,$upsert=false,$safe=true,$fsync=false){
+    public function updateSIS($colName,$newContent,$sectionName,$sectionQuery=array(),$query=array(),$upAll=false,$upsert=false,$safe=true,$fsync=false){
         $result = true;
-        $originArray = $this->selectSIS($colName,$sectionName,array(),array('_id',$sectionName),$query);
+        $originArray = $this->selectSIS($colName,$sectionName,$sectionQuery,array('_id',$sectionName),$query);
         for ($i=0;$i<count($originArray);$i++) {
             foreach ($newContent as $key => $value) {
                 $originArray[$i][$sectionName][$key] = $value;
