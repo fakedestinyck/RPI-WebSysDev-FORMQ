@@ -1,13 +1,13 @@
 function banClick(idno) {
 	if (confirm("Are you sure you want to blacklist this user?")) {
-		$('#' + idno).hide();
+		//$('#' + idno).hide();
 		window.location.href = "/admin_dashboard.php?b="+idno;
 	}
 }
 
 function ignoreClick(idno) {
 	if (confirm("Are you sure you want to ignore this report?")) {
-		$('#' + idno).hide();
+		//$('#' + idno).hide();
 		window.location.href = "/admin_dashboard.php?i="+idno;
 
 	}
