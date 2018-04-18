@@ -16,70 +16,70 @@ if ($_SESSION['rcsid'] != null) {
 <html lang="en">
   <head>
     <title>FORM QS</title>
-<!--    <link href="lab4.css" rel="stylesheet" type="text/css" />-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<!--    <script type="text/javascript" src="questionaire.js"></script>-->
-      <script type="text/javascript" src="profile.js"></script>
+    <script type="text/javascript" src="profile.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
       .page-header{
-        color: white;
-        margin-top: 0px;
-        background-color:darkred;
-        font-family: 'Playfair Display', serif;
+            color: white;
+            margin-top: 0px;
+            background-color:darkred;
+            font-family: 'Playfair Display', serif;
         }
-      #first{
-          text-align: center;
-      }
-      body{
-          color: black;
-          /*font-family: 'Roboto', sans-serif;*/
-          background: url('resources/pics/dormpic.jpg') no-repeat;
-          background-size:cover;
-          /*font-family: 'Oswald', sans-serif;*/
-          font-family: 'Fira Sans', sans-serif;
-          font-size: 200%;
-      }
-      h1{
-          color: white;
-          text-align: center;
-          font-size: 600%;
-
-      }
-     h2{
-          color: darkred;
-          font-size: 400%;
-          text-align: center;
-          font-family: 'Playfair Display', serif;
-      }
-
-      .container{
-          margin-bottom:5%;
-          padding: 3%;
-          background:rgba(255,255,255,0.6);
-          /*height: 550px;*/
-          margin-top: 50px;
-          border: 10px solid rgba(139, 0, 0, 0.6);
-
-      }
-      li{
-          padding: 5%;
-          background:rgba(255,255,255,0.6);
-      }
+        .slidercontainer{
+            width: 25%;
+        }
+        #first{
+            text-align: center;
+        }
+        .center{
+            text-align: center;
+        }
+        body{
+            color: black;
+            background: url('resources/pics/desk.jpeg');
+            background-size:150% 150%;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 150%;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-size: 600%;
+        }
+        h2{
+            color: white;
+            font-size: 400%;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin: 2%;
+        }
+        .container{
+            margin-bottom:5%;
+            padding: 3%;
+            background-color: darkred;
+            margin-top: 50px;
+            color: white;
+            border: 10px solid white;
+        }
+        /* Floats need to be cleared so the container will wrap correctly. */
+        div.clear {
+            clear:both;
+        }
     </style>
   </head>
   <body >
-      <h1 class="page-header">Form Q</h1>
+       <h1 class="page-header">Form Q</h1>
         <div class="container">
-            <h2 class="col-md-12">Profile</h2>
+            <h2 class="col-md-12">Individual Profile</h2>
             <form action="profile.php" method="post" id="profile">
-                <div class="col-sm-6"style="padding-left: 20%;">
+                <div class="col-sm-6"style="border-right: 5px solid white;">
                     <div class="form-group">
                         <label for="individual_name">Name:</label>
                         <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="gname" required>
@@ -107,7 +107,7 @@ if ($_SESSION['rcsid'] != null) {
                         </select>
                     </div>
                     </div>
-                <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label for="individual_budget">What is your budget for housing per month?</label>
                         <input type="text" class="form-control" id="individual_budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget" name="gbudget" required>
@@ -128,9 +128,8 @@ if ($_SESSION['rcsid'] != null) {
                         </select>
                     </div>
                 </div>
-                <div style="text-align: center;" class="col-md-12"><button id="button" style="background-color:darkred; margin: 2%;" class="btn btn-primary" type="button">Submit</button></div>
             </form>
       </div>
-
   </body>
 </html>
+
