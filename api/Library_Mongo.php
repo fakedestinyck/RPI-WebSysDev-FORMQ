@@ -305,9 +305,16 @@ class Library_Mongo {
             $section = $row[$sectionName];
             $match = true;
             foreach ($sectionQuery as $key => $value) {
-                if ($section[$key] != $value) {
-                    $match = false;
-                    break;
+                if (is_array($value)) {
+                    if (!in_array($section[$key],$value)){
+                        $match = false;
+                        break;
+                    }
+                } else {
+                    if ($section[$key] != $value) {
+                        $match = false;
+                        break;
+                    }
                 }
             }
             if ($match) {
@@ -411,5 +418,11 @@ class Library_Mongo {
             $arr['_id'] = $ret['$id'];
         }
         return $arr;
+    }
+
+    private function _parseSection($arr){
+        if (!empty($arr)) {
+
+        }
     }
 }

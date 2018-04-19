@@ -1,6 +1,16 @@
 <?php
 define( 'check', true );
-include_once("api/checkLogin.php"); ?>
+include_once("api/checkLogin.php");
+include_once("api/connect.php");
+
+include "api/Library_Mongo.php";
+use Library_Mongo as Mongo;
+$dbo = new Mongo();
+$group_ids = array(1); // to be passed in
+$allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array(),array('_id'=>-1));
+$count = sizeof($allResults);
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,56 +66,61 @@ include_once("api/checkLogin.php"); ?>
             font-size: 15px;
         }
 
+        .glyphicon {
+            top: 4px;
+        }
+
     </style>
     <body>
         <?php include_once('navbar.php'); ?>
         <div class = "container" id = "requests_container">
             <h2 id = "req_heading" style="color: white;">Match</h2>
-            <div id = "requests" class="panel panel-primary panel-group">
-                <div class = "panel panel-danger" id = "request1">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Group name?</h3>
-                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-                </div>
-                <div class = "panel-body">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <p>E-mail: <input type="text" name="gemail"></p>
-                            <p>Ages: <input type="text" name="gage"></p>
-                            <p>Years in College: <input type="text" name="gyear"></p>
-                            <p>Budget: <input type="text" name="gbudget"></p>
-                            <p># Roommates Looking For: <input type="text" name="gnumber"></p>
-                            <p>Co-ed: <input type="text" name="gcoed"></p>
-                        </div>
-                        <div id="life" class="col-sm-4">
-                            <p>Allergies: <input type="text" name="allergies"></p>
-                            <p>Smoking: <input type="text" name="smoke"></p>
-                            <p>Bedtime: <input type="text" name="bedtime"></p>
-                            <p>Morning/Night Person(s): <input type="text" name="mornnight"></p>
-                            <p>Pets: <input type="text" name="pets"></p>
-                        </div>
-                        <div class="col-sm-4">
-                            <p>On a scale from 1-5 (5 being the most strict): </p>
-                            <p>Sticks to Schedules: <input type="text" name="schedule"></p>
-                            <p>Messiness: <input type="text" name="mess"></p>
-                            <p>Alcholic Drinking: <input type="text" name="drink"></p>
-                            <p>Partying: <input type="text" name="party"></p>
-                            <p>TV Watching: <input type="text" name="tv"></p>
-                            <p>Gaming: <input type="text" name="gamer"></p>
-                            <p>Sensitvity to Music: <input type="text" name="music"></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;">Advertisement</h2>
-                        <textarea class="form-control" name="notes" rows="8" cols="168"></textarea>
-                    </div>
-                </div>
-                </div>
-            </div>
-<!--                <div class = "panel panel-danger" id = "request1">-->
-<!--                    <div class = "panel-heading"> Names: <input type="text" name="gname" ></div>-->
-<!---->
-<!--                </div>-->
+            <?php
+            foreach ($allResults as $result) {
+                $group = $result['group'];
+                $answers = $group['group_answers'];
+                echo '<div id="requests" class="panel panel-primary panel-group">';
+                echo '<div class = "panel panel-danger" id = "request1">';
+                echo '<div class="panel-heading">';
+                echo '<h3 class="panel-title">'.$group['name'].'</h3>';
+                echo '<span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>';
+                echo '</div>';
+
+                echo '<div class = "panel-body" style="display: none"><div class="row">';
+                echo '<div class="col-sm-4">';
+                echo '<p>E-mail: <input type="text" name="gemail"></p>';
+                echo '<p>Ages: <input type="text" name="gage"></p>';
+                echo '<p>Years in College: <input type="text" name="gyear"></p>';
+                echo '<p>Budget: <input type="text" name="gbudget"></p>';
+                echo '<p># Roommates Looking For: <input type="text" name="gnumber" value="'.$group['desired_num'].'"></p>';
+                echo '<p>Co-ed: <input type="text" name="gcoed"></p>';
+                echo '</div>';
+                echo '<div id="life" class="col-sm-4">';
+                echo '<p>Allergies: <input type="text" name="allergies" value="'.$answers['q1'].'"></p>';
+                echo '<p>Smoking: <input type="text" name="smoke" value="'.($answers['q2'] == 'smokeno' ? 'No' : 'Yes').'"></p>';
+                echo '<p>Bedtime: <input type="text" name="bedtime" value="'.substr($answers['q3'],7).'"></p>';
+                echo '<p>Morning/Night Person(s): <input type="text" name="mornnight" value="'.$answers['q4'].'"></p>';
+                echo '<p>Pets: <input type="text" name="pets" value="'.($answers['q5'] == 'petsno' ? 'No' : 'Yes').'"></p>';
+                echo '</div>';
+                echo '<div class="col-sm-4">';
+                echo '<p>On a scale from 1-5 (5 being the most strict): </p>';
+                echo '<p>Sticks to Schedules: <input type="text" name="schedule" value="'.$answers['q6'].'"></p>';
+                echo '<p>Messiness: <input type="text" name="mess" value="'.$answers['q7'].'"></p>';
+                echo '<p>Alcholic Drinking: <input type="text" name="drink" value="'.$answers['q8'].'"></p>';
+                echo '<p>Partying: <input type="text" name="party" value="'.$answers['q9'].'"></p>';
+                echo '<p>TV Watching: <input type="text" name="tv" value="'.$answers['q10'].'"></p>';
+                echo '<p>Gaming: <input type="text" name="gamer" value="'.$answers['q11'].'"></p>';
+                echo '<p>Sensitvity to Music: <input type="text" name="music" value="'.$answers['q12'].'"></p>';
+                echo '</div></div>';
+                echo '<div class="form-group">';
+                echo '<h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;">Advertisement</h2>';
+                echo '<textarea class="form-control" name="notes" rows="8" cols="168"></textarea>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
         </div>
         <script type="text/javascript" src="search.js"></script>
         <?php include_once('footer.php') ?>

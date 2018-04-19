@@ -231,9 +231,9 @@ include_once("api/checkLogin.php"); ?>
                         </select>
                         <label for="mornnight">What is the latest bedtime?</label>
                         <select id="mornnight" class="form-control" name="mornnight">      <div style="color:black">
-                                <option value="morning">Morning</option>
-                                <option value="night">Night</option>
-                                <option value="mornightnopref">No Preference</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Night">Night</option>
+                                <option value="No Preference">No Preference</option>
                             </div>
                         </select>
                         <label for="pets">Do you want pets?</label>
