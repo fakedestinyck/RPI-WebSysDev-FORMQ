@@ -26,12 +26,6 @@ if ($_SESSION['rcsid'] != null) {
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <style>
-      .page-header{
-            color: white;
-            margin-top: 0px;
-            background-color:darkred;
-            font-family: 'Playfair Display', serif;
-        }
         .slidercontainer{
             width: 25%;
         }
@@ -74,8 +68,8 @@ if ($_SESSION['rcsid'] != null) {
         }
     </style>
   </head>
-  <body >
-       <h1 class="page-header">Form Q</h1>
+  <body>
+       <?php include_once('navbar.php'); ?>
         <div class="container">
             <h2 class="col-md-12">Individual Profile</h2>
             <form action="profile.php" method="post" id="profile">
@@ -130,6 +124,7 @@ if ($_SESSION['rcsid'] != null) {
                 </div>
             </form>
       </div>
+      <?php include_once('footer.php') ?>
   </body>
 </html>
 
