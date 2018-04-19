@@ -85,6 +85,9 @@ if ($_SESSION['rcsid'] != null) {
         <div class="container">
 >>>>>>> 90fa9f9b3db8b33f5c901bb275b3958449808f16
             <h2 class="col-md-12">Individual Profile</h2>
+            <form action="questionaire.php">
+                <div style="text-align: center; ">If you would like to change your individual answers, click this button to go to our questionnaire.<button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Questionnaire</button></div>
+            </form>
             <form action="profile.php" method="post" id="profile">
                 <div class="col-sm-6 border-right-container">
                     <div class="form-group">
@@ -137,7 +140,6 @@ if ($_SESSION['rcsid'] != null) {
                 </div>
             </form>
       </div>
-       <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Submit</button></div>
         </div>
       <?php include_once('footer.php') ?>
   </body>
