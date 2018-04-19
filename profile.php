@@ -25,6 +25,7 @@ if ($_SESSION['rcsid'] != null) {
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <style>
       .page-header{
             color: white;
@@ -68,6 +69,12 @@ if ($_SESSION['rcsid'] != null) {
             color: white;
             border: 10px solid white;
         }
+
+      @media (min-width: 768px) {
+          .border-right-container {
+              border-right: 5px solid white;
+          }
+      }
         /* Floats need to be cleared so the container will wrap correctly. */
         div.clear {
             clear:both;
@@ -76,10 +83,10 @@ if ($_SESSION['rcsid'] != null) {
   </head>
   <body >
        <h1 class="page-header">Form Q</h1>
-        <div class="container">
+        <div class="container"><div class="row">
             <h2 class="col-md-12">Individual Profile</h2>
             <form action="profile.php" method="post" id="profile">
-                <div class="col-sm-6"style="border-right: 5px solid white;">
+                <div class="col-sm-6 border-right-container">
                     <div class="form-group">
                         <label for="individual_name">Name:</label>
                         <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="gname" required>
@@ -130,6 +137,8 @@ if ($_SESSION['rcsid'] != null) {
                 </div>
             </form>
       </div>
+       <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Submit</button></div>
+        </div>
   </body>
 </html>
 

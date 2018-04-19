@@ -12,6 +12,7 @@ include_once("api/checkLogin.php"); ?>
     <script type="text/javascript" src="questionaire.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <style>
         .page-header{
             color: white;
@@ -55,6 +56,14 @@ include_once("api/checkLogin.php"); ?>
             color: white;
             border: 10px solid white;
         }
+        @media (min-width: 768px) {
+            .border-left-container {
+                border-left: 5px solid white;
+            }
+            .border-right-container {
+                border-right: 5px solid white;
+            }
+        }
         /* Floats need to be cleared so the container will wrap correctly. */
         div.clear {
             clear:both;
@@ -63,10 +72,10 @@ include_once("api/checkLogin.php"); ?>
   </head>
   <body >
       <h1 class="page-header">Form Q</h1>
-        <div class="container"><div class="row">
+        <div class="container">
             <form action="questionaire.php" method="post" id="myform">
-                <div id="first">
-                    <h2>Grouping</h2>
+                <div id="first" class="row">
+                    <h2 class="title">Grouping</h2>
                     <p class="center">Click on an image below to choose to fill out a group profile or an individual profile</p>
                     <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">Group</h2><img src="resources/pics/groupimg.jpg" id="groupphoto" class="img-thumbnail" class="center" style="width:450px;height:300px;"></div></div>
                     <div class="col-sm-6"><h2 style = "font-size: 140%;">Individual</h2><div class="center"><img src="resources/pics/individualimg.jpeg" id="singlephoto" class="img-thumbnail" style="width:450px;height:300px;"></div></div>
@@ -77,9 +86,9 @@ include_once("api/checkLogin.php"); ?>
                     <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">On Campus</h2><img src="resources/pics/Barton.jpg" id="ocampus" class="img-thumbnail" class="center" style="width:300px;height:300px;"></div></div>
                     <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">Off Campus</h2><img src="resources/pics/troy.JPG" id="offcampus" class="img-thumbnail" style="width:300px;height:300px;"></div></div>
                 </div>
-                <div id="secondI">
+                <div id="secondI" class="row">
                     <h2>Individual Information</h2>
-                    <div class="col-sm-6"style="border-right: 5px solid white;">
+                    <div class="col-sm-6 border-right-container">
                         <div class="form-group">
                             <label for="individual_name">Name:</label>
                             <input type="text" class="form-control" id="individual_name" placeholder="Your name" name="name" required>
@@ -134,7 +143,7 @@ include_once("api/checkLogin.php"); ?>
                 </div>
                 <div id="secondG">
                     <h2>Group Information</h2>
-                    <div class="col-sm-6"style="border-right: 5px solid white;">
+                    <div class="col-sm-6 border-right-container">
                         <div class="form-group">
                             <label for="group_name">Name:</label>
                             <input type="text" class="form-control" id="group_name" placeholder="Your name" name="gname"  required>
@@ -233,14 +242,14 @@ include_once("api/checkLogin.php"); ?>
                             </div>
                         </select>
                         <label for="pets">Do you want pets?</label>
-                        <select id="pets" class="form-control" name="pets"> 
+                        <select id="pets" class="form-control" name="pets">
                             <div style="color:black">
                                 <option value="petsyes">Yes</option>
                                 <option value="petsno">No</option>
                             </div>
                         </select>
                     </div>
-                    <div class = "col-sm-4" style="border-left: 5px solid white;border-right: 5px solid white;">
+                    <div class = "col-sm-4 border-left-container border-right-container">
                         <p>How strict are you with sticking to a schedule?</p><div class="slidercontainer">
                             <input type="range" min="1" max="5" value="1" class="slider" id="schedule" name="schedule">
                             <div id="scheduleoutput">Output: </div>
@@ -279,7 +288,7 @@ include_once("api/checkLogin.php"); ?>
                         <textarea class="form-control" name="notes" rows="8" cols="168"></textarea>
                     </div>
                 </div>                
-            </form></div>
+            </form>
             <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Submit</button></div>
             <div class="clear"></div>
       </div>
