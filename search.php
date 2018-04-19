@@ -1,6 +1,6 @@
 <?php
-//define( 'check', true );
-//include_once("api/checkLogin.php"); ?>
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html>
     <head>
