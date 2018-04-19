@@ -10,3 +10,17 @@
             $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
         }
  })
+
+ $(document).ready(function(){
+    $("#request1").click(function() {
+        if ($("#contentx").hasClass("hidden")) {
+            $("#contentx").removeClass("hidden");
+            $("#expand").addClass("hidden");
+        }
+        else {
+            $("#contentx").addClass("hidden");
+            $("#expand").removeClass("hidden");
+        }
+
+    });
+});
