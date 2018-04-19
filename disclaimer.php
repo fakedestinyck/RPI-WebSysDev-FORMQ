@@ -38,7 +38,8 @@ include_once("api/checkLogin.php"); ?>
       }   
     </style>
   </head>
-  <body >
+  <body>
+      <?php include_once('navbar.php'); ?>
       <h1 class="page-header">Form Q</h1>
       <h2>Disclaimer</h2>
         <!-- inspired by https://www.bu.edu/tech/about/policies/websites-disclaimer/-->
@@ -47,5 +48,6 @@ include_once("api/checkLogin.php"); ?>
             <p>Rensselaer Polytechnic Institute does not review, approve, or endorse the contents of personal pages, nor does the University monitor the content of any page except as necessary to investigate alleged violations of Institute policies, federal, state, or local laws, or the rights of other persons.</p>
             <p>By using this website, you agree to let other all other students at Rensselaer Polytechnic Institute see your responses to the questionnaire.  Administrators (see the About Us page for more details) reserve the right to remove a student, or his or her answers, from the website for any reason.</p>
         </div>
+    <?php include_once('footer.php') ?>
   </body>
 </html>
