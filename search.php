@@ -19,8 +19,7 @@ include_once("api/checkLogin.php"); ?>
     <style>
         body{
             color: black;
-            background-color: darkred;
-            background-size:cover;
+            background: url('resources/pics/desk.jpeg');
             font-family: 'Fira Sans', sans-serif;
         }
         h1{
@@ -61,6 +60,7 @@ include_once("api/checkLogin.php"); ?>
         <?php include_once('navbar.php'); ?>
         <div class = "container" id = "requests_container">
             <h2 id = "req_heading" style="color: white;">Match</h2>
+            <p style="color:white; text-align:center;">To see a group's information, please click their names</p>
             <div id = "requests" class="panel panel-primary panel-group">
                 <div class = "panel panel-danger" id = "request1">
                 <div class="panel-heading">
