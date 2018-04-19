@@ -1,3 +1,6 @@
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,9 +90,10 @@
               <div class="col-md-2">
                   <img src="resources/aboutus/andrea2.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
                   <p style="font-size:60%">Andrea O’Brisky is a junior ITWS major. She has experience working for IT Research and Development at Johnson and Johnson, as a Learning Assistant at RPI and as a Website Manager for the Women's Mentoring Program. She served as a Front End Developer for this project.
- </p> 
+                  </p> 
               </div>
           </div>
       </div>
+    <?php include_once('footer.php') ?>
   </body>
 </html>
