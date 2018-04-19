@@ -40,48 +40,70 @@
         input[type=text]{
             float: right;
         }
+        .row{
+            margin-top:40px;
+            padding: 0 10px;
+        }
+
+        .clickable{
+            cursor: pointer;
+        }
+
+        .panel-heading span {
+            margin-top: -20px;
+            font-size: 15px;
+        }
+
     </style>
     <body>
         <div class = "container" id = "requests_container">
             <h2 id = "req_heading" style="color: white;">Match</h2>
-            <div id = "requests" class = "panel-group">
+            <div id = "requests" class="panel panel-primary panel-group">
                 <div class = "panel panel-danger" id = "request1">
-                    <div class = "panel-heading"> Names: <input type="text" name="gname" ></div>
-                    <div class = "panel-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <p>E-mail: <input type="text" name="gemail"></p>
-                                <p>Ages: <input type="text" name="gage"></p>
-                                <p>Years in College: <input type="text" name="gyear"></p>
-                                <p>Budget: <input type="text" name="gbudget"></p>
-                                <p># Roommates Looking For: <input type="text" name="gnumber"></p>
-                                <p>Co-ed: <input type="text" name="gcoed"></p>
-                            </div>
-                            <div id="life" class="col-sm-4">
-                                <p>Allergies: <input type="text" name="allergies"></p>
-                                <p>Smoking: <input type="text" name="smoke"></p>
-                                <p>Bedtime: <input type="text" name="bedtime"></p>
-                                <p>Morning/Night Person(s): <input type="text" name="mornnight"></p>
-                                <p>Pets: <input type="text" name="pets"></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p>On a scale from 1-5 (5 being the most strict): </p>
-                                <p>Sticks to Schedules: <input type="text" name="schedule"></p>
-                                <p>Messiness: <input type="text" name="mess"></p>
-                                <p>Alcholic Drinking: <input type="text" name="drink"></p>
-                                <p>Partying: <input type="text" name="party"></p>
-                                <p>TV Watching: <input type="text" name="tv"></p>
-                                <p>Gaming: <input type="text" name="gamer"></p>
-                                <p>Sensitvity to Music: <input type="text" name="music"></p>
-                            </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Group name?</h3>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <div class = "panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p>E-mail: <input type="text" name="gemail"></p>
+                            <p>Ages: <input type="text" name="gage"></p>
+                            <p>Years in College: <input type="text" name="gyear"></p>
+                            <p>Budget: <input type="text" name="gbudget"></p>
+                            <p># Roommates Looking For: <input type="text" name="gnumber"></p>
+                            <p>Co-ed: <input type="text" name="gcoed"></p>
                         </div>
-                        <div class="form-group">
-                            <h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;">Advertisement</h2>
-                            <textarea class="form-control" name="notes" rows="8" cols="168"></textarea>
+                        <div id="life" class="col-sm-4">
+                            <p>Allergies: <input type="text" name="allergies"></p>
+                            <p>Smoking: <input type="text" name="smoke"></p>
+                            <p>Bedtime: <input type="text" name="bedtime"></p>
+                            <p>Morning/Night Person(s): <input type="text" name="mornnight"></p>
+                            <p>Pets: <input type="text" name="pets"></p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>On a scale from 1-5 (5 being the most strict): </p>
+                            <p>Sticks to Schedules: <input type="text" name="schedule"></p>
+                            <p>Messiness: <input type="text" name="mess"></p>
+                            <p>Alcholic Drinking: <input type="text" name="drink"></p>
+                            <p>Partying: <input type="text" name="party"></p>
+                            <p>TV Watching: <input type="text" name="tv"></p>
+                            <p>Gaming: <input type="text" name="gamer"></p>
+                            <p>Sensitvity to Music: <input type="text" name="music"></p>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;">Advertisement</h2>
+                        <textarea class="form-control" name="notes" rows="8" cols="168"></textarea>
+                    </div>
+                </div>
                 </div>
             </div>
+<!--                <div class = "panel panel-danger" id = "request1">-->
+<!--                    <div class = "panel-heading"> Names: <input type="text" name="gname" ></div>-->
+<!---->
+<!--                </div>-->
         </div>
+        <script type="text/javascript" src="search.js"></script>
     </body>
 </html>
