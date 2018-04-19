@@ -1,4 +1,6 @@
-
+<?php
+define( 'check', true );
+include_once("api/checkLogin.php"); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,6 +44,7 @@
         }
     </style>
     <body>
+        <?php include_once('navbar.php'); ?>
         <div class = "container" id = "requests_container">
             <h2 id = "req_heading" style="color: white;">Match</h2>
             <div id = "requests" class = "panel-group">
@@ -83,5 +86,6 @@
                 </div>
             </div>
         </div>
+        <?php include_once('footer.php') ?>
     </body>
 </html>
