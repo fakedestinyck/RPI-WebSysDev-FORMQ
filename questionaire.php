@@ -14,12 +14,6 @@ include_once("api/checkLogin.php"); ?>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <style>
-        .page-header{
-            color: white;
-            margin-top: 0px;
-            background-color:darkred;
-            font-family: 'Playfair Display', serif;
-        }
         .slidercontainer{
             width: 25%;
         }
@@ -70,7 +64,8 @@ include_once("api/checkLogin.php"); ?>
         }
     </style>
   </head>
-  <body >
+  <body>
+  <?php include_once('navbar.php'); ?>
       <h1 class="page-header">Form Q</h1>
         <div class="container">
             <form action="questionaire.php" method="post" id="myform">
@@ -292,5 +287,6 @@ include_once("api/checkLogin.php"); ?>
             <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Submit</button></div>
             <div class="clear"></div>
       </div>
+      <?php include_once('footer.php') ?>
   </body>
 </html>
