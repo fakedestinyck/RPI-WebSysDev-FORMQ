@@ -85,6 +85,7 @@ $count = sizeof($allResults);
                     echo '</div>';
                 }
                 ?>
+                <div style="text-align: center; "><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" id="requests">Request to Join Group</button></div>
             </div>
         </div>
         <?php include_once('footer.php') ?>
