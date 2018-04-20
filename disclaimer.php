@@ -47,6 +47,7 @@ include_once("api/checkLogin.php"); ?>
             <p> The contents of all pages published by students or individuals are solely the responsibility of the page authors. Statements made and opinions expressed are strictly those of the authors and not Rensselaer Polytechnic Institute.</p>
             <p>Rensselaer Polytechnic Institute does not review, approve, or endorse the contents of personal pages, nor does the University monitor the content of any page except as necessary to investigate alleged violations of Institute policies, federal, state, or local laws, or the rights of other persons.</p>
             <p>By using this website, you agree to let other all other students at Rensselaer Polytechnic Institute see your responses to the questionnaire.  Administrators (see the About Us page for more details) reserve the right to remove a student, or his or her answers, from the website for any reason.</p>
+            <p>FORM Q uses cookies.  By continuing to use this website, you are providing consent for cookies to be used.</p>
         </div>
     <?php include_once('footer.php') ?>
   </body>
