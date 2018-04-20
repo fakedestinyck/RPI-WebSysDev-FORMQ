@@ -1,6 +1,5 @@
 <footer class="footer">
     <div class="container">
-        <div style="margin-top: 5px;">© 2018 Copyright: <a href ="aboutus.php">FORM Q</a></div>
-        <div style="margin-top: 5px;"><a href ="disclaimer.php">Disclaimer</a></div>
+        <div id="copyright">© 2018 Copyright: <a href ="aboutus.php">FORM Q</a> <span style="float: right;"><a href ="disclaimer.php">Disclaimer</a></span></div>
     </div>
 </footer>

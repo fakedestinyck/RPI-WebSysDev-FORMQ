@@ -75,15 +75,10 @@ if ($_SESSION['rcsid'] != null) {
         }
     </style>
   </head>
-<<<<<<< HEAD
-  <body >
+  <body>
+  <?php include_once('navbar.php'); ?>
        <h1 class="page-header">Form Q</h1>
         <div class="container"><div class="row">
-=======
-  <body>
-       <?php include_once('navbar.php'); ?>
-        <div class="container">
->>>>>>> 90fa9f9b3db8b33f5c901bb275b3958449808f16
             <h2 class="col-md-12">Individual Profile</h2>
             <form action="profile.php" method="post" id="profile">
                 <div class="col-sm-6 border-right-container">

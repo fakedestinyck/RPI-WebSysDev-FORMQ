@@ -1,0 +1,44 @@
+html, body {
+  height: 100%;
+}
+#admin_nav {
+  background-color: darkred;
+}
+#bodyforNav {
+  padding-top: 65px;
+  font-size: 200%;
+}
+#header{
+        color: white;
+        /* background-color:darkred; */
+        font-family: 'Oswald', sans-serif;
+        font-size: 130%;
+}
+#admin_nav {
+  background-color: darkred;
+  font-family: 'Oswald', sans-serif;
+}
+#copyright {
+	margin-top: 5px; 
+	font-size: 90%;
+}
+.footer {
+  background-color: darkred;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px; 
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.footer, .page-wrap:after {
+  height: 50px;
+}
