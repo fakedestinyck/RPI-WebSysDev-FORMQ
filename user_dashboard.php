@@ -2,9 +2,21 @@
 define( 'check', true );
 include_once("api/checkLogin.php"); 
 include "api/Library_Mongo.php";
-  use Library_Mongo as Mongo;
-  $dbo = new Mongo();
-  $s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION['rcsid']));
+use Library_Mongo as Mongo;
+$dbo = new Mongo();
+$s = $dbo->selectSIS('users','user',array('user_id'=>277));
+$a = $dbo->selectSIS('users','user',array('requested_group'=>$s[0]['group']['group_id']));
+if (isset($_GET['r'])){
+	$r = $_GET['r'];
+	$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$r));
+	header("Refresh:0; url=user_dashboard.php");
+};
+// if (isset($_GET['y'])){
+// 	$y = $_GET['y'];
+// 	$dbo->updateSIS('users',array(),'group', array('rcsid'=>$y));
+// }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -124,27 +136,22 @@ include "api/Library_Mongo.php";
 		<!-- The following are boxes that need to be built using the backend by pulling info from the db to fill them up.-->
 		<div id = "requests" class = "panel-group">
 			<!-- These will be built by the backend. Javascript will fill in the values. MAke sure that the requests have ids of request 1, 2, etc and then the buttons in them are specific to hiding those requests.-->
-			<div class = "panel panel-danger" id = "request1">
-				<div class = "panel-heading"> Samad Fariiqui requested to join.</div>
-				<div class = "panel-body">
-					<div>Email: ThisIsNotAn@email.address</div>
-					<div>Phone number: 666-666-5555</div>
-					<button type = "button" id = "remover" class = "close">Click here to remove this request.</button>
-				</div>
-			</div>
 
-			<div class = "panel panel-danger" id = "reqest2">
-				<div class = "panel-heading"> Psama Minhas requested to join.</div>
-				<div class = "panel-body">
-					<div>Email: ThisIsNotAn@email.address</div>
-					<div>Phone number: 666-666-5555</div>
-					<button type = "button" id = "remover" class = "close">Click here to remove this request.</button>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
-	<?php include_once('footer.php')?>
+	<?php include_once('footer.php') ?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var request_data = <?php echo json_encode($a);?>;
+			
+			for (var i = 0; i < request_data.length; i++) {
+				var html = "<div class = \"panel panel-danger\" id = \"request"+i+"\"><div class = \"panel-heading\">"+ request_data[i]['user']['name'] + " requested to join.</div><div class = \"panel-body\"><div>Email: "+request_data[i]['user']['email']+"</div><div>Phone number: 666-666-5555</div><button type = \"button\" id = \"remover\" class = \"close\" onclick='removeRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to remove this request.</button></div></div>";
+				$("#requests").append(html);
+			}
+
+		})
+	</script>
 	<script type="text/javascript" src = "user_dashboard.js"></script>
 </body>
 </html>
