@@ -150,6 +150,11 @@ if (isset($_GET['y'])){
 			<!-- These will be built by the backend. Javascript will fill in the values. MAke sure that the requests have ids of request 1, 2, etc and then the buttons in them are specific to hiding those requests.-->
 
 		</div>
+		<div class="form-group">
+                        <label for="groupmember1">RCS:</label>
+                        <input type="number" class="form-control" id="groupmember1" placeholder="RCS ID" name="groupmember1" required>
+                	<div style="text-align: center; padding: 2%;"><div id="toadd"></div><button type="button" id="addbutton" name="addbutton" style="background-color:white; margin: 2%; color: black;" class="btn btn-primary">Add Another Member</button></div>
+                </div>
 	</div>
 </div>
 	<?php include_once('footer.php') ?>
