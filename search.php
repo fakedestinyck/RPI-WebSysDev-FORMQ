@@ -34,6 +34,36 @@ $count = sizeof($allResults);
             <?php include_once('navbar.php'); ?>
             <div class = "container" id = "requests_container">
                 <h2 id = "req_heading">Matches</h2>
+                <div id = "requests" class = "panel-group">
+                <div class = "panel panel-danger" id = "request1">
+                    <div class = "panel-heading">
+                        <p>Please check qualities that are not important to you when searching for a roommate.  Multiple can be checked.</p>
+                        <input type="checkbox" class="form-check-input" id="smoking">
+                        <label class="form-check-label" for="smoking">Smoking</label>
+                        <input type="checkbox" class="form-check-input" id="bedtime">
+                        <label class="form-check-label" for="bedtime">Bedtime</label>
+                        <input type="checkbox" class="form-check-input" id="mornnight">
+                        <label class="form-check-label" for="mornnight">Morning or Night Person/People</label>
+                        <input type="checkbox" class="form-check-input" id="pets">
+                        <label class="form-check-label" for="pets">Pets</label>
+                        <input type="checkbox" class="form-check-input" id="schedule">
+                        <label class="form-check-label" for="schedule">Schedule</label>
+                        <input type="checkbox" class="form-check-input" id="mess">
+                        <label class="form-check-label" for="mess">Mess</label>
+                        <input type="checkbox" class="form-check-input" id="drink">
+                        <label class="form-check-label" for="drink">Drink Alcohol</label>
+                        <input type="checkbox" class="form-check-input" id="party">
+                        <label class="form-check-label" for="party">Partying</label>
+                        <input type="checkbox" class="form-check-input" id="tv">
+                        <label class="form-check-label" for="tv">TV</label>
+                        <input type="checkbox" class="form-check-input" id="gamer">
+                        <label class="form-check-label" for="gamer">Gaming</label>
+                        <input type="checkbox" class="form-check-input" id="music">
+                        <label class="form-check-label" for="music">Sensitivity to Loud Music</label>
+                        <div style="text-align: center;"><button id="button" style="background-color:white; color: black;" class="btn btn-primary">Submit</button></div>
+                    </div>
+                </div>
+            </div>
                 <?php
                 $num = 1;
                 foreach ($allResults as $result) {
