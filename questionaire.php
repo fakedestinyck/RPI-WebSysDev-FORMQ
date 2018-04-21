@@ -43,7 +43,7 @@ include_once("api/checkLogin.php"); ?>
             font-family: 'Playfair Display', serif;
             margin: 2%;
         }
-        .container : not(#justdoit){
+        .container : not(#footcontainer){
             margin-bottom:5%;
             padding: 3%;
             background-color: darkred;
