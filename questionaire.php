@@ -7,6 +7,7 @@ include_once("api/checkLogin.php"); ?>
     <title>FORM QS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="header.css">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="questionaire.js"></script>
@@ -42,7 +43,7 @@ include_once("api/checkLogin.php"); ?>
             font-family: 'Playfair Display', serif;
             margin: 2%;
         }
-        .container{
+        .container : not(#footcontainer){
             margin-bottom:5%;
             padding: 3%;
             background-color: darkred;
@@ -64,9 +65,9 @@ include_once("api/checkLogin.php"); ?>
         }
     </style>
   </head>
-  <body>
-  <?php include_once('navbar.php'); ?>
-      <h1 class="page-header">Form Q</h1>
+  <body  id = "bodyforNav">
+  <div class="page-wrap">
+    <?php include_once('navbar.php'); ?>
         <div class="container">
             <form action="questionaire.php" method="post" id="myform">
                 <div id="first" class="row">
@@ -287,6 +288,7 @@ include_once("api/checkLogin.php"); ?>
             <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Submit</button></div>
             <div class="clear"></div>
       </div>
-      <?php include_once('footer.php') ?>
+  </div>
+    <?php include_once('footer.php') ?>
   </body>
 </html>
