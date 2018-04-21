@@ -89,7 +89,7 @@ if (isset($_GET['y'])){
 
 	<!-- Sidebar -->
 	<!-- Current problems: the sidenav goes up as window size decreases -->
-	<div class = "sidenav" id = "groups">
+	<div class = "sidenav" id = "groups" style = "">
 		<h1>Groups</h1>
 		<!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
 		<div id = "group_list">
