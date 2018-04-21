@@ -124,3 +124,13 @@ body{
 .footer, .page-wrap:after {
   height: 50px;
 }
+
+#adder{
+  color: green;
+  font-size: 20px; 
+  opacity: 1;
+}
+
+#adder:hover{
+  opacity: 1; 
+}

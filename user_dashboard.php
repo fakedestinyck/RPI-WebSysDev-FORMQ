@@ -66,7 +66,7 @@ include "api/Library_Mongo.php";
 
 	<!-- Sidebar -->
 	<!-- Current problems: the sidenav goes up as window size decreases -->
-	<div class = "sidenav" id = "groups">
+	<div class = "sidenav" id = "groups" style = "">
 		<h1>Groups</h1>
 		<!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
 		<div id = "group_list">
@@ -129,7 +129,10 @@ include "api/Library_Mongo.php";
 				<div class = "panel-body">
 					<div>Email: ThisIsNotAn@email.address</div>
 					<div>Phone number: 666-666-5555</div>
+					<button type = "button" id = "adder" class = "close">Click here to add this member to your group!</button>
+					<br>
 					<button type = "button" id = "remover" class = "close">Click here to remove this request.</button>
+					
 				</div>
 			</div>
 
@@ -138,6 +141,9 @@ include "api/Library_Mongo.php";
 				<div class = "panel-body">
 					<div>Email: ThisIsNotAn@email.address</div>
 					<div>Phone number: 666-666-5555</div>
+					
+					<button type = "button" id = "adder" class = "close">Click here to add this member to your group!</button>
+					<br>
 					<button type = "button" id = "remover" class = "close">Click here to remove this request.</button>
 				</div>
 			</div>
