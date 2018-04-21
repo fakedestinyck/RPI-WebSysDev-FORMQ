@@ -81,7 +81,7 @@ if ($_SESSION['rcsid'] != null) {
         <div class="container"><div class="row">
             <h2 class="col-md-12">Individual Profile</h2>
             <form action="questionaire.php">
-                <div style="text-align: center; ">If you would like to change your individual answers, click this button to go to our questionnaire.<button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Questionnaire</button></div>
+                <div style="text-align: center; ">If you would like to change your individual answers, click this button to go to our questionnaire.<button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" type="submit">Questionnaire</button></div>
             </form>
             <form action="profile.php" method="post" id="profile">
                 <div class="col-sm-6 border-right-container">
