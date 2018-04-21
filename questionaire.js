@@ -1,14 +1,4 @@
   $(document).ready(function(){
-      membercounter = 1;
-      //ALLOWS USERS TO ENTER MORE RCS ids FOR ADDITIONAL TEAM MEMBERS
-      $("#addbutton").click(function(){
-          if (membercounter<=9){
-              membercounter +=1;
-              $("#toadd").append('<div class="form-group"><label for="groupmember' + membercounter + '">Enter another RCS ID:</label><div id="groupmembers"><input type="text" class="form-control" id="groupmember' + membercounter + '" placeholder="RCSID" name="groupmember' + membercounter + '" required></div></div>');
-          } else {
-              alert("You can't make a group larger than 10! Sorry")
-          }
-      });
       //FOR ALL OF THE SLIDERS
       //reference https://www.w3schools.com/howto/howto_js_rangeslider.asp
       //scheduleslider
@@ -72,7 +62,6 @@
       var isGroupOrNot = false;
       var onOrOffCamput = 'off campus';
       $("#secondI").hide();
-      $("#secondG").hide();
       $("#life").hide();
       $("#pref").hide();
       $("#campus").hide();
@@ -184,7 +173,7 @@
           }
           if (counter==2){
               $("#first").hide();
-              $("#secondG").show();
+              $("#secondI").show();
               $("#button").show();
               counter+=1;
               isGroupOrNot = true;
@@ -246,7 +235,6 @@
                       if (counter===3){
                           $("#campus").show();
                           $("#secondI").hide();
-                          $("#secondG").hide();
                           $("#button").hide();
                       }
                       if (counter===6){
