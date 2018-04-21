@@ -4,17 +4,28 @@ include_once("api/checkLogin.php");
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
-$s = $dbo->selectSIS('users','user',array('user_id'=>277));
+$s = $dbo->selectSIS('users','user',array('user_id'=>701));
 $a = $dbo->selectSIS('users','user',array('requested_group'=>$s[0]['group']['group_id']));
 if (isset($_GET['r'])){
 	$r = $_GET['r'];
 	$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$r));
 	header("Refresh:0; url=user_dashboard.php");
 };
-// if (isset($_GET['y'])){
-// 	$y = $_GET['y'];
-// 	$dbo->updateSIS('users',array(),'group', array('rcsid'=>$y));
-// }
+if (isset($_GET['y'])){
+ 	$y = $_GET['y'];
+ 	$u = $dbo->selectSIS('users','user',array('rcsid'=>$y));
+ 	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name" => $s[0]['group']['name'], "group_members"=>array("member1"=>$s[0]['group']['group_members']['member1'],"member2"=>$s[0]['group']['group_members']['member2'],"member3"=>$s[0]['group']['group_members']['member3'],"member4"=>$s[0]['group']['group_members']['member4'],"member5"=>$s[0]['group']['group_members']['member5'],"member6"=>$s[0]['group']['group_members']['member6'],"member7"=>$s[0]['group']['group_members']['member7'],"member8"=>$s[0]['group']['group_members']['member8'],"member9"=>$s[0]['group']['group_members']['member9'],"member10"=>$s[0]['group']['group_members']['member10'])),'group', array('rcsid'=>$y));
+ 	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
+ 	$g = $dbo->selectSIS('users','group',array('group_id'=>$s[0]['group']['group_id']));
+ 	$gn = $g[0]['group']['current_num'];
+ 	$gm = $g[0]['group']['group_members'];
+ 	$gm['member'.$gn]= $u[0]['user']['name'];
+ 	$dbo->updateSIS('users',array('group_members'=>$gm),'group',array('group_id'=>$s[0]['group']['group_id']));
+	$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
+ 	header("Refresh:0; url=user_dashboard.php");
+
+
+};
 
 
 ?>
@@ -83,7 +94,6 @@ if (isset($_GET['r'])){
 		<!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
 		<div id = "group_list">
 			<button type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#Modal_group1"><?php echo $s[0]['group']['name'] ?></button>
-				<p>&emsp;<?php echo $s[0]['user']['name']?></p>
 				<p>&emsp;<?php echo $s[0]['group']['group_members']['member1'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member2'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member3'] ?></p>
@@ -93,6 +103,7 @@ if (isset($_GET['r'])){
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member7'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member8'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member9'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member10'] ?></p>
 		</div>
 		
 	</div>
@@ -111,7 +122,6 @@ if (isset($_GET['r'])){
 		        <p>Current Number: <?php echo $s[0]['group']['current_num'] ?></p>
 		        <p>Desired Number: <?php echo $s[0]['group']['desired_num'] ?></p>
 		        <p>Members:</p>
-		        <p>&emsp;<?php echo $s[0]['user']['name']?></p>
 				<p>&emsp;<?php echo $s[0]['group']['group_members']['member1'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member2'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member3'] ?></p>
@@ -121,6 +131,8 @@ if (isset($_GET['r'])){
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member7'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member8'] ?></p>
 		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member9'] ?></p>
+		        <p>&emsp;<?php echo $s[0]['group']['group_members']['member10'] ?></p>
+
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" id = "view_group1"><!-- The IDs here need to be different based on what number group it is for the user.-->Edit Group Info</button>
@@ -146,7 +158,7 @@ if (isset($_GET['r'])){
 			var request_data = <?php echo json_encode($a);?>;
 			
 			for (var i = 0; i < request_data.length; i++) {
-				var html = "<div class = \"panel panel-danger\" id = \"request"+i+"\"><div class = \"panel-heading\">"+ request_data[i]['user']['name'] + " requested to join.</div><div class = \"panel-body\"><div>Email: "+request_data[i]['user']['email']+"</div><div>Phone number: 666-666-5555</div><button type = \"button\" id = \"remover\" class = \"close\" onclick='removeRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to remove this request.</button></div></div>";
+				var html = "<div class = \"panel panel-danger\" id = \"request"+i+"\"><div class = \"panel-heading\">"+ request_data[i]['user']['name'] + " requested to join.</div><div class = \"panel-body\"><div>Email: "+request_data[i]['user']['email']+"</div><button type = \"button\" id = \"adder\" class = \"close\" onclick='addRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to add this member to your group!</button><br><button type = \"button\" id = \"remover\" class = \"close\" onclick='removeRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to remove this request.</button></div></div>";
 				$("#requests").append(html);
 			}
 

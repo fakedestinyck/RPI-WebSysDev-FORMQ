@@ -11,7 +11,7 @@ function removeRequest(idno){
 	};
 };
 
-function function_name(idno){
+function addRequest(idno){
 	if (confirm("Are you sure you want to add this member?")){
 		window.location.href = "user_dashboard.php?y="+idno;
 	};
