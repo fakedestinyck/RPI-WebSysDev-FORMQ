@@ -1,6 +1,27 @@
 <?php
 define( 'check', true );
-include_once("api/checkLogin.php"); ?>
+include_once("api/checkLogin.php");
+define('profile', true);
+$column = ["user","profile","group","answers"];
+$columnData = [array("user"=>array()),array("profile"=>array()),array("group"=>array()),array("answers"=>array())];
+$user = array();
+$profile = array();
+$group = array();
+$answers = array();
+$group_answers = array();
+if ($_SESSION['rcsid'] != null) {
+    include_once("api/readdata.php");
+    $user = $columnData[0]["user"];
+    $profile = $columnData[1]["profile"];
+    $answers = $columnData[3]["answers"];
+    $group = $columnData[2]["group"];
+    $group_answers = $group["group_answers"];
+    if ($user["in_group"] == "yes") {
+        $answers = $group_answers;
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,7 +64,7 @@ include_once("api/checkLogin.php"); ?>
             font-family: 'Playfair Display', serif;
             margin: 2%;
         }
-        .container : not(#footcontainer){
+        .container:not(#footcontainer){
             margin-bottom:5%;
             padding: 3%;
             background-color: darkred;
@@ -72,7 +93,7 @@ include_once("api/checkLogin.php"); ?>
             <form action="questionaire.php" method="post" id="myform">
                 <div id="first" class="row">
                     <h2 class="title">Grouping</h2>
-                    <p class="center">Click on an image below to choose to fill out a group profile or an individual profile</p>
+                    <p class="center">Click on group if you want to be in a group</p>
                     <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">Group</h2><img src="resources/pics/groupimg.jpg" id="groupphoto" class="img-thumbnail" class="center" style="width:450px;height:300px;"></div></div>
                     <div class="col-sm-6"><h2 style = "font-size: 140%;">Individual</h2><div class="center"><img src="resources/pics/individualimg.jpeg" id="singlephoto" class="img-thumbnail" style="width:450px;height:300px;"></div></div>
                 </div>
@@ -87,21 +108,21 @@ include_once("api/checkLogin.php"); ?>
                     <div class="col-sm-6 border-right-container">
                         <div class="form-group">
                             <label for="individual_name">Name:</label>
-                            <input type="text" class="form-control" id="individual_name" placeholder="Your name" name="name" required>
+                            <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="name" required>
                         </div>
 <!--                        <p>Name:</p><input type="text" name="name">-->
                         <div class="form-group">
                             <label for="individual_rin">RIN:</label>
-                            <input type="number" class="form-control" id="individual_rin" placeholder="Your RIN number" name="rin" required>
+                            <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="rin" required>
                         </div>
                         <div class="form-group">
                             <label for="individual_email">E-mail:</label>
-                            <input type="email" class="form-control" id="individual_email" placeholder="Your e-mail address" name="email" required>
+                            <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="email" required>
                         </div>
 <!--                        <p>E-mail:</p><input type="text" name="email">-->
                         <div class="form-group">
                             <label for="individual_age">Age:</label>
-                            <input type="number" class="form-control" id="individual_age" placeholder="Your age" name="age" required>
+                            <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="age" required>
                         </div>
                         <div class="form-group">
                             <label for="individual_year">Year in College:</label>
@@ -118,15 +139,15 @@ include_once("api/checkLogin.php"); ?>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="budget">What is your budget for housing per month?</label>
-                            <input type="number" class="form-control" id="budget" placeholder="Your budget in dollars" name="budget" required>
+                            <input type="number" class="form-control" id="budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget in dollars" name="budget" required>
                         </div>
                         <div class="form-group">
                             <label for="individual_number">How many people are you looking for?</label>
-                            <input type="text" class="form-control" id="individual_number" placeholder="Number of people" name="number" required>
+                            <input type="text" class="form-control" id="individual_number" value="<?php echo $profile["number"]; ?>" placeholder="Number of people" name="number" required>
                         </div>
                         <div class="form-group">
                             <label for="individual_gender">Gender:</label>
-                            <input type="text" class="form-control" id="individual_gender" placeholder="Your gender" name="gender" required>
+                            <input type="text" class="form-control" id="individual_gender" value="<?php echo $profile["gender"]; ?>" placeholder="Your gender" name="gender" required>
                         </div>
                         <div class="form-group">
                             <label for="individual_coed">Co-Ed Housing?</label>
@@ -137,65 +158,7 @@ include_once("api/checkLogin.php"); ?>
                         </div>
                     </div>
                 </div>
-                <div id="secondG">
-                    <h2>Group Information</h2>
-                    <div class="col-sm-6 border-right-container">
-                        <div class="form-group">
-                            <label for="group_name">Name:</label>
-                            <input type="text" class="form-control" id="group_name" placeholder="Your name" name="gname"  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="group-rin">Rin:</label>
-                            <input type="text" class="form-control" id="group_rin" placeholder="Your Rin" name="grin"  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="group_email">E-mail:</label>
-                            <input type="email" class="form-control" id="group_email" placeholder="Your e-mail address" name="gmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="group_age">Age:</label>
-                            <input type="number" class="form-control" id="group_age" placeholder="Your age" name="gage" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="groupmember1">RCS:</label>
-                            <input type="number" class="form-control" id="groupmember1" placeholder="RCS ID" name="groupmember1" required>
-                            <div style="text-align: center; padding: 2%;"><div id="toadd"></div><button type="button" id="addbutton" name="addbutton" style="background-color:white; margin: 2%; color: black;" class="btn btn-primary">Add Another Member</button></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="group_year">Year in College:</label>
-                            <select id="group_year" class="form-control" name="gyear">
-                                <div style="color:black">
-                                    <option value="gfreshman">Freshman</option>
-                                    <option value="gsophomore">Sophomore</option>
-                                    <option value="gjunior">Junior</option>
-                                    <option value="gsenior">Senior</option>
-                                    <option value="ggraduate">Graduate Student</option>
-                                </div>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="group_budge">What is your budget for housing per month?</label>
-                            <input type="number" class="form-control" id="group_budge" placeholder="Your budget in dollars" name="gbudget" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="group_number">How many people are you looking for?</label>
-                            <input type="text" class="form-control" id="group_number" placeholder="Number of people" name="gnumber" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="group_gender">Gender:</label>
-                            <input type="text" class="form-control" id="group_gender" placeholder="Your gender" name="ggender" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="group_coed">Co-Ed Housing?</label>
-                            <select id="group_coed" class="form-control" name="gcoed">
-                                <option value="gcoedno">No</option>
-                                <option value="gcoedyes">Yes</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                
                 <div id="life">
                     <h2>Life Style</h2>
                     <div class = "col-sm-4">
@@ -207,7 +170,7 @@ include_once("api/checkLogin.php"); ?>
                     <div class = "col-sm-4">
                         <div class="form-group">
                             <label for="individual_number">Any allergies?</label>
-                            <input type="text" class="form-control" id="allergies" placeholder="Ex: Peanuts, Dogs..." name="allergies" required>
+                            <input type="text" class="form-control" id="allergies" value="<?php echo $answers["q1"]; ?>" placeholder="Ex: Peanuts, Dogs..." name="allergies" required>
                         </div>
                         <label for="smoke">Smoke?</label>
                         <select id="smoke" class="form-control" name="smoke">      <div style="color:black">
