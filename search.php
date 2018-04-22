@@ -28,6 +28,7 @@ $count = sizeof($allResults);
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
         <script type="text/javascript" src = "search.js"></script>
+        <script type="text/javascript" src = "algo.js"></script>
     </head>
     <body id = "bodyforNav">
         <div class="page-wrap">
