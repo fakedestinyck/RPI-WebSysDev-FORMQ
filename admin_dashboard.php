@@ -1,6 +1,23 @@
 <?php
-define( 'check', true );
-include_once("api/checkLogin.php"); ?>
+  // define( 'check', true );
+  // include_once("api/checkLogin.php"); 
+  // include "api/Library_Mongo.php";
+  // use Library_Mongo as Mongo;
+  // $dbo = new Mongo();
+  // $s = $dbo->selectSIS('users','user',array('reported'=>'yes'));
+  // if (isset($_GET['b'])){
+  //   $b = $_GET['b'];
+  //   $dbo->updateSIS('users',array('role'=>3),'user',array('rcsid'=>$b));
+  //   $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$b));
+  //   header("Refresh:0; url=admin_dashboard.php");
+  // }
+  // if (isset($_GET['i'])){
+  //   $i = $_GET['i'];
+  //   $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$i));
+    // header("Refresh:0; url=admin_dashboard.php");
+
+  // }
+?>
 <!doctype html>
 <html>
 <head>
@@ -21,7 +38,7 @@ include_once("api/checkLogin.php"); ?>
 <body id="admin-body">
 
 	<div class ="page-wrap">
-        <?php include_once('navbar.php'); ?>
+      <?php include_once('navbar.php'); ?>
 <!--    <nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">-->
 <!--		  <div class = "container-fluid">-->
 <!--        <div class = "navbar-header">-->
@@ -51,95 +68,23 @@ include_once("api/checkLogin.php"); ?>
 			  <span id ="symbol" class="pull-right glyphicon glyphicon-plus hidden-lg hidden-md hidden-sm" style="top: 5px;"></span>
 		  </div>
 		  <ul id ="reported_content" class="list-group hidden-xs">
-  			<li id ="0" class="list-group-item clearfix" style="word-wrap: break-word;">
-      	  <span>User 1</span>
-      	  <span class="pull-right">
-      	    <button class="btn btn-warning blackText" onclick="ignoreClick('0')">Ignore</button>
-      	    <button class="btn btn-danger blackText" onclick="banClick('0')">Ban</button>
-      	  </span>
-      	  <div class="text-muted" style="font-size: 15px;">Number of reports: X</div>
-  			</li>
-  			<li id="1" class="list-group-item">
-  				User 2
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText" onclick="ignoreClick('1')">Ignore</button>
-      				<button class="btn btn-danger blackText" onclick="banClick('1')">Ban</button>
-      			</span>
-  			</li>
-  			<li id="2" class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText" onclick="ignoreClick('2')">Ignore</button>
-      				<button class="btn btn-danger blackText" onclick="banClick('2')">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText" onclick="ignoreClick('3')">Ignore</button>
-      				<button class="btn btn-danger blackText" onclick="banClick('3')">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
-   			<li class="list-group-item">
-  				User 3
-  				<span class="pull-right">
-      				<button class="btn btn-warning blackText">Ignore</button>
-      				<button class="btn btn-danger blackText">Ban</button>
-      			</span>
-  			</li>
 		  </ul>
 	  </div>
 	</div>
-    <?php include_once('footer.php')?>
+    <?php include_once('footer.php') ?>
+<!--   <script type="text/javascript">
+  $(document).ready(function() {
+    var user_data = <?php echo json_encode($s); ?>;
+    console.log(user_data);
+    var i = 0;
+    
+    for (var i = 0; i < user_data.length; i++) {
+      var html = "<li id =\""+user_data[i]['user']['rcsid']+"\" class='list-group-item clearfix' style='word-wrap: break-word;'><span>"+user_data[i]['user']['name']+"</span><span class='pull-right'><button class='btn btn-warning blackText' onclick='ignoreClick(\""+user_data[i]['user']['rcsid']+"\")'>Ignore</button><button class='btn btn-danger blackText' onclick='banClick(\""+user_data[i]['user']['rcsid']+"\")'>Ban</button></span></li>";
+      $("#reported_content").append(html);
+    }
+  });  
+  </script> -->
 	<script type="text/javascript" src = "admin_dashboard.js"></script>
+
 </body>
 </html>

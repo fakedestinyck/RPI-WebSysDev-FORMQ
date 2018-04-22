@@ -18,6 +18,7 @@
                     if ($page_user_or_admin == "admin") {
                         if ($user_role == 1) {
                             echo '<li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>';
+                            echo '<li><a href = "profile.php"><span>Individual Profile</span></a></li>';
                         } else {
                             header("Location: user_dashboard.php");
                         }
@@ -28,7 +29,7 @@
                         } elseif ($user_role == 2) {
                             echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
                         }
-                        echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
+//                        echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
                     }
                 ?>
                 <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>

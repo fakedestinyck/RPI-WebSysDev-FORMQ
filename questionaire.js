@@ -1,14 +1,4 @@
   $(document).ready(function(){
-      membercounter = 1;
-      //ALLOWS USERS TO ENTER MORE RCS ids FOR ADDITIONAL TEAM MEMBERS
-      $("#addbutton").click(function(){
-          if (membercounter<=9){
-              membercounter +=1;
-              $("#toadd").append('<div id="groupmembers"><p>Enter another: </p><input type="text" name="groupmember' + membercounter + '" id ="groupmember' + membercounter + '"><div style="text-align: center;">');
-          } else {
-              alert("You can't make a group larger than 10! Sorry")
-          }
-      });
       //FOR ALL OF THE SLIDERS
       //reference https://www.w3schools.com/howto/howto_js_rangeslider.asp
       //scheduleslider
@@ -51,7 +41,7 @@
       slider5.oninput = function() {
           output5.innerHTML = this.value;
       }
-      //gamerslider
+      //musicslider
       var slider6 = document.getElementById("music");
       var output6 = document.getElementById("musicoutput");
       output6.innerHTML = slider6.value; // Display the default slider value
@@ -69,41 +59,113 @@
       }
       //to make different parts of questionnaire hide/show
       var counter=0;
+      var isGroupOrNot = false;
+      var onOrOffCamput = 'off campus';
       $("#secondI").hide();
-      $("#secondG").hide();
       $("#life").hide();
       $("#pref").hide();
       $("#campus").hide();
-      jQuery.validator.setDefaults({
-          debug: true,
-          success: "valid"
-      });
       function next(){
           if (counter==3){
+              var content;
+              var column;
+              if (isGroupOrNot) {
+                  var name = $("#group_name").val();
+                  var rin = $("#group_rin").val();
+                  var email = $("#group_email").val();
+                  var age = $("#group_age").val();
+                  var year = $("#group_year").val();
+                  var budget = $("#group_budget").val();
+                  var number = $("#group_number").val();
+                  var gender = $("#group_gender").val();
+                  var coed = $("#group_coed").val();
+                  content = [
+                      {
+                          "name" : name,
+                          "rin" : rin,
+                          "email" : email,
+                          "in_group" : "yes"
+                      },
+                      {
+                          "age" : age,
+                          "year" : year,
+                          "budget" : budget,
+                          "number" : number,
+                          "gender" : gender,
+                          "coed" : coed
+                      },
+                      {
+                          "desired_num" : number
+                      }
+                  ];
+                  column = ["user","profile","group"];
+              } else {
+                  var name = $("#individual_name").val();
+                  var rin = $("#individual_rin").val();
+                  var email = $("#individual_email").val();
+                  var age = $("#individual_age").val();
+                  var year = $("#individual_year").val();
+                  var budget = $("#individual_budget").val();
+                  var number = $("#individual_number").val();
+                  var gender = $("#individual_gender").val();
+                  var coed = $("#individual_coed").val();
+                  content = [
+                      {
+                          "name" : name,
+                          "rin" : rin,
+                          "email" : email
+                      },
+                      {
+                          "age" : age,
+                          "year" : year,
+                          "budget" : budget,
+                          "number" : number,
+                          "gender" : gender,
+                          "coed" : coed
+                      }
+                  ];
+                  column = ["user","profile"];
 
-              var form = $("#myform");
-              form.validate();
-              if (form.valid()) {
-                  console.log("valid!");
               }
-              var name = $("#individual_name").val();
-              var rin = $("#individual_rin").val();
-              var email = $("#individual_email").val();
-              var age = $("#individual_age").val();
-              var year = $("#individual_year").val();
-              var content = {
-                  "name" : name,
-                  "rin" : rin,
-                  "email" : email,
-                  "age" : age,
-                  "year" : year
-              };
-              sendToDatabase(JSON.stringify(content),"user");
+              console.log(JSON.stringify(column));
+              sendToDatabase(JSON.stringify(content),JSON.stringify(column));
+
           }
           if (counter==6){
               // alert("6");
               // $("#life").hide();
               // $("#pref").show();
+              var allergies = $('#allergies').val();
+              var smoke = $('#smoke').val();
+              var bedtime = $('#bedtime').val();
+              var mornnight = $('#mornnight').val();
+              var pets = $('#pets').val();
+              var content = [
+                  {
+                      "q1" : allergies,
+                      "q2" : smoke,
+                      "q3" : bedtime,
+                      "q4" : mornnight,
+                      "q5" : pets,
+                      "q6" : slider1.value,
+                      "q7" : slider2.value,
+                      "q8" : slider3.value,
+                      "q9" : slider7.value,
+                      "q10" : slider4.value,
+                      "q11" : slider5.value,
+                      "q12" : slider6.value
+                  },
+                  {
+                      "on/off campus" : onOrOffCamput
+                  }
+              ];
+              var column;
+              if (isGroupOrNot) {
+                  column = ["group_answers","profile"];
+              } else {
+                  column = ["answers","profile"];
+              }
+              sendToDatabase(JSON.stringify(content),JSON.stringify(column));
           }
           if (counter==7){
               alert("7");
@@ -111,9 +173,10 @@
           }
           if (counter==2){
               $("#first").hide();
-              $("#secondG").show();
+              $("#secondI").show();
               $("#button").show();
               counter+=1;
+              isGroupOrNot = true;
           } else if (counter==1){
               $("#first").hide();
               $("#singlephoto").hide();
@@ -131,6 +194,7 @@
               $("#button").show();
               $("#life").show();
               counter=6;
+              onOrOffCamput = 'on campus';
           }
           // counter+=1;
       }
@@ -153,6 +217,7 @@
       });
       $("#button").click(function(){
           next();
+          return false;
       });
 
       // post result to database
@@ -162,22 +227,24 @@
               type: 'post',
               data: {'action': 'store', 'column': column, 'content': content},
               success: function(data) {
-                  var responseData = data.content;
-                  console.log(responseData);
-                  if (counter==3){
-                      $("#campus").show();
-                      $("#secondI").hide();
-                      $("#secondG").hide();
-                      $("#button").hide();
-                  }
-                  if (counter==6){
-                      alert("6");
-                      $("#life").hide();
-                      $("#pref").show();
-                  }
-                  if (counter==7){
-                      alert("7");
-                      location.href = 'profile.php';
+                  var responseStatus = data.status;
+                  if (responseStatus !== 0) {
+                      alert(data.error+".\nPlease try again later.");
+                  } else {
+                      console.log('submit success');
+                      if (counter===3){
+                          $("#campus").show();
+                          $("#secondI").hide();
+                          $("#button").hide();
+                      }
+                      if (counter===6){
+                          // $("#life").hide();
+                          // $("#pref").show();
+                          counter++;
+                      }
+                      if (counter===7){
+                          location.href = 'profile.php';
+                      }
                   }
               },
               error: function(xhr, desc, err) {

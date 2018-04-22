@@ -1,25 +1,41 @@
 <?php
 define( 'check', true );
-include_once("api/checkLogin.php"); ?>
+include_once("api/checkLogin.php");
+define('profile', true);
+$column = ["user","profile","group","answers"];
+$columnData = [array("user"=>array()),array("profile"=>array()),array("group"=>array()),array("answers"=>array())];
+$user = array();
+$profile = array();
+$group = array();
+$answers = array();
+$group_answers = array();
+if ($_SESSION['rcsid'] != null) {
+    include_once("api/readdata.php");
+    $user = $columnData[0]["user"];
+    $profile = $columnData[1]["profile"];
+    $answers = $columnData[3]["answers"];
+    $group = $columnData[2]["group"];
+    $group_answers = $group["group_answers"];
+    if ($user["in_group"] == "yes") {
+        $answers = $group_answers;
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>FORM QS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="header.css">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="questionaire.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <style>
-        .page-header{
-            color: white;
-            margin-top: 0px;
-            background-color:darkred;
-            font-family: 'Playfair Display', serif;
-        }
         .slidercontainer{
             width: 25%;
         }
@@ -31,10 +47,10 @@ include_once("api/checkLogin.php"); ?>
         }
         body{
             color: black;
-            background: url('resources/pics/dorm.jpg') no-repeat;
-            background-size:cover;
+            background: url('resources/pics/desk.jpeg');
+            background-size:150% 150%;
             font-family: 'Fira Sans', sans-serif;
-            font-size: 200%;
+            font-size: 150%;
         }
         h1{
             color: white;
@@ -42,18 +58,27 @@ include_once("api/checkLogin.php"); ?>
             font-size: 600%;
         }
         h2{
-            color: darkred;
+            color: white;
             font-size: 400%;
             text-align: center;
             font-family: 'Playfair Display', serif;
             margin: 2%;
         }
-        .container{
+        .container:not(#footcontainer){
             margin-bottom:5%;
             padding: 3%;
-            background:rgba(255,255,255,0.8);
+            background-color: darkred;
             margin-top: 50px;
-            border: 10px solid rgba(139, 0, 0, 0.8);
+            color: white;
+            border: 10px solid white;
+        }
+        @media (min-width: 768px) {
+            .border-left-container {
+                border-left: 5px solid white;
+            }
+            .border-right-container {
+                border-right: 5px solid white;
+            }
         }
         /* Floats need to be cleared so the container will wrap correctly. */
         div.clear {
@@ -61,92 +86,79 @@ include_once("api/checkLogin.php"); ?>
         }
     </style>
   </head>
-  <body >
-      <h1 class="page-header">Form Q</h1>
-        <div class="container"><div class="row">
+  <body  id = "bodyforNav">
+  <div class="page-wrap">
+    <?php include_once('navbar.php'); ?>
+        <div class="container">
             <form action="questionaire.php" method="post" id="myform">
-                <div id="first">
-                    <h2>Grouping</h2>
-                    <p>Click on an image below to choose group or single</p>
-                    <div class="col-sm-6"><img src="resources/pics/group.png" id="groupphoto" style="width:400px;height:400px;"></div>
-                    <div class="col-sm-6"><img src="resources/pics/single.png" id="singlephoto" style="width:170px;height:300px;"></div>
+                <div id="first" class="row">
+                    <h2 class="title">Grouping</h2>
+                    <p class="center">Click on group if you want to be in a group</p>
+                    <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">Group</h2><img src="resources/pics/groupimg.jpg" id="groupphoto" class="img-thumbnail" class="center" style="width:450px;height:300px;"></div></div>
+                    <div class="col-sm-6"><h2 style = "font-size: 140%;">Individual</h2><div class="center"><img src="resources/pics/individualimg.jpeg" id="singlephoto" class="img-thumbnail" style="width:450px;height:300px;"></div></div>
                 </div>
                 <div id="campus">
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
-                    <div class="col-sm-6"><div class="center"><img src="resources/pics/Barton.jpg" id="ocampus" class="center" style="width:300px;height:300px;"></div></div>
-                    <div class="col-sm-6"><div class="center"><img src="resources/pics/troy.JPG" id="offcampus" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">On Campus</h2><img src="resources/pics/Barton.jpg" id="ocampus" class="img-thumbnail" class="center" style="width:300px;height:300px;"></div></div>
+                    <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">Off Campus</h2><img src="resources/pics/troy.JPG" id="offcampus" class="img-thumbnail" style="width:300px;height:300px;"></div></div>
                 </div>
-                <div id="secondI">
+                <div id="secondI" class="row">
                     <h2>Individual Information</h2>
-                    <div class="col-sm-6" style="padding-left: 20%;">
+                    <div class="col-sm-6 border-right-container">
                         <div class="form-group">
                             <label for="individual_name">Name:</label>
-                            <input type="text" class="form-control" id="individual_name" placeholder="Your name" name="name" required>
+                            <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="name" required>
                         </div>
 <!--                        <p>Name:</p><input type="text" name="name">-->
                         <div class="form-group">
                             <label for="individual_rin">RIN:</label>
-                            <input type="number" class="form-control" id="individual_rin" placeholder="Your RIN number" name="rin" required>
+                            <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="rin" required>
                         </div>
                         <div class="form-group">
                             <label for="individual_email">E-mail:</label>
-                            <input type="email" class="form-control" id="individual_email" placeholder="Your e-mail address" name="email" required>
+                            <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="email" required>
                         </div>
 <!--                        <p>E-mail:</p><input type="text" name="email">-->
                         <div class="form-group">
                             <label for="individual_age">Age:</label>
-                            <input type="number" class="form-control" id="individual_age" placeholder="Your age" name="age" required>
+                            <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="age" required>
                         </div>
-<!--                        <p>Age:</p><input type="text" name="age">-->
                         <div class="form-group">
                             <label for="individual_year">Year in College:</label>
-                            <select id="individual_year" class="form-control" name="year">
+                            <select id="individual_year" class="form-control" name="year"><div style="color:black">
                                 <option value="freshman">Freshman</option>
                                 <option value="sophomore">Sophomore</option>
                                 <option value="junior">Junior</option>
                                 <option value="senior">Senior</option>
                                 <option value="graduate">Graduate Student</option>
+                                </div>
                             </select>
                         </div>
-<!--                        <p>Year in College:</p><select name="year">-->
-<!--                    </select>-->
                     </div>
-                    <div class="col-sm-6"style="border-left: 5px solid darkred;padding-left: 13%">
-                        <p>What is your budget for housing per month?</p><input type="text" name="budget">
-                        <p>How many people are you looking for?</p><input type="text" name="number">
-                        <p>Gender: </p><input type="text" name="gender">
-                        <p>Co-Ed Housing?</p><select name="coed">
-                          <option value="coedyes">Yes</option>
-                          <option value="coedno">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="secondG">
-                    <h2>Group Information</h2>
-                    <div class="col-sm-6"style="padding-left: 20%; border-right: 5px solid darkred;">
-                        <p>Name: </p><input type="text" name="gname">
-                        <p>E-mail: </p><input type="text" name="gemail">
-                        <div id="groupmembers"><p>Enter individual RCSIDs of group members: </p><input type="text" name="groupmember1" id ="groupmember1"><div style="text-align: center; padding: 2%;"><div id="toadd"></div><button type="button" id="addbutton" name="addbutton" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Add Another Member</button></div></div>
-                        <p>Age: </p><input type="text" name="gage">
-                    </div>
-                    <div class="col-sm-6" style="padding-left: 13%">
-                        <p>Year in College: </p><select name="gyear">
-                          <option value="gfresman">Freshman</option>
-                          <option value="gsophmore">Sophmore</option>
-                          <option value="gjunior">Junior</option>
-                          <option value="gsenior">Senior</option>
-                          <option value="ggraduate">Graduate Student</option>
-                        </select>
-                        <p>What is your budget for housing per month? </p><input type="text" name="gbudget">
-                        <p>How many people are you looking for? </p><input type="text" name="gnumber">
-                        <p>Gender: </p><input type="text" name="ggender">
-                        <p>Co-Ed Housing? </p><select name="gcoed">
-                          <option value="gcoedyes">Yes</option>
-                          <option value="gcoedno">No</option>
-                        </select>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="budget">What is your budget for housing per month?</label>
+                            <input type="number" class="form-control" id="budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget in dollars" name="budget" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_number">How many people are you looking for?</label>
+                            <input type="text" class="form-control" id="individual_number" value="<?php echo $profile["number"]; ?>" placeholder="Number of people" name="number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_gender">Gender:</label>
+                            <input type="text" class="form-control" id="individual_gender" value="<?php echo $profile["gender"]; ?>" placeholder="Your gender" name="gender" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_coed">Co-Ed Housing?</label>
+                            <select id="individual_coed" class="form-control" name="coed">
+                                <option value="coedno">No</option>
+                                <option value="coedyes">Yes</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+                
                 <div id="life">
                     <h2>Life Style</h2>
                     <div class = "col-sm-4">
@@ -156,35 +168,47 @@ include_once("api/checkLogin.php"); ?>
                         <p class="center">On a scale from 1-5 rank:</p>
                     </div>
                     <div class = "col-sm-4">
-                        <p>Any allergies? </p><input type="text" name="allergies">
-                        <p>Do you smoke? </p><select name="smoke">
-                          <option value="smokeyes">Yes</option>
-                          <option value="smokeno">No</option>
+                        <div class="form-group">
+                            <label for="individual_number">Any allergies?</label>
+                            <input type="text" class="form-control" id="allergies" value="<?php echo $answers["q1"]; ?>" placeholder="Ex: Peanuts, Dogs..." name="allergies" required>
+                        </div>
+                        <label for="smoke">Smoke?</label>
+                        <select id="smoke" class="form-control" name="smoke">      <div style="color:black">
+                                <option value="smokeyes">Yes</option>
+                                <option value="smokeno">No</option>
+                            </div>
                         </select>
-                        <p>What is the latest time you go to bed? </p> <select name="bedtime">
-                          <option value="bedtime8">8 PM</option>
-                          <option value="bedtime9">9 PM</option>
-                          <option value="bedtime10">10 PM</option>
-                          <option value="bedtime11">11 PM</option>
-                          <option value="bedtime12">12 AM</option>
-                          <option value="bedtime1">1 AM</option>
-                          <option value="bedtime2">2 AM</option>
-                          <option value="bedtime3">3 AM</option>
-                          <option value="bedtime4">4 AM</option>
-                          <option value="bedtime5">5 AM</option>
-                          <option value="bedtime6">6 AM</option>
+                        <label for="bedtime">What is the latest bedtime?</label>
+                        <select id="bedtime" class="form-control" name="bedtime">      <div style="color:black">
+                                <option value="bedtime8">8 PM</option>
+                                <option value="bedtime9">9 PM</option>
+                                <option value="bedtime10">10 PM</option>
+                                <option value="bedtime11">11 PM</option>
+                                <option value="bedtime12">12 AM</option>
+                                <option value="bedtime1">1 AM</option>
+                                <option value="bedtime2">2 AM</option>
+                                <option value="bedtime3">3 AM</option>
+                                <option value="bedtime4">4 AM</option>
+                                <option value="bedtime5">5 AM</option>
+                                <option value="bedtime6">6 AM</option>
+                            </div>
                         </select>
-                        <p>Morning Person or Night Person </p><select name="mornnight">
-                          <option value="morning">Morning</option>
-                          <option value="night">Night</option>
-                          <option value="mornightnopref">No Preference</option>
+                        <label for="mornnight">What is the latest bedtime?</label>
+                        <select id="mornnight" class="form-control" name="mornnight">      <div style="color:black">
+                                <option value="Morning">Morning</option>
+                                <option value="Night">Night</option>
+                                <option value="No Preference">No Preference</option>
+                            </div>
                         </select>
-                        <p>Pets? </p><select name="mornnight">
-                          <option value="petsyes">Yes</option>
-                          <option value="petsno">No</option>
+                        <label for="pets">Do you want pets?</label>
+                        <select id="pets" class="form-control" name="pets">
+                            <div style="color:black">
+                                <option value="petsyes">Yes</option>
+                                <option value="petsno">No</option>
+                            </div>
                         </select>
                     </div>
-                    <div class = "col-sm-4" style="border-left: 5px solid darkred;border-right: 5px solid darkred;">
+                    <div class = "col-sm-4 border-left-container border-right-container">
                         <p>How strict are you with sticking to a schedule?</p><div class="slidercontainer">
                             <input type="range" min="1" max="5" value="1" class="slider" id="schedule" name="schedule">
                             <div id="scheduleoutput">Output: </div>
@@ -218,12 +242,16 @@ include_once("api/checkLogin.php"); ?>
                         </div>
                     </div>
                     <div class="clear"></div>
-                    <p style="padding: 2%;">Here is a section where you get to customize your response.  Feel free to create a more personal description of yourself, your group or your ideal roommate(s).  Think about this part like a "description" (i.e. 3 girls searching for a 4th female roommate who doesn't smoke...).</p>
-                   <input type="text" id="notes" name="notes" style="padding: 1%; height: 250px; width: 100%;">
+                    <div class="form-group">
+                        <p style="text-align: left; margin: 1%;">Here is a section where you get to customize your response.  Feel free to create a more personal description of yourself, your group or your ideal roommate(s).  Think about this part like a "description" (i.e. 3 girls searching for a 4th female roommate who doesn't smoke...).</p>
+                        <textarea class="form-control" name="notes" rows="8" cols="168"></textarea>
+                    </div>
                 </div>                
-            </form></div>
-            <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:darkred; margin: 2%;" class="btn btn-primary">Submit</button></div>
+            </form>
+            <div style="text-align: center; padding: 2%;"><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Submit</button></div>
             <div class="clear"></div>
       </div>
+  </div>
+    <?php include_once('footer.php') ?>
   </body>
 </html>

@@ -1,0 +1,49 @@
+body{
+    color: black;
+    background-color: #E0E0E0; 
+    background-size:cover;
+    font-family: 'Fira Sans', sans-serif;
+}
+h1{
+    color: white;
+    text-align: center;
+    font-size: 600%;
+}
+h2{
+    color: black;
+    font-size: 400%;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    margin: 2%;
+}
+/* Floats need to be cleared so the container will wrap correctly. */
+div.clear {
+    clear:both;
+}
+input[type=text]{
+    float: right; 
+}
+#expand {
+    font-size: 50%;
+}
+.pointer {
+    cursor: pointer;
+}
+
+.glyphicon {
+    top: 4px;
+}
+
+.row{
+    margin-top:40px;
+    padding: 0 10px;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.panel-heading span {
+    margin-top: -20px;
+    font-size: 15px;
+}

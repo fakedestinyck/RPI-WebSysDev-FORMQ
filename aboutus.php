@@ -4,6 +4,7 @@
     <title>FORM QS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="header.css">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
@@ -12,12 +13,12 @@
       .page-header{
         color: white;
         margin-top: 0px;
-        background-color:darkred;
+        background-color:darkgray;
         font-family: 'Playfair Display', serif;
       }
       body{
           color: black;
-          background-color:darkred;
+          background-color:darkgray;
           font-family: 'Fira Sans', sans-serif;
           font-size: 200%;
       }
@@ -47,9 +48,9 @@
       }    
     </style>
   </head>
-  <body >
+  <body id = "bodyforNav">
   <?php include_once('navbar.php'); ?>
-      <h1 class="page-header">Form Q</h1>
+  <div class="container">
       <h2>About FORM Q</h2>
       <div class="format">
           <div class="row"> We want to help Rensselaer students find roommates.  As members of both Rensselaer's community, we recognize there are challenges for students looking to find roommates. We look to alleviate these problems.  After students sign in with Rensselaer's very own Central Authentication System, our website helps students with the following:
@@ -87,9 +88,11 @@
               <div class="col-md-2">
                   <img src="resources/aboutus/andrea2.jpg" class="img-circle" style="max-width: 100%;    height: auto;">
                   <p style="font-size:60%">Andrea O’Brisky is a junior ITWS major. She has experience working for IT Research and Development at Johnson and Johnson, as a Learning Assistant at RPI and as a Website Manager for the Women's Mentoring Program. She served as a Front End Developer for this project.
- </p> 
+                  </p> 
               </div>
           </div>
       </div>
+    </div>
+    <?php include_once('footer.php') ?>
   </body>
 </html>
