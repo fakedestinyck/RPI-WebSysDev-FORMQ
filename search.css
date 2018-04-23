@@ -1,8 +1,8 @@
 body{
-    color: black;
-    background-color: #E0E0E0; 
-    background-size:cover;
-    font-family: 'Fira Sans', sans-serif;
+  background: url('resources/pics/desk.jpeg');
+  background-size:150% 150%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 150%;
 }
 h1{
     color: white;

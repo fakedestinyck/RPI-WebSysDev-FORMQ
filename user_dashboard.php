@@ -164,6 +164,7 @@ if (isset($_GET['y'])){
     </style>
 </head>
 <body id="admin-body">
+	 <?php include_once('navbar.php'); ?>
 	<div class = "page-wrap">
 	<div class="container" id="adduser" style="background-color: white;">
         <div class="row" style="width: 100%; margin: 0 auto;">

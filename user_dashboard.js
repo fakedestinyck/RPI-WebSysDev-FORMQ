@@ -14,18 +14,14 @@ $(document).ready(function(){
 		$(this).parent().parent().slideUp("slow", function(){
 		});
 	});
-  membercounter = 1;
-  var rcsid = [];
+$(document).ready(function(){
+	$(".close").click(function(){
+		$(this).parent().parent().slideUp("slow", function(){
+		});
+	});
   //ALLOWS USERS TO ENTER MORE RCS ids FOR ADDITIONAL TEAM MEMBERS
-  $("#addbutton").click(function(){
-       rcsid.push($("#groupmember"+membercounter).val());
-       addRequest($("#groupmember"+membercounter).val());
-      if (membercounter<=9){
-          membercounter +=1;
-          $("#addrcs").append('<input type="text" class="form-control" id="groupmember'+membercounter+'" placeholder="RCS ID" name="groupmember'+membercounter+'" required>');
-      } else {
-          alert("You can't make a group larger than 10! Sorry")
-      }
+  $("#addbutton").click(function(){;
+      addRequest($("#groupmember1").val());
       console.log(rcsid);
   })
 });
