@@ -18,7 +18,7 @@ $content = json_decode($_POST['content'],true);
 $column = json_decode($_POST['column'],true);
 $rcsid = $_SESSION["rcsid"];
 
-$id = $dbo->selectSIS('users','user',array('rcsid'=>'qianh'),array('_id'))[0]['_id'];
+$id = $dbo->selectSIS('users','user',array('rcsid'=>$rcsid),array('_id'))[0]['_id'];
 
 $err = false;
 $success = true;

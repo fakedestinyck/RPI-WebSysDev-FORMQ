@@ -4,7 +4,7 @@ include_once("api/checkLogin.php");
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
-$s = $dbo->selectSIS('users','user',array('user_id'=>701));
+$s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION["rcsid"]));
 $a = $dbo->selectSIS('users','user',array('requested_group'=>$s[0]['group']['group_id']));
 if (isset($_GET['r'])){
 	$r = $_GET['r'];

@@ -67,18 +67,19 @@
       $("#campus").hide();
       function next(){
           if (counter==3){
+              alert(isGroupOrNot);
               var content;
               var column;
+              var name = $("#individual_name").val();
+              var rin = $("#individual_rin").val();
+              var email = $("#individual_email").val();
+              var age = $("#individual_age").val();
+              var year = $("#individual_year").val();
+              var budget = $("#individual_budget").val();
+              var number = $("#individual_number").val();
+              var gender = $("#individual_gender").val();
+              var coed = $("#individual_coed").val();
               if (isGroupOrNot) {
-                  var name = $("#group_name").val();
-                  var rin = $("#group_rin").val();
-                  var email = $("#group_email").val();
-                  var age = $("#group_age").val();
-                  var year = $("#group_year").val();
-                  var budget = $("#group_budget").val();
-                  var number = $("#group_number").val();
-                  var gender = $("#group_gender").val();
-                  var coed = $("#group_coed").val();
                   content = [
                       {
                           "name" : name,
@@ -100,15 +101,6 @@
                   ];
                   column = ["user","profile","group"];
               } else {
-                  var name = $("#individual_name").val();
-                  var rin = $("#individual_rin").val();
-                  var email = $("#individual_email").val();
-                  var age = $("#individual_age").val();
-                  var year = $("#individual_year").val();
-                  var budget = $("#individual_budget").val();
-                  var number = $("#individual_number").val();
-                  var gender = $("#individual_gender").val();
-                  var coed = $("#individual_coed").val();
                   content = [
                       {
                           "name" : name,
@@ -176,7 +168,6 @@
               $("#secondI").show();
               $("#button").show();
               counter+=1;
-              isGroupOrNot = true;
           } else if (counter==1){
               $("#first").hide();
               $("#singlephoto").hide();
@@ -201,6 +192,7 @@
       $("#button").hide();
       $("#groupphoto").click(function(){
           counter=2;
+          isGroupOrNot = true;
           next();
       });
       $("#singlephoto").click(function(){

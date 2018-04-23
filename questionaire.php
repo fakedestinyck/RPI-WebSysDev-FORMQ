@@ -158,7 +158,7 @@ if ($_SESSION['rcsid'] != null) {
                         </div>
                     </div>
                 </div>
-                
+
                 <div id="life">
                     <h2>Life Style</h2>
                     <div class = "col-sm-4">

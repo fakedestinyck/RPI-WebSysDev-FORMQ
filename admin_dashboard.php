@@ -1,22 +1,22 @@
 <?php
-  // define( 'check', true );
-  // include_once("api/checkLogin.php"); 
-  // include "api/Library_Mongo.php";
-  // use Library_Mongo as Mongo;
-  // $dbo = new Mongo();
-  // $s = $dbo->selectSIS('users','user',array('reported'=>'yes'));
-  // if (isset($_GET['b'])){
-  //   $b = $_GET['b'];
-  //   $dbo->updateSIS('users',array('role'=>3),'user',array('rcsid'=>$b));
-  //   $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$b));
-  //   header("Refresh:0; url=admin_dashboard.php");
-  // }
-  // if (isset($_GET['i'])){
-  //   $i = $_GET['i'];
-  //   $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$i));
-    // header("Refresh:0; url=admin_dashboard.php");
+   define( 'check', true );
+   include_once("api/checkLogin.php");
+   include "api/Library_Mongo.php";
+   use Library_Mongo as Mongo;
+   $dbo = new Mongo();
+   $s = $dbo->selectSIS('users','user',array('reported'=>'yes'));
+   if (isset($_GET['b'])){
+     $b = $_GET['b'];
+     $dbo->updateSIS('users',array('role'=>3),'user',array('rcsid'=>$b));
+     $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$b));
+     header("Refresh:0; url=admin_dashboard.php");
+   }
+   if (isset($_GET['i'])){
+     $i = $_GET['i'];
+     $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$i));
+     header("Refresh:0; url=admin_dashboard.php");
 
-  // }
+   }
 ?>
 <!doctype html>
 <html>
@@ -72,18 +72,18 @@
 	  </div>
 	</div>
     <?php include_once('footer.php') ?>
-<!--   <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function() {
     var user_data = <?php echo json_encode($s); ?>;
     console.log(user_data);
     var i = 0;
-    
+
     for (var i = 0; i < user_data.length; i++) {
       var html = "<li id =\""+user_data[i]['user']['rcsid']+"\" class='list-group-item clearfix' style='word-wrap: break-word;'><span>"+user_data[i]['user']['name']+"</span><span class='pull-right'><button class='btn btn-warning blackText' onclick='ignoreClick(\""+user_data[i]['user']['rcsid']+"\")'>Ignore</button><button class='btn btn-danger blackText' onclick='banClick(\""+user_data[i]['user']['rcsid']+"\")'>Ban</button></span></li>";
       $("#reported_content").append(html);
     }
-  });  
-  </script> -->
+  });
+  </script>
 	<script type="text/javascript" src = "admin_dashboard.js"></script>
 
 </body>
