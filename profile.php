@@ -18,6 +18,7 @@ if ($_SESSION['rcsid'] != null) {
     <title>FORM QS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="header.css">
     <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="profile.js"></script>
@@ -55,7 +56,7 @@ if ($_SESSION['rcsid'] != null) {
             font-family: 'Playfair Display', serif;
             margin: 2%;
         }
-        .container{
+        .container:not(#footcontainer){
             margin-bottom:5%;
             padding: 3%;
             background-color: darkred;
@@ -63,7 +64,6 @@ if ($_SESSION['rcsid'] != null) {
             color: white;
             border: 10px solid white;
         }
-
       @media (min-width: 768px) {
           .border-right-container {
               border-right: 5px solid white;
@@ -75,13 +75,13 @@ if ($_SESSION['rcsid'] != null) {
         }
     </style>
   </head>
-  <body>
+  <body id = "bodyforNav">
+  <div class = "page-wrap">
   <?php include_once('navbar.php'); ?>
-       <h1 class="page-header">Form Q</h1>
         <div class="container"><div class="row">
             <h2 class="col-md-12">Individual Profile</h2>
             <form action="questionaire.php">
-                <div style="text-align: center; ">If you would like to change your individual answers, click this button to go to our questionnaire.<button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary">Questionnaire</button></div>
+                <div style="text-align: center; ">If you would like to change your individual answers, click this button to go to our questionnaire.<button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" type="submit">Questionnaire</button></div>
             </form>
             <form action="profile.php" method="post" id="profile">
                 <div class="col-sm-6 border-right-container">
@@ -136,7 +136,7 @@ if ($_SESSION['rcsid'] != null) {
             </form>
       </div>
         </div>
+    </div>
       <?php include_once('footer.php') ?>
   </body>
 </html>
-

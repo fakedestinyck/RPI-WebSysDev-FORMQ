@@ -17,7 +17,6 @@
                     $page_user_or_admin = substr($uri,strrpos($uri, '/')+1,-14);
                     if ($page_user_or_admin == "admin") {
                         if ($user_role == 1) {
-                            echo '<li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>';
                             echo '<li><a href = "profile.php"><span>Individual Profile</span></a></li>';
                         } else {
                             header("Location: user_dashboard.php");
@@ -33,6 +32,7 @@
                     }
                 ?>
                 <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
+                <li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>
             </ul>
         </div>
     </div>
