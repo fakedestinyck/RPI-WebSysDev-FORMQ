@@ -223,20 +223,23 @@ if (isset($_GET['d'])){
             <div id = "requests" class = "panel-group">
              <!-- These will be built by the backend. Javascript will fill in the values. MAke sure that the requests have ids of request 1, 2, etc and then the buttons in them are specific to hiding those requests.-->
             </div>
-            <div class="addition" style="background-color:darkred;">
+		<div class="addition" style="background-color:darkred;">
                     <div class="form-group">
-                        <div class="col-sm-3">Add Group Member by RCSID</div>
+                        <div class="col-sm-3">
+                            <p>Add Group Member by RCSID</p>
+                            <p>Remove Group Member by RCSID</p>
+                        </div>
                         <div class="col-sm-2">
                             <input type="text" class="form-control" id="groupmember1" placeholder="RCS ID" name="groupmember1" required>
-                            <div id="addrcs"></div>
+                            <input type="text" class="form-control" id="groupmemberr" placeholder="RCS ID" name="groupmemberr" required>
                         </div>
                     </div>
                     <div class="col-sm-2">
                     </div>
-                <div class="col-sm-2">
-                    <div style="text-align: center;"><button type="button" id="addbutton" name="addbutton" style="background-color:white;  color: black;" class="btn btn-primary">Add Another Member</button></div>
+                    <div class="col-sm-2">
+                        <div style="text-align: center;"><button type="button" id="addbutton" name="addbutton" style="background-color:white;  color: black; width: 100%" class="btn btn-primary">Add</button></div>
+                        <div style="text-align: center;"><button type="button" id="removebutton" name="removebutton" style="background-color:white;  color: black; width: 100%;" class="btn btn-primary">Remove</button></div>
                 </div>
-                <div id="toadd"></div>
             </div>
             </div>
         </div>
