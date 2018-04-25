@@ -24,4 +24,9 @@ $(document).ready(function(){
       addRequest($("#groupmember1").val());
       console.log(rcsid);
   })
+  //ALLOWS USERS TO REMOVE RCSIDS
+  $("#removebutton").click(function(){;
+      removeRequest($("#groupmemberr").val());
+      console.log("#groupmemberr");
+  })
 });
