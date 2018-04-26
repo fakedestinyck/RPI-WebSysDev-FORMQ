@@ -242,7 +242,6 @@ if (isset($_GET['d'])){
             </div>
        </div>
 	   <?php include_once('footer.php') ?>
-       <div class="clear"></div>
        <!-- JavaScript for php -->
 	   <script type="text/javascript">
 	        $(document).ready(function(){
