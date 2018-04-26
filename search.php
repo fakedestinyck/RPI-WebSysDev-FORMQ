@@ -40,7 +40,7 @@ $count = sizeof($allResults);
                         <div class = "panel-heading" style="font-size: 200%;">
                             <p>Please check qualities that are not important to you when searching for a roommate.  Multiple can be checked.</p>
                             <input type="checkbox" class="form-check-input" id="smoking">
-                            <label class="form-check-label" for="smoking">Smoking</label><br>
+                            <label class="form-check-label" for="smoking">Smoking Frequency</label><br>
                             <input type="checkbox" class="form-check-input" id="bedtime">
                             <label class="form-check-label" for="bedtime">Bedtime</label><br>
                             <input type="checkbox" class="form-check-input" id="mornnight">
@@ -52,15 +52,15 @@ $count = sizeof($allResults);
                             <input type="checkbox" class="form-check-input" id="mess">
                             <label class="form-check-label" for="mess">Mess</label><br>
                             <input type="checkbox" class="form-check-input" id="drink">
-                            <label class="form-check-label" for="drink">Drink Alcohol</label><br>
+                            <label class="form-check-label" for="drink">Drinking Frequency</label><br>
                             <input type="checkbox" class="form-check-input" id="party">
-                            <label class="form-check-label" for="party">Partying</label><br>
+                            <label class="form-check-label" for="party">Party Frequency</label><br>
                             <input type="checkbox" class="form-check-input" id="tv">
-                            <label class="form-check-label" for="tv">TV</label><br>
+                            <label class="form-check-label" for="tv">TV Time</label><br>
                             <input type="checkbox" class="form-check-input" id="gamer">
-                            <label class="form-check-label" for="gamer">Gaming</label><br>
+                            <label class="form-check-label" for="gamer">Gaming Frequency</label><br>
                             <input type="checkbox" class="form-check-input" id="music">
-                            <label class="form-check-label" for="music">Sensitivity to Loud Music</label><br>
+                            <label class="form-check-label" for="music">Music Sensitivity</label><br>
                             <div style="text-align: center;"><button id="button" style="background-color:white; color: black;" class="btn btn-primary"  onclick="window.location='match.php';">Submit</button></div>
                         </div>
                     </div>
