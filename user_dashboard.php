@@ -28,8 +28,8 @@ if (isset($_GET['y'])){
         $smtpemailto = $u[0]['user']['email'];
         $contentFromOthers = "You have been added to a group on FORM Q by user ".$_SESSION["rcsid"].'</h2>';
         $contentFromOthers .= '<h2>';
-        $contentFromOthers .= '<a type="button" href="api/leaveorspam.php?action=leave&rcsid='.$y.'&token='.crypt($u[0]['user']['email'],$y).'">Leave the group</a>';
-        $contentFromOthers .= '<a type="button" href="api/leaveorspam.php?action=spam&rcsid='.$y.'&token='.crypt($u[0]['user']['email'],$y).'">Report spam and leave the group</a></h2>';
+        $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=leave&rcsid='.$y.'&token='.crypt($u[0]['user']['email'],$y).'">Leave the group</a>';
+        $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=spam&rcsid='.$y.'&token='.crypt($u[0]['user']['email'],$y).'">Report spam and leave the group</a></h2>';
         include_once("api/sendmail.php");
 //	 	header("Refresh:0; url=user_dashboard.php");
  	};
