@@ -40,27 +40,27 @@ $count = sizeof($allResults);
                         <div class = "panel-heading" style="font-size: 200%;">
                             <p>Please check qualities that are not important to you when searching for a roommate.  Multiple can be checked.</p>
                             <input type="checkbox" class="form-check-input" id="smoking">
-                            <label class="form-check-label" for="smoking">Smoking</label>
+                            <label class="form-check-label" for="smoking">Smoking</label><br>
                             <input type="checkbox" class="form-check-input" id="bedtime">
-                            <label class="form-check-label" for="bedtime">Bedtime</label>
+                            <label class="form-check-label" for="bedtime">Bedtime</label><br>
                             <input type="checkbox" class="form-check-input" id="mornnight">
-                            <label class="form-check-label" for="mornnight">Morning or Night Person/People</label>
+                            <label class="form-check-label" for="mornnight">Morning or Night Person/People</label><br>
                             <input type="checkbox" class="form-check-input" id="pets">
-                            <label class="form-check-label" for="pets">Pets</label>
+                            <label class="form-check-label" for="pets">Pets</label><br>
                             <input type="checkbox" class="form-check-input" id="schedule">
-                            <label class="form-check-label" for="schedule">Schedule</label>
+                            <label class="form-check-label" for="schedule">Schedule</label><br>
                             <input type="checkbox" class="form-check-input" id="mess">
-                            <label class="form-check-label" for="mess">Mess</label>
+                            <label class="form-check-label" for="mess">Mess</label><br>
                             <input type="checkbox" class="form-check-input" id="drink">
-                            <label class="form-check-label" for="drink">Drink Alcohol</label>
+                            <label class="form-check-label" for="drink">Drink Alcohol</label><br>
                             <input type="checkbox" class="form-check-input" id="party">
-                            <label class="form-check-label" for="party">Partying</label>
+                            <label class="form-check-label" for="party">Partying</label><br>
                             <input type="checkbox" class="form-check-input" id="tv">
-                            <label class="form-check-label" for="tv">TV</label>
+                            <label class="form-check-label" for="tv">TV</label><br>
                             <input type="checkbox" class="form-check-input" id="gamer">
-                            <label class="form-check-label" for="gamer">Gaming</label>
+                            <label class="form-check-label" for="gamer">Gaming</label><br>
                             <input type="checkbox" class="form-check-input" id="music">
-                            <label class="form-check-label" for="music">Sensitivity to Loud Music</label>
+                            <label class="form-check-label" for="music">Sensitivity to Loud Music</label><br>
                             <div style="text-align: center;"><button id="button" style="background-color:white; color: black;" class="btn btn-primary"  onclick="window.location='match.php';">Submit</button></div>
                         </div>
                     </div>
