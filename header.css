@@ -9,10 +9,10 @@ html, body {
   font-size: 200%;
 }
 #header{
-        color: white;
-        /* background-color:darkred; */
-        font-family: 'Oswald', sans-serif;
-        font-size: 130%;
+  color: white;
+  /* background-color:darkred; */
+  font-family: 'Oswald', sans-serif;
+  font-size: 130%;
 }
 #admin_nav {
   background-color: darkred;

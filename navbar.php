@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="font-family: 'Oswald'">
             <ul class = "nav navbar-nav navbar-right">
                 <?php if (strlen($user_name) > 0) {
                     echo '<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, <?php echo $user_name;?> </a></li>';
