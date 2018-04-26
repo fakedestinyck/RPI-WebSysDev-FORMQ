@@ -120,7 +120,7 @@
 
               }
               console.log(JSON.stringify(column));
-              sendToDatabase(JSON.stringify(content),JSON.stringify(column));
+              sendToDatabase(JSON.stringify(content),JSON.stringify(column),email);
 
           }
           if (counter==6){
@@ -157,7 +157,7 @@
               } else {
                   column = ["answers","profile"];
               }
-              sendToDatabase(JSON.stringify(content),JSON.stringify(column));
+              sendToDatabase(JSON.stringify(content),JSON.stringify(column),"");
           }
           if (counter==7){
               alert("7");
@@ -213,11 +213,11 @@
       });
 
       // post result to database
-      function sendToDatabase(content, column) {
+      function sendToDatabase(content, column, email) {
           $.ajax({
               url: 'api/storedata.php',
               type: 'post',
-              data: {'action': 'store', 'column': column, 'content': content},
+              data: {'action': 'store', 'column': column, 'content': content, 'email': email},
               success: function(data) {
                   var responseStatus = data.status;
                   if (responseStatus !== 0) {

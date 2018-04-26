@@ -17,6 +17,7 @@ $action = $_POST['action'];
 $content = json_decode($_POST['content'],true);
 $column = json_decode($_POST['column'],true);
 $rcsid = $_SESSION["rcsid"];
+$email = $_POST["email"];
 
 $id = $dbo->selectSIS('users','user',array('rcsid'=>$rcsid),array('_id'))[0]['_id'];
 
@@ -37,6 +38,11 @@ if ($action == "store") {
         }
     }
 }
+
+
+$smtpemailto = $email;
+$contentFromOthers = "Congratulations! You are successfully signed up!";
+include_once "sendmail.php";
 
 $response = array();
 if ($err) {
