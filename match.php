@@ -79,6 +79,7 @@ $count = sizeof($allResults);
                             $pets = false;
                         }
                     }
+                    $emailaddress = $single_array[0];
 //                    $answers = $group['group_answers'];
                     echo '<div id="requests" class="panel panel-primary panel-group">';
                     echo '<div class = "panel panel-danger" id = "request1">';
