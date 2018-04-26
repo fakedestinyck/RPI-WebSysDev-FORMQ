@@ -36,7 +36,7 @@
                     // } elseif ($user_role == 2) {
                     //     echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
                     // }
-                echo '<li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>';
+                // echo '<li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>';
 //                  echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
                 }
                 ?>
