@@ -8,14 +8,20 @@ if (!isset($_GET['action'])) {
 }
 
 $action = $_GET['action'];
+$self = $_GET['self'];
 $d = $_GET['rcsid'];
-$dd = $dbo->selectSIS('users','user',array('rcsid'=>$d));
+$dd = $dbo->selectSIS('users','user',array('rcsid'=>$self));
 $email = $dd[0]['user']['email'];
-$real_rcsid = $dd[0]['user']['rcsid'];
-if ($d == crypt($email,$real_rcsid)) {
+$token = $_GET['token'];
+var_dump($d);
+
+var_dump($self);
+var_dump($email);
+if ($token == crypt($email.$self,$d)) {
+    $s = $dbo->selectSIS('users','user',array('rcsid'=>$d));
     $du = $dd[0]['_id'];
     $dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']-1, "desired_num"=>$s[0]['group']['desired_num']+1),'group',array('group_id'=> $s[0]['group']['group_id']));
-    $dbo->updateSIS('users',array("group_id"=>0,"name"=>""),'group',array(),array('_id'=>$du));
+    $dbo->updateSIS('users',array("group_id"=>0,"name"=>""),'group',array('rcsid'=>$self));
     echo 'Successfully removed from group!';
     if ($action == 'spam') {
         $success = $dbo->updateSIS('users',array('reported'=>'yes'),'user',array('rcsid'=>$d));
