@@ -31,8 +31,8 @@
 //                        echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
                     }
                 ?>
-                <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
                 <li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>
+                <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>
             </ul>
         </div>
     </div>
