@@ -15,8 +15,8 @@
                     echo '<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, <?php echo $user_name;?> </a></li>';
                     if ($user_role == 1 || $user_role == 2) {
                         echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
-                        echo '<li><a href = "profile.php"><span>Individual Profile</span></a></li>';
-                        echo '<li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>';
+                        echo '<li><a href = "profile.php"><span>Profile</span></a></li>';
+                        echo '<li><a href = "user_dashboard.php"><span>Dashboard</span></a></li>';
                         if ($user_role == 1) {
                             echo '<li><a href = "admin_dashboard.php"><span>Admin Dashboard<!--  ONLY ADMINS --></span></a></li>';
                         }
