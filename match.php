@@ -9,6 +9,9 @@ $groupids = $_POST["groupid"];
 $group_ids = json_decode($groupids,true);
 $allResults = array();
 foreach ($group_ids as $group_idone) {
+    if ($group_idone == 0){
+        continue;
+    }
     $allResults[] = $dbo->selectSIS('users','group',array('group_id'=>$group_idone),array('group'),array())[0];
 }
 
