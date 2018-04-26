@@ -64,14 +64,13 @@ if (isset($_GET['d'])){
             font-family: 'Oswald', sans-serif;
             font-size: 200%;
             margin: 0 auto;
-            background-color: white;
+            background-color: #E0E0E0;
         }
         #admin-body {
             padding-top: 65px;
         }
         #header{
             color: white;
-            /* background-color:darkred; */
             font-family: 'Oswald', sans-serif;
             font-size: 130%
         }
@@ -183,34 +182,6 @@ if (isset($_GET['d'])){
     	   <div class="container" id="adduser">
                 <div class="row" style="width: 100%; margin: 0 auto;">
                     <div class="col-sm-3" style="background-color:darkred;">
-                        <div id = "modal_groups">
-                            <div id="Modal_group1" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Group Information</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Group Name: <?php echo $s[0]['group']['name'] ?></p>
-                                            <p>Current Number: <?php echo $s[0]['group']['current_num'] ?></p>
-                                            <p>Desired Number: <?php echo $s[0]['group']['desired_num'] ?></p>
-                                            <p>Members:</p>
-                                            <?php 
-                                                for($i=0;$i<count($g);$i++){
-                                                    echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
-                                                }
-                                            ?>   
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" id = "view_group1"><!-- The IDs here need to be different based on what number group it is for the user.-->Edit Group Info</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h1>Group Members</h1>
                     <!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
                         <div id = "group_list">
                             <button type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#Modal_group1"><?php echo $s[0]['group']['name'] ?></button>
@@ -248,17 +219,6 @@ if (isset($_GET['d'])){
                 </div>
             </div>
        </div>
-	   <?php include_once('footer.php') ?>
-       <!-- JavaScript for php -->
-	   <script type="text/javascript">
-	        $(document).ready(function(){
-                var request_data = <?php echo json_encode($a);?>;
-                for (var i = 0; i < request_data.length; i++) {
-				    var html = "<div class = \"panel panel-danger\" id = \"request"+i+"\"><div class = \"panel-heading\">"+ request_data[i]['user']['name'] + " requested to join.</div><div class = \"panel-body\"><div>Email: "+request_data[i]['user']['email']+"</div><button type = \"button\" id = \"adder\" class = \"close\" onclick='addRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to add this member to your group!</button><br><button type = \"button\" id = \"remover\" class = \"close\" onclick='removeRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to remove this request.</button></div></div>";
-				    $("#requests").append(html);
-                }
-		   })
-	    </script>
-        <script type="text/javascript" src = "user_dashboard.js"></script>
+       <?php include_once('footer.php') ?>
     </body>
 </html>
