@@ -4,7 +4,8 @@ include_once("api/checkLogin.php");
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
-$s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION["rcsid"]));
+//$s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION["rcsid"]));
+$s = $dbo->selectSIS('users','user',array('user_id'=>701));
 
 $a = $dbo->selectSIS('users','user',array('requested_group'=>$s[0]['group']['group_id']));
 $g = $dbo->selectSIS('users','group',array("group_id"=>$s[0]['group']['group_id']));
@@ -22,9 +23,12 @@ if (isset($_GET['y'])){
  	}
  	else {
         $z=$u[0]['_id'];
-	 	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name"=>$s[0]['group']['name']),'group', array(),array('_id'=>$z));
-	 	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
-		$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
+	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name"=>$s[0]['group']['name']),'group', array(),array('_id'=>$z));
+	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
+	$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
+        $smtpemailto = $u[0]['user']['email'];
+        $contentFromOthers = "You have been added to a group on FORM Q";
+        include_once("api/sendmail.php");
 	 	header("Refresh:0; url=user_dashboard.php");
  	};
 };
