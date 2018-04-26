@@ -173,13 +173,13 @@ if ($_SESSION['rcsid'] != null) {
                             <input type="text" class="form-control" id="allergies" value="<?php echo $answers["q1"]; ?>" placeholder="Ex: Peanuts, Dogs..." name="allergies" required>
                         </div>
                         <label for="smoke">Smoke?</label>
-                        <select id="smoke" class="form-control" name="smoke">      <div style="color:black">
+                        <select id="smoke" class="form-control" name="smoke" value="<?php echo 'smoke'.strtolower($answers["q2"]); ?>">      <div style="color:black">
                                 <option value="smokeyes">Yes</option>
                                 <option value="smokeno">No</option>
                             </div>
                         </select>
                         <label for="bedtime">What is the latest bedtime?</label>
-                        <select id="bedtime" class="form-control" name="bedtime">      <div style="color:black">
+                        <select id="bedtime" class="form-control" name="bedtime" value="<?php echo $answers["q3"]; ?>">      <div style="color:black">
                                 <option value="bedtime8">8 PM</option>
                                 <option value="bedtime9">9 PM</option>
                                 <option value="bedtime10">10 PM</option>
@@ -194,14 +194,14 @@ if ($_SESSION['rcsid'] != null) {
                             </div>
                         </select>
                         <label for="mornnight">What is the latest bedtime?</label>
-                        <select id="mornnight" class="form-control" name="mornnight">      <div style="color:black">
+                        <select id="mornnight" class="form-control" name="mornnight" value="<?php echo $answers["q4"]; ?>">      <div style="color:black">
                                 <option value="Morning">Morning</option>
                                 <option value="Night">Night</option>
                                 <option value="No Preference">No Preference</option>
                             </div>
                         </select>
                         <label for="pets">Do you want pets?</label>
-                        <select id="pets" class="form-control" name="pets">
+                        <select id="pets" class="form-control" name="pets" value="<?php echo $answers["q5"]; ?>">
                             <div style="color:black">
                                 <option value="petsyes">Yes</option>
                                 <option value="petsno">No</option>
@@ -210,34 +210,34 @@ if ($_SESSION['rcsid'] != null) {
                     </div>
                     <div class = "col-sm-4 border-left-container border-right-container">
                         <p>How strict are you with sticking to a schedule?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="schedule" name="schedule">
+                            <input type="range" min="1" max="5" value="<?php echo $answers["q6"]; ?>" class="slider" id="schedule" name="schedule">
                             <div id="scheduleoutput">Output: </div>
                         </div>
                         <p>How much can you handle a mess?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="mess" name = "mess">
+                            <input type="range" min="1" max="5" value="<?php echo $answers["q7"]; ?>" class="slider" id="mess" name = "mess">
                             <div id="messoutput">Output: </div>
                         </div>
                         <p>How much alcohol do you drink?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="drink" name="drink">
+                            <input type="range" min="1" max="5" value="<?php echo $answers["q8"]; ?>" class="slider" id="drink" name="drink">
                             <div id="drinkoutput">Output: </div>
                         </div>
                         <p>How much do you party?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="party" name="party">
+                            <input type="range" min="1" max="5" value="<?php echo $answers["q9"]; ?>" class="slider" id="party" name="party">
                             <div id="partyoutput">Output: </div>
                         </div>
                         <p></p>
                     </div>
                     <div class = "col-sm-4">
                         <p>How much TV do you watch?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="tv" name="tv">
+                            <input type="range" min="1" max="5" value="<?php echo $answers["q10"]; ?>" class="slider" id="tv" name="tv">
                             <div id="tvoutput">Output: </div>
                         </div>
                         <p>How much of a gamer are you?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="gamer" name="gamer">
+                            <input type="range" min="1" max="5" value="<?php echo $answers["q11"]; ?>" class="slider" id="gamer" name="gamer">
                             <div id="gameroutput">Output: </div>
                         </div>
                         <p>How sensitive are you to loud music?</p><div class="slidercontainer">
-                            <input type="range" min="1" max="5" value="1" class="slider" id="music" name="music">
+                            <input type="range" min="1" max="5" value="<?php echo $answers["q12"]; ?>" class="slider" id="music" name="music">
                             <div id="musicoutput">Output: </div>
                         </div>
                     </div>

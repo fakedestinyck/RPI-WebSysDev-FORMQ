@@ -270,6 +270,13 @@ function match_similar(my_group_id, pref){
                 best_matches.push(with_euclid[i][1]);
             }
             console.log("best matches=-=-=-=-=-=-=-=-=-=-=-=" + best_matches);
+            best_matches = [1];
+            var url = 'match.php';
+            var form2 = $('<form action="' + url + '" method="post">' +
+                '<input type="hidden" name="groupid" value="' + JSON.stringify(best_matches) + '" />' +
+                '</form>');
+            $('body').append(form2);
+            form2.submit();
             return best_matches;
         },
         error: function(xhr, desc, err) {

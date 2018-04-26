@@ -1,11 +1,12 @@
-`<?php
+<?php
 define( 'check', true );
 include_once("api/checkLogin.php");
 include_once("api/connect.php");
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
-$group_ids = array(2,3); // to be passed in
+$groupids = $_POST["groupid"];
+$group_ids = json_decode($groupids,true);
 $allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array(),array('_id'=>-1));
 $count = sizeof($allResults);
 ?>
@@ -26,7 +27,6 @@ $count = sizeof($allResults);
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
         <script type="text/javascript" src = "search.js"></script>
-        <script type="text/javascript" src = "algo.js"></script>
     </head>
     <body id = "bodyforNav">
         <div class="page-wrap">
@@ -39,20 +39,55 @@ $count = sizeof($allResults);
                     $group = $result['group'];
                     $people = $group['group_members'];
                     $single_array = array();
+                    $names = "";
+                    $years = "";
+                    $ages = "";
+                    $answers = [];
+                    $coed = true;
+                    $smoking = true;
+                    $pets = true;
                     foreach ($people as $single) {
-                        if ($single != null && $single != "" && $single == "null") {
-                            $single_array[] = $dbo->selectSIS("users","user",array("rcsid"=>$people));
+                        if ($single != null && $single != "" && $single != "null") {
+                            $single_array[] = $dbo->selectSIS("users","user",array("rcsid"=>$people))[0];
                         }
                     }
-                    $answers = $group['group_answers'];
+                    $numberpeople = count($single_array);
+                    foreach ($single_array as $single_row) {
+                        $names .= $single_row['user']['name']. " ";
+                        $years .= $single_row['profile']['year']. ", ";
+                        $ages .= $single_row['profile']['age']. ", ";
+                        $answers["q1"] .= $single_row['answers']['q1'] . ", ";
+//                        $answers["q2"] .= $single_row['answers']['q2'] . ", ";
+                        $answers["q3"] .= substr($single_row['answers']['q3'],7) . ", ";
+                        $answers["q4"] .= $single_row['answers']['q4'] . ", ";
+//                        $answers["q5"] .= $single_row['answers']['q5'] . ", ";
+                        $answers["q6"] = $single_row['answers']['q6']/$numberpeople;
+                        $answers["q7"] = $single_row['answers']['q7']/$numberpeople;
+                        $answers["q8"] = $single_row['answers']['q8']/$numberpeople;
+                        $answers["q9"] = $single_row['answers']['q9']/$numberpeople;
+                        $answers["q10"] = $single_row['answers']['q10']/$numberpeople;
+                        $answers["q11"] = $single_row['answers']['q11']/$numberpeople;
+                        $answers["q12"] = $single_row['answers']['q12']/$numberpeople;
+                        $answers["notes"] = $single_row['answers']['notes'] . "\n";
+                        if ($single_row['profile']['coed'] == 'coedno') {
+                            $coed = false;
+                        }
+                        if ($single_row['answers']['q2'] == 'smokeno') {
+                            $smoking = false;
+                        }
+                        if ($single_row['answers']['q5'] == 'petsno') {
+                            $pets = false;
+                        }
+                    }
+//                    $answers = $group['group_answers'];
                     echo '<div id="requests" class="panel panel-primary panel-group">';
                     echo '<div class = "panel panel-danger" id = "request1">';
                     echo '<div class="panel-heading">';
 
-                    echo '<h3 class="panel-title">'.$group['name'].'</h3>';
+//                    echo '<h3 class="panel-title">'.$group['name'].'</h3>';
 
 //                    echo '<h3 class="panel-title">'.$group['name'].'<span style="float: right;" class="hidden-xs">example@email.com</span></h3>';
-                    echo 'Group Members: user1, user2, user3 ';
+                    echo 'Group Members:'.$names;
 //
 //                    echo 'Group Members: user1, user2, user3 <span style="float: right;" class="hidden-xs">Price: $100000</span>';
 //                    echo '<span class ="hidden-lg hidden-md hidden-sm"><br>Price: $1000000</span><br>';
@@ -63,15 +98,15 @@ $count = sizeof($allResults);
 
                     echo '<div class = "panel-body" style="display: none"><div class="row">';
                     echo '<div class="col-sm-6">';
-                    echo '<p><b>Ages: </b><span>20, 21, 22, 23, 24, 25, 26, 27, 28</p>';
-                    echo '<p><b>Years in College: </b><span>1, 2, 3, 4</span></p>';
+                    echo '<p><b>Ages: </b><span>'.$ages.'</p>';
+                    echo '<p><b>Years in College: </b><span>'.$years.'</span></p>';
                     echo '<p><b># Roommates Looking For: </b><span>'.$group['desired_num'].'</span></p>';
-                    echo '<p><b>Co-ed: </b><span>Nein</span></p>';
+                    echo '<p><b>Co-ed: </b><span>'.($coed == false ? 'No' : 'Yes').'</span></p>';
                     echo '<p><b>Allergies: </b><span>'.$answers['q1'].'</span></p>';
-                    echo '<p><b>Smoking: </b><span>'.($answers['q2'] == 'smokeno' ? 'No' : 'Yes').'</span></p>';
-                    echo '<p><b>Bedtime: </b><span>'.substr($answers['q3'],7).'</span></p>';
+                    echo '<p><b>Smoking: </b><span>'.($smoking == false ? 'No' : 'Yes').'</span></p>';
+                    echo '<p><b>Bedtime: </b><span>'.$answers['q3'].'</span></p>';
                     echo '<p><b>Morning/Night Person(s): </b><span>'.$answers['q4'].'</span></p>';
-                    echo '<p><b>Pets: </b><span>'.($answers['q5'] == 'petsno' ? 'No' : 'Yes').'</span></p>';
+                    echo '<p><b>Pets: </b><span>'.($pets == false ? 'No' : 'Yes').'</span></p>';
                     echo '</div>';
                     echo '<div class="col-sm-6">';
                     echo '<p><b>On a scale from 1-5 (5 being the most strict)</b></p>';
@@ -84,14 +119,15 @@ $count = sizeof($allResults);
                     echo '<p>Sensitvity to Music: <span class="pull-right">'.$answers['q12'].'</span></p>';
                     echo '</div><br></div>';
                     echo '<div class="form-group">';
-                    echo '<h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;"><b>Notes</b></h2>notes Notes NOtes NOTes NOTEs NOTES';
+                    echo '<h2 style="color:black; font-size: 150%; text-align: left; margin: 1%;"><b>Notes</b></h2>'.$answers["notes"];
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
+//                    echo '<div style="text-align: center; "><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" id="requests">Request to Join Group</button></div>';
                 }
                 ?>
-                <div style="text-align: center; "><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" id="requests">Request to Join Group</button></div>
+
             </div>
         </div>
         <?php include_once('footer.php') ?>
