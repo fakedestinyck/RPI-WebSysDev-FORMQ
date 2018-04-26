@@ -7,6 +7,7 @@ use Library_Mongo as Mongo;
 $dbo = new Mongo();
 $groupids = $_POST["groupid"];
 $group_ids = json_decode($groupids,true);
+var_dump($group_ids);
 $allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array(),array('_id'=>-1));
 $count = sizeof($allResults);
 ?>
@@ -48,7 +49,7 @@ $count = sizeof($allResults);
                     $pets = true;
                     foreach ($people as $single) {
                         if ($single != null && $single != "" && $single != "null") {
-                            $single_array[] = $dbo->selectSIS("users","user",array("rcsid"=>$people))[0];
+                            $single_array[] = $dbo->selectSIS("users","user",array("rcsid"=>$single))[0];
                         }
                     }
                     $numberpeople = count($single_array);
@@ -68,7 +69,7 @@ $count = sizeof($allResults);
                         $answers["q10"] = $single_row['answers']['q10']/$numberpeople;
                         $answers["q11"] = $single_row['answers']['q11']/$numberpeople;
                         $answers["q12"] = $single_row['answers']['q12']/$numberpeople;
-                        $answers["notes"] = $single_row['answers']['notes'] . "\n";
+                        $answers["notes"] .= $single_row['answers']['notes'] . "<br>";
                         if ($single_row['profile']['coed'] == 'coedno') {
                             $coed = false;
                         }
@@ -79,7 +80,7 @@ $count = sizeof($allResults);
                             $pets = false;
                         }
                     }
-                    $emailaddress = $single_array[0];
+                    $emailaddress = $single_array[0]["user"]["email"];
 //                    $answers = $group['group_answers'];
                     echo '<div id="requests" class="panel panel-primary panel-group">';
                     echo '<div class = "panel panel-danger" id = "request1">';
@@ -99,6 +100,7 @@ $count = sizeof($allResults);
 
                     echo '<div class = "panel-body" style="display: none"><div class="row">';
                     echo '<div class="col-sm-6">';
+                    echo '<p><b>Email: </b><span>'.$emailaddress.'</p>';
                     echo '<p><b>Ages: </b><span>'.$ages.'</p>';
                     echo '<p><b>Years in College: </b><span>'.$years.'</span></p>';
                     echo '<p><b># Roommates Looking For: </b><span>'.$group['desired_num'].'</span></p>';

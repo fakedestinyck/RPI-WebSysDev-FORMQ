@@ -34,6 +34,13 @@ input[type=text]{
     top: 4px;
 }
 
+.glyphicon-chevron-down {
+    top: 27px;
+}
+.glyphicon-chevron-up {
+    top: 27px;
+}
+
 .row{
     margin-top:40px;
     padding: 0 10px;
