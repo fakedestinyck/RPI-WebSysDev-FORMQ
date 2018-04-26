@@ -54,11 +54,10 @@ if (isset($_GET['d'])){
             height: 100%;
         }
         body{
-            background: url('resources/pics/desk.jpeg');
-            background-size:150% 150%;
             font-family: 'Oswald', sans-serif;
             font-size: 200%;
             margin: 0 auto;
+            background-color: white;
         }
         #admin-body {
             padding-top: 65px;
