@@ -181,12 +181,12 @@ if (isset($_GET['d'])){
         }
     </style>
 </head>
-<body id="bodyforNav">
+<body id="bodyforNav"style="background: url('resources/pics/desk.jpeg');">
 	 <?php include_once('navbar.php'); ?>
 	<div class = "page-wrap">
 	<div class="container" id="adduser">
-        <div class="row" style="width: 100%; margin: 0 auto;">
-            <div class="col-sm-3" style="background-color:darkred;">
+        <div class="row" style="width: 100%; margin: 0 auto; background-color: #E0E0E0">
+            <div class="col-sm-3" style="background-color:darkred;color:white">
                 <div id = "modal_groups">
                     <div id="Modal_group1" class="modal fade" role="dialog">
                         <div class="modal-dialog">
