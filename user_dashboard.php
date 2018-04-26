@@ -174,8 +174,8 @@ if (isset($_GET['d'])){
     </style>
 </head>
 <body id="bodyforNav">
+    <div class = "page-wrap">
 	<?php include_once('navbar.php'); ?>
-    	<div class = "page-wrap">
     	   <div class="container" id="adduser">
                 <div class="row" style="width: 100%; margin: 0 auto;">
                     <div class="col-sm-3" style="background-color:darkred;">
