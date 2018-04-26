@@ -7,12 +7,8 @@ use Library_Mongo as Mongo;
 $dbo = new Mongo();
 $groupids = $_POST["groupid"];
 $group_ids = json_decode($groupids,true);
-$allResults = array();
-foreach ($group_ids as $group_idone) {
-    $allResults[] = $dbo->selectSIS('users','group',array('group_id'=>$group_idone),array('group'),array())[0];
-}
 
-//$allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array());
+$allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array());
 $count = sizeof($allResults);
 ?>
 <!DOCTYPE html>
