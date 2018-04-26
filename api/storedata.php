@@ -39,11 +39,6 @@ if ($action == "store") {
     }
 }
 
-
-$smtpemailto = $email;
-$contentFromOthers = "Congratulations! You are successfully signed up!";
-include_once("sendmail.php");
-
 $response = array();
 if ($err) {
     $response = [
@@ -58,3 +53,9 @@ if ($err) {
 }
 
 echo json_encode($response);
+
+if ($email != "") {
+    $smtpemailto = $email;
+    $contentFromOthers = "Congratulations! You are successfully signed up!";
+    include_once("sendmail.php");
+}

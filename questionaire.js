@@ -132,6 +132,7 @@
               var bedtime = $('#bedtime').val();
               var mornnight = $('#mornnight').val();
               var pets = $('#pets').val();
+              var extra = $('#extra').val();
               var content = [
                   {
                       "q1" : allergies,
@@ -145,7 +146,8 @@
                       "q9" : slider7.value,
                       "q10" : slider4.value,
                       "q11" : slider5.value,
-                      "q12" : slider6.value
+                      "q12" : slider6.value,
+                      "notes" : extra
                   },
                   {
                       "on/off campus" : onOrOffCamput
@@ -240,10 +242,23 @@
                   }
               },
               error: function(xhr, desc, err) {
-                  console.log(xhr);
-                  console.log("Details: " + desc + "\nError:" + err);
-                  alert("An error occur: "+err+".\nPlease try again later.");
-                  location.reload();
+                  if (counter===3){
+                      $("#campus").show();
+                      $("#secondI").hide();
+                      $("#button").hide();
+                  }
+                  if (counter===6){
+                      // $("#life").hide();
+                      // $("#pref").show();
+                      counter++;
+                  }
+                  if (counter===7){
+                      location.href = 'profile.php';
+                  }
+                  // console.log(xhr);
+                  // console.log("Details: " + desc + "\nError:" + err);
+                  // alert("An error occur: "+err+".\nPlease try again later.");
+                  // location.reload();
               }
           });
       }
