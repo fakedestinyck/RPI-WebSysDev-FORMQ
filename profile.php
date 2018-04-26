@@ -87,23 +87,23 @@ if ($_SESSION['rcsid'] != null) {
                 <div class="col-sm-6 border-right-container">
                     <div class="form-group">
                         <label for="individual_name">Name:</label>
-                        <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="gname" required>
+                        <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="gname" disabled>
                     </div>
                     <div class="form-group">
                         <label for="individual_rin">RIN:</label>
-                        <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="grin" required="required">
+                        <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="grin" disabled>
                     </div>
                     <div class="form-group">
                         <label for="individual_email">E-mail:</label>
-                        <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="gemail" required>
+                        <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="gemail" disabled>
                     </div>
                     <div class="form-group">
                         <label for="individual_age">Age:</label>
-                        <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="gage" required>
+                        <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="gage" disabled>
                     </div>
                     <div class="form-group">
                         <label for="individual_year">Year in College:</label>
-                        <select id="individual_year" class="form-control" name="gyear">
+                        <select id="individual_year" class="form-control" name="gyear" disabled>
                             <option value="freshman">Freshman</option>
                             <option value="sophomore">Sophomore</option>
                             <option value="junior">Junior</option>
@@ -115,19 +115,19 @@ if ($_SESSION['rcsid'] != null) {
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="individual_budget">What is your budget for housing per month?</label>
-                        <input type="text" class="form-control" id="individual_budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget" name="gbudget" required>
+                        <input type="text" class="form-control" id="individual_budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget" name="gbudget" disabled>
                     </div>
                     <div class="form-group">
                         <label for="individual_number">How many people are you looking for?</label>
-                        <input type="text" class="form-control" id="individual_number" value="<?php echo $profile["number"]; ?>" placeholder="Number of people" name="gnumber" required>
+                        <input type="text" class="form-control" id="individual_number" value="<?php echo $profile["number"]; ?>" placeholder="Number of people" name="gnumber" disabled>
                     </div>
                     <div class="form-group">
                         <label for="individual_gender">Gender:</label>
-                        <input type="text" class="form-control" id="individual_gender" value="<?php echo $profile["gender"]; ?>" placeholder="Your gender" name="ggender" required>
+                        <input type="text" class="form-control" id="individual_gender" value="<?php echo $profile["gender"]; ?>" placeholder="Your gender" name="ggender" disabled>
                     </div>
                     <div class="form-group">
                         <label for="individual_coed">Co-Ed Housing?</label>
-                        <select id="individual_coed" class="form-control" name="gcoed">
+                        <select id="individual_coed" class="form-control" name="gcoed" disabled>
                             <option value="coedno">No</option>
                             <option value="coedyes">Yes</option>
                         </select>

@@ -128,7 +128,7 @@ if ($user["name"] != "" && !(isset($_GET["edit"]) && $_GET["edit"] == "true")) {
                         </div>
                         <div class="form-group">
                             <label for="individual_year">Year in College:</label>
-                            <select id="individual_year" class="form-control" name="year"><div style="color:black">
+                            <select id="individual_year" class="form-control" name="year" value="<?php echo ucfirst($profile["year"]); ?>"><div style="color:black">
                                 <option value="freshman">Freshman</option>
                                 <option value="sophomore">Sophomore</option>
                                 <option value="junior">Junior</option>
@@ -153,7 +153,7 @@ if ($user["name"] != "" && !(isset($_GET["edit"]) && $_GET["edit"] == "true")) {
                         </div>
                         <div class="form-group">
                             <label for="individual_coed">Co-Ed Housing?</label>
-                            <select id="individual_coed" class="form-control" name="coed">
+                            <select id="individual_coed" class="form-control" name="coed"  value="<?php echo $profile["coed"]; ?>">
                                 <option value="coedno">No</option>
                                 <option value="coedyes">Yes</option>
                             </select>
