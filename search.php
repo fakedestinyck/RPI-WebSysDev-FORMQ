@@ -34,7 +34,7 @@ $count = sizeof($allResults);
         <div class="page-wrap">
             <?php include_once('navbar.php'); ?>
             <div class = "container" id = "requests_container">
-                <h2 id = "req_heading">Matches</h2>
+                <h2 id = "req_heading" style="color:white">Search</h2>
                 <div id = "requests" class = "panel-group">
                     <div class = "panel panel-danger" id = "request1">
                         <div class = "panel-heading" style="font-size: 200%;">
