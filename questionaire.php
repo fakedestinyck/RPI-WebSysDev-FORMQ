@@ -158,7 +158,7 @@ if ($_SESSION['rcsid'] != null) {
                         </div>
                     </div>
                 </div>
-                
+
                 <div id="life">
                     <h2>Life Style</h2>
                     <div class = "col-sm-4">
@@ -244,7 +244,7 @@ if ($_SESSION['rcsid'] != null) {
                     <div class="clear"></div>
                     <div class="form-group">
                         <p style="text-align: left; margin: 1%;">Here is a section where you get to customize your response.  Feel free to create a more personal description of yourself, your group or your ideal roommate(s).  Think about this part like a "description" (i.e. 3 girls searching for a 4th female roommate who doesn't smoke...).</p>
-                        <textarea class="form-control" name="notes" rows="8" cols="168"></textarea>
+                        <textarea class="form-control" name="notes" rows="8" cols="168" id="extra"><?php echo $answers["notes"]; ?></textarea>
                     </div>
                 </div>                
             </form>

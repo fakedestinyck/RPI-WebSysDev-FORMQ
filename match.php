@@ -1,11 +1,11 @@
-<?php
+`<?php
 define( 'check', true );
 include_once("api/checkLogin.php");
 include_once("api/connect.php");
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
-$group_ids = array(1); // to be passed in
+$group_ids = array(2,3); // to be passed in
 $allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array(),array('_id'=>-1));
 $count = sizeof($allResults);
 ?>
@@ -37,6 +37,13 @@ $count = sizeof($allResults);
                 $num = 1;
                 foreach ($allResults as $result) {
                     $group = $result['group'];
+                    $people = $group['group_members'];
+                    $single_array = array();
+                    foreach ($people as $single) {
+                        if ($single != null && $single != "" && $single == "null") {
+                            $single_array[] = $dbo->selectSIS("users","user",array("rcsid"=>$people));
+                        }
+                    }
                     $answers = $group['group_answers'];
                     echo '<div id="requests" class="panel panel-primary panel-group">';
                     echo '<div class = "panel panel-danger" id = "request1">';
