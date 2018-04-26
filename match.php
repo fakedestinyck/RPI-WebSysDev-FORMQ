@@ -7,8 +7,8 @@ use Library_Mongo as Mongo;
 $dbo = new Mongo();
 $groupids = $_POST["groupid"];
 $group_ids = json_decode($groupids,true);
-var_dump($group_ids);
-$allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array(),array('_id'=>-1));
+
+$allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array());
 $count = sizeof($allResults);
 ?>
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ $count = sizeof($allResults);
                     }
                     $numberpeople = count($single_array);
                     foreach ($single_array as $single_row) {
-                        $names .= $single_row['user']['name']. " ";
+                        $names .= $single_row['user']['name']. ", ";
                         $years .= $single_row['profile']['year']. ", ";
                         $ages .= $single_row['profile']['age']. ", ";
                         $answers["q1"] .= $single_row['answers']['q1'] . ", ";

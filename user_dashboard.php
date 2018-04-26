@@ -26,9 +26,12 @@ if (isset($_GET['y'])){
 	 	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
 		$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
         $smtpemailto = $u[0]['user']['email'];
-        $contentFromOthers = "You have been added to a group on FORM Q";
+        $contentFromOthers = "You have been added to a group on FORM Q by user ".$_SESSION["rcsid"].'</h2>';
+        $contentFromOthers .= '<h2>';
+        $contentFromOthers .= '<a type="button" href="api/leaveorspam.php?action=leave&rcsid='.$y.'&token='.crypt($u[0]['user']['email'],$y).'">Leave the group</a>';
+        $contentFromOthers .= '<a type="button" href="api/leaveorspam.php?action=spam&rcsid='.$y.'&token='.crypt($u[0]['user']['email'],$y).'">Report spam and leave the group</a></h2>';
         include_once("api/sendmail.php");
-	 	header("Refresh:0; url=user_dashboard.php");
+//	 	header("Refresh:0; url=user_dashboard.php");
  	};
 };
 if (isset($_GET['d'])){

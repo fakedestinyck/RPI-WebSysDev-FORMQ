@@ -20,7 +20,9 @@ if ($_SESSION['rcsid'] != null) {
         $answers = $group_answers;
     }
 }
-
+if ($user["name"] != "" && !(isset($_GET["edit"]) && $_GET["edit"] == "true")) {
+    header("Location: user_dashboard.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
