@@ -9,12 +9,12 @@
      $b = $_GET['b'];
      $dbo->updateSIS('users',array('role'=>3),'user',array('rcsid'=>$b));
      $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$b));
-     header("Refresh:0; url=itws4500/admin_dashboard.php");
+     header("Refresh:0; url=admin_dashboard.php");
    }
    if (isset($_GET['i'])){
      $i = $_GET['i'];
      $dbo->updateSIS('users',array('reported'=>'no'),'user',array('rcsid'=>$i));
-     header("Refresh:0; url=itws4500/admin_dashboard.php");
+     header("Refresh:0; url=admin_dashboard.php");
 
    }
 ?>
