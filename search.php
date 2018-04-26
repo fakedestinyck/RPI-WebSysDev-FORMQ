@@ -60,8 +60,8 @@ $count = sizeof($allResults);
                             <input type="checkbox" class="form-check-input" id="gamer">
                             <label class="form-check-label" for="gamer">Gaming Frequency</label><br>
                             <input type="checkbox" class="form-check-input" id="music">
-                            <label class="form-check-label" for="music">Music Sensitivity</label><br>
-                            <div style="text-align: center;"><button id="button" style="background-color:white; color: black;" class="btn btn-primary"  onclick="window.location='match.php';">Submit</button></div>
+                            <label class="form-check-label" for="music">Sensitivity to Loud Music</label>
+                            <div style="text-align: center;"><button id="button" style="background-color:white; color: black;" class="btn btn-primary" >Submit</button></div>
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ $(document).ready(function(){
   });
   //ALLOWS USERS TO REMOVE RCSIDS
   $("#removebutton").click(function(){
-      removeRequest($("#groupmemberr").val());
+      removeMember($("#groupmemberr").val());
       console.log("#groupmemberr");
   });
 });

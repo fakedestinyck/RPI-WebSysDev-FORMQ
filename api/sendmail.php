@@ -19,11 +19,11 @@
 	$smtp->debug = false;
 	$state = $smtp->sendmail($smtpemailto, $smtpusermail, $mailtitle, $mailcontent, $mailtype);
 
-	echo "<div style='width:300px; margin:36px auto;'>";
+//	echo "<div style='width:300px; margin:36px auto;'>";
 	if($state==""){
-		echo "<script type='text/javascript'>alert('Sending email failed!')</script>";
+//		echo "<script type='text/javascript'>alert('Sending email failed!')</script>";
 		exit();
 	}
-	echo "<script type='text/javascript'>alert('Success!')</script>";
+//	echo "<script type='text/javascript'>alert('Success!')</script>";
 
 ?>
