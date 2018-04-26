@@ -269,6 +269,13 @@ function match_similar(my_group_id, pref){
             for(var i = 0; i < with_euclid.length; ++i){
                 best_matches.push(with_euclid[i][1]);
             }
+            var without_me = [];
+            for(var i = 0; i < with_euclid.length; ++i){
+                if(my_group_id != best_matches[i]){
+                    without_me.push(best_matches[i]);
+                }
+            }
+            best_matches = without_me;
             console.log("best matches=-=-=-=-=-=-=-=-=-=-=-=" + best_matches);
             var url = 'match.php';
             var form2 = $('<form action="' + url + '" method="post">' +
