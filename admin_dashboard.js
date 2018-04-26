@@ -1,14 +1,14 @@
 function banClick(idno) {
 	if (confirm("Are you sure you want to blacklist this user?")) {
 		//$('#' + idno).hide();
-		window.location.href = "itws4500/admin_dashboard.php?b="+idno;
+		window.location.href = "admin_dashboard.php?b="+idno;
 	}
 }
 
 function ignoreClick(idno) {
 	if (confirm("Are you sure you want to ignore this report?")) {
 		//$('#' + idno).hide();
-		window.location.href = "itws4500/admin_dashboard.php?i="+idno;
+		window.location.href = "admin_dashboard.php?i="+idno;
 
 	}
 }
