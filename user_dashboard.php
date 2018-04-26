@@ -5,6 +5,7 @@ include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
 $s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION["rcsid"]));
+
 $a = $dbo->selectSIS('users','user',array('requested_group'=>$s[0]['group']['group_id']));
 $g = $dbo->selectSIS('users','group',array("group_id"=>$s[0]['group']['group_id']));
 if (isset($_GET['r'])){
@@ -20,7 +21,8 @@ if (isset($_GET['y'])){
  		header("Refresh:0; url=user_dashboard.php");
  	}
  	else {
-	 	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name" => $s[0]['group']['name']),'group', array('rcsid'=>$y));
+        $z=$u[0]['_id'];
+	 	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name"=>$s[0]['group']['name']),'group', array(),array('_id'=>$z));
 	 	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
 		$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
 	 	header("Refresh:0; url=user_dashboard.php");
@@ -29,8 +31,9 @@ if (isset($_GET['y'])){
 if (isset($_GET['d'])){
     $d = $_GET['d'];
     $dd = $dbo->selectSIS('users','user',array('rcsid'=>$d));
+    $du = $dd[0]['_id'];
     $dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']-1, "desired_num"=>$s[0]['group']['desired_num']+1),'group',array('group_id'=> $s[0]['group']['group_id']));
-    $dbo->updateSIS('users',array("group_id"=>0,"name"=>""),'group',array("rcsid"=>$d));
+    $dbo->updateSIS('users',array("group_id"=>0,"name"=>""),'group',array(),array('_id'=>$du));
     header("Refresh:0; url=user_dashboard.php");
 
 };
