@@ -140,7 +140,7 @@ if ($user["name"] != "" && !(isset($_GET["edit"]) && $_GET["edit"] == "true")) {
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="budget">What is your budget for housing per month?</label>
+                            <label for="budget">What is your budget for housing per month ($)?</label>
                             <input type="number" class="form-control" id="budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget in dollars" name="budget" required>
                         </div>
                         <div class="form-group">
