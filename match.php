@@ -38,7 +38,12 @@ $count = sizeof($allResults);
                 foreach ($allResults as $result) {
                     $group = $result['group'];
                     $people = $group['group_members'];
-
+                    $single_array = array();
+                    foreach ($people as $single) {
+                        if ($single != null && $single != "" && $single == "null") {
+                            $single_array[] = $dbo->selectSIS("users","user",array("rcsid"=>$people));
+                        }
+                    }
                     $answers = $group['group_answers'];
                     echo '<div id="requests" class="panel panel-primary panel-group">';
                     echo '<div class = "panel panel-danger" id = "request1">';

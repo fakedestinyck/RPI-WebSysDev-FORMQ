@@ -42,7 +42,7 @@ if ($action == "store") {
 
 $smtpemailto = $email;
 $contentFromOthers = "Congratulations! You are successfully signed up!";
-include_once "sendmail.php";
+include_once("sendmail.php");
 
 $response = array();
 if ($err) {
