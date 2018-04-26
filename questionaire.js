@@ -67,7 +67,6 @@
       $("#campus").hide();
       function next(){
           if (counter==3){
-              alert(isGroupOrNot);
               var content;
               var column;
               var name = $("#individual_name").val();

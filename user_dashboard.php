@@ -4,8 +4,7 @@ include_once("api/checkLogin.php");
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
-//$s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION["rcsid"]));
-$s = $dbo->selectSIS('users','user',array('user_id'=>701));
+$s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION["rcsid"]));
 
 $a = $dbo->selectSIS('users','user',array('requested_group'=>$s[0]['group']['group_id']));
 $g = $dbo->selectSIS('users','group',array("group_id"=>$s[0]['group']['group_id']));
@@ -23,11 +22,15 @@ if (isset($_GET['y'])){
  	}
  	else {
         $z=$u[0]['_id'];
-	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name"=>$s[0]['group']['name']),'group', array(),array('_id'=>$z));
-	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
-	$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
+	 	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name"=>$s[0]['group']['name']),'group', array(),array('_id'=>$z));
+	 	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
+		$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
         $smtpemailto = $u[0]['user']['email'];
-        $contentFromOthers = "You have been added to a group on FORM Q";
+        $contentFromOthers = "You have been added to a group on FORM Q by user ".$_SESSION["rcsid"].'</h2>';
+        $contentFromOthers .= '<h2>';
+        $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=leave&rcsid='.$_SESSION['rcsid'].'&self='.$y.'&token='.crypt($u[0]['user']['email'].$y,$_SESSION['rcsid']).'">Leave the group</a>';
+        $contentFromOthers .= '<div>nbsp;</div>';
+        $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=spam&rcsid='.$_SESSION['rcsid'].'&self='.$y.'&token='.crypt($u[0]['user']['email'].$y,$_SESSION['rcsid']).'">Report spam and leave the group</a></h2>';
         include_once("api/sendmail.php");
 	 	header("Refresh:0; url=user_dashboard.php");
  	};
@@ -55,16 +58,18 @@ if (isset($_GET['d'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="header.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         html, body {
             height: 100%;
         }
         body{
+            background-color: #E0E0E0;
+            background-size:150% 150%;
             font-family: 'Oswald', sans-serif;
             font-size: 200%;
             margin: 0 auto;
-            background-color: white;
         }
         #admin-body {
             padding-top: 65px;
@@ -177,89 +182,80 @@ if (isset($_GET['d'])){
         }
     </style>
 </head>
-<body id="bodyforNav">
-	<?php include_once('navbar.php'); ?>
-    	<div class = "page-wrap">
-    	   <div class="container" id="adduser">
-                <div class="row" style="width: 100%; margin: 0 auto;">
-                    <div class="col-sm-3" style="background-color:darkred;">
-                        <div id = "modal_groups">
-                            <div id="Modal_group1" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Group Information</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Group Name: <?php echo $s[0]['group']['name'] ?></p>
-                                            <p>Current Number: <?php echo $s[0]['group']['current_num'] ?></p>
-                                            <p>Desired Number: <?php echo $s[0]['group']['desired_num'] ?></p>
-                                            <p>Members:</p>
-                                            <?php 
-                                                for($i=0;$i<count($g);$i++){
-                                                    echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
-                                                }
-                                            ?>   
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" id = "view_group1"><!-- The IDs here need to be different based on what number group it is for the user.-->Edit Group Info</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h1>Group Members</h1>
-                    <!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
-                        <div id = "group_list">
-                            <button type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#Modal_group1"><?php echo $s[0]['group']['name'] ?></button>
+<body id="bodyforNav"style="background: url('resources/pics/desk.jpeg');">
+	 <?php include_once('navbar.php'); ?>
+	<div class = "page-wrap">
+	<div class="container" id="adduser">
+        <div class="row" style="width: 100%; margin: 0 auto; background-color: #E0E0E0">
+            <div class="col-sm-3" style="background-color:darkred;color:white">
+                <div id = "modal_groups">
+                    <div id="Modal_group1" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                    <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Group Information</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>Group Name: <?php echo $s[0]['group']['name'] ?></p>
+                            <p>Current Number: <?php echo $s[0]['group']['current_num'] ?></p>
+                            <p>Desired Number: <?php echo $s[0]['group']['desired_num'] ?></p>
+                            <p>Members:</p>
                             <?php 
-                                for($i=0;$i<count($g);$i++){
-                                    echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
-                                }
+                            for($i=0;$i<count($g);$i++){
+                                echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
+                            }
 
-                            ?>
+                                ?>
+<!--                           
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id = "view_group1"><!-- The IDs here need to be different based on what number group it is for the user.-->Edit Group Info</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
                         </div>
-                    </div>
-                    <h1 style = "text-align:center;">Group Requests</h1>
-                    <!-- The following are boxes that need to be built using the backend by pulling info from the db to fill them up.-->
-                    <div id = "requests" class = "panel-group">
-                    <!-- These will be built by the backend. Javascript will fill in the values. MAke sure that the requests have ids of request 1, 2, etc and then the buttons in them are specific to hiding those requests.-->
-                    </div>
-    		        <div class="addition" style="background-color:darkred;">
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                <p>Add Group Member by RCSID</p>
-                                <p>Remove Group Member by RCSID</p>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="groupmember1" placeholder="RCS ID" name="groupmember1" required>
-                                <input type="text" class="form-control" id="groupmemberr" placeholder="RCS ID" name="groupmemberr" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                        </div>
-                        <div class="col-sm-2">
-                            <div style="text-align: center;"><button type="button" id="addbutton" name="addbutton" style="background-color:white;  color: black; width: 100%" class="btn btn-primary">Add</button></div>
-                            <div style="text-align: center;"><button type="button" id="removebutton" name="removebutton" style="background-color:white;  color: black; width: 100%;" class="btn btn-primary">Remove</button></div>
                         </div>
                     </div>
                 </div>
+                <h1>Group Members</h1>
+                <!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
+                <div id = "group_list">
+                    <button type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#Modal_group1"><?php echo $s[0]['group']['name'] ?></button>
+                        <?php 
+                            for($i=0;$i<count($g);$i++){
+                                echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
+                            }
+
+                        ?>
+                </div>
             </div>
-       </div>
-	   <?php include_once('footer.php') ?>
-       <div class="clear"></div>
-       <!-- JavaScript for php -->
-	   <script type="text/javascript">
-	        $(document).ready(function(){
-                var request_data = <?php echo json_encode($a);?>;
-                for (var i = 0; i < request_data.length; i++) {
-				    var html = "<div class = \"panel panel-danger\" id = \"request"+i+"\"><div class = \"panel-heading\">"+ request_data[i]['user']['name'] + " requested to join.</div><div class = \"panel-body\"><div>Email: "+request_data[i]['user']['email']+"</div><button type = \"button\" id = \"adder\" class = \"close\" onclick='addRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to add this member to your group!</button><br><button type = \"button\" id = \"remover\" class = \"close\" onclick='removeRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to remove this request.</button></div></div>";
-				    $("#requests").append(html);
-                }
-		   })
-	    </script>
-        <script type="text/javascript" src = "user_dashboard.js"></script>
-    </body>
+            <h1 style = "text-align:center;">Group Requests</h1>
+            <!-- The following are boxes that need to be built using the backend by pulling info from the db to fill them up.-->
+            <div id = "requests" class = "panel-group">
+             <!-- These will be built by the backend. Javascript will fill in the values. MAke sure that the requests have ids of request 1, 2, etc and then the buttons in them are specific to hiding those requests.-->
+            </div>
+		<div class="addition" style="background-color:darkred;">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <p>Add Group Member by RCSID</p>
+                            <p>Remove Group Member by RCSID</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="groupmember1" placeholder="RCS ID" name="groupmember1" required>
+                            <input type="text" class="form-control" id="groupmemberr" placeholder="RCS ID" name="groupmemberr" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-2">
+                        <div style="text-align: center;"><button type="button" id="addbutton" name="addbutton" style="background-color:white;  color: black; width: 100%" class="btn btn-primary">Add</button></div>
+                        <div style="text-align: center;"><button type="button" id="removebutton" name="removebutton" style="background-color:white;  color: black; width: 100%;" class="btn btn-primary">Remove</button></div>
+                </div>
+            </div>
+            </div>
+        </div>
+	</div>
+	<?php include_once('footer.php') ?>
+	<script type="text/javascript" src = "user_dashboard.js"></script>
+</body>
 </html>
