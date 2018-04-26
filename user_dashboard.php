@@ -178,10 +178,10 @@ if (isset($_GET['d'])){
         }
     </style>
 </head>
-<body id="admin-body">
+<body id="bodyforNav">
 	 <?php include_once('navbar.php'); ?>
 	<div class = "page-wrap">
-	<div class="container" id="adduser" style="background-color: white;">
+	<div class="container" id="adduser">
         <div class="row" style="width: 100%; margin: 0 auto;">
             <div class="col-sm-3" style="background-color:darkred;">
                 <div id = "modal_groups">
@@ -250,6 +250,7 @@ if (isset($_GET['d'])){
             </div>
             </div>
         </div>
+	</div>
 	<?php include_once('footer.php') ?>
 	<script type="text/javascript" src = "user_dashboard.js"></script>
 </body>
