@@ -1,3 +1,5 @@
+/* CSS used for all headers/footers on all pages */
+
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 html, body {
   height: 100%;
@@ -11,7 +13,6 @@ html, body {
 }
 #header{
   color: white;
-  /* background-color:darkred; */
   font-family: 'Oswald', sans-serif;
   font-size: 130%;
 }

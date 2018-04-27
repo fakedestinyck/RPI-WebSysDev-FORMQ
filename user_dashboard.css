@@ -1,3 +1,5 @@
+/* User and admin dashboard CSS */
+
 html, body {
   height: 100%;
 }
@@ -15,7 +17,6 @@ body{
 }
 #header{
         color: white;
-        /* background-color:darkred; */
         font-family: 'Oswald', sans-serif;
         font-size: 130%
 }
@@ -33,6 +34,8 @@ body{
 #sch_btn{
 	margin-left: 35%;
 }
+
+/* side bar CSS */
 
 #groups{
 	height: 100%;
@@ -104,6 +107,8 @@ body{
   margin-left: 5%;
   margin-right: 5%;
 }
+
+/* Code for footer to stay on bottom */
 
 .footer {
   background-color: darkred;

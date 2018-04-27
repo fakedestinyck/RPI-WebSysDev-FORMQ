@@ -1,3 +1,5 @@
+<!-- Landing page -->
+
 <?PHP
 
     include_once("./CAS-1.3.5/CAS.php");

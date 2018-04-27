@@ -37,6 +37,7 @@ $count = sizeof($allResults);
                 <h2 id = "req_heading" style="color:white">Search</h2>
                 <div id = "requests" class = "panel-group">
                     <div class = "panel panel-danger" id = "request1">
+                        <!-- Qualities that user wants to be ignored -->
                         <div class = "panel-heading" style="font-size: 200%;">
                             <p>Please check qualities that are not important to you when searching for a roommate.  Multiple can be checked.</p>
                             <input type="checkbox" class="form-check-input" id="smoking">
