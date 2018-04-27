@@ -22,3 +22,7 @@ $(document).ready(function(){
         });
     }
 });
+
+function jump(){
+    window.location.href = "questionaire.php?edit=true";
+}

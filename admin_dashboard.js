@@ -1,15 +1,14 @@
 // When a user is banned from the dashboard
 function banClick(idno) {
 	if (confirm("Are you sure you want to blacklist this user?")) {
-		window.location.href = "/admin_dashboard.php?b="+idno;
+		window.location.href = "admin_dashboard.php?b="+idno;
 	}
 }
 
 // A report is ignored
 function ignoreClick(idno) {
 	if (confirm("Are you sure you want to ignore this report?")) {
-		window.location.href = "/admin_dashboard.php?i="+idno;
-
+		window.location.href = "admin_dashboard.php?i="+idno;
 	}
 }
 

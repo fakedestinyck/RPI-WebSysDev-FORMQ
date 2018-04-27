@@ -1,4 +1,16 @@
 <!-- The navbar code that will be used on all pages -->
+<?php
+if (isset($_SESSION['name'])) {
+    if ($_SESSION['name'] != "") {
+        $user_name = $_SESSION['name'];
+    } else {
+        $user_name = 'guest';
+    }
+} else {
+    $user_name = 'guest';
+}
+
+?>
 
 <nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">
     <div class = "container-fluid">
@@ -15,7 +27,7 @@
             <ul class = "nav navbar-nav navbar-right">
                 <!-- These checks are to make sure the correct buttons are displayed for the correct users -->
                 <?php if (strlen($user_name) > 0) {
-                    echo '<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, <?php echo $user_name;?> </a></li>';
+                    echo '<li><a><span class = "glyphicon glyphicon-user"></span>Welcome, '.$user_name.'</a></li>';
                     if ($user_role == 1 || $user_role == 2) {
                         echo '<li><a href = "search.php"><span class = "glyphicon glyphicon-search">Search</span></a></li>';
                         echo '<li><a href = "profile.php"><span>Profile</span></a></li>';

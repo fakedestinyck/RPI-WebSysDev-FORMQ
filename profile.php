@@ -76,67 +76,70 @@ if ($_SESSION['rcsid'] != null) {
     </style>
   </head>
   <body id = "bodyforNav">
-  <div class = "page-wrap">
-  <?php include_once('navbar.php'); ?>
-        <div class="container"><div class="row">
-            <h2 class="col-md-12">Individual Profile</h2>
-            <form action="questionaire.php">
-                <div style="text-align: center; ">If you would like to change your individual answers, click this button to go to our questionnaire.<button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" type="submit">Questionnaire</button></div>
-            </form>
-            <form action="profile.php" method="post" id="profile">
-                <div class="col-sm-6 border-right-container">
-                    <div class="form-group">
-                        <label for="individual_name">Name:</label>
-                        <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="gname" required>
+      <!-- THIS PAGE WAS CREATED SO A USER'S INDIVIDUAL INFORMATION COULD BE VIEWED AND CHANGED BY CLICKING THE RETURN TO QUESTIONNAIRE BUTTON -->
+      <!-- WE ATTEMPTED TO DISPLAY THE INFORMATION THAT WAS MOST PERTINENT, INCLUDING NAME, AGE ETC -->
+      <div class = "page-wrap">
+      <?php include_once('navbar.php'); ?>
+            <div class="container"><div class="row">
+                <h2 class="col-md-12">Individual Profile</h2>
+                <form>
+                    <!-- HERE WE HAVE A BUTTON THAT ALLOWS THE USER TO TRAVEL BACK TO QUESTIONAIRE IN ORDER TO CHANGE THEIR ANSWERS -->
+                    <div style="text-align: center; ">If you would like to change your individual answers, click this button to go to our questionnaire.<button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" type="button" onclick="jump();">Questionnaire</button></div>
+                </form>
+                <form action="profile.php" method="post" id="profile">
+                    <div class="col-sm-6 border-right-container">
+                        <div class="form-group">
+                            <label for="individual_name">Name:</label>
+                            <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="gname" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_rin">RIN:</label>
+                            <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="grin" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_email">E-mail:</label>
+                            <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="gemail" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_age">Age:</label>
+                            <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="gage" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_year">Year in College:</label>
+                            <select id="individual_year" class="form-control" name="gyear" disabled>
+                                <option value="freshman">Freshman</option>
+                                <option value="sophomore">Sophomore</option>
+                                <option value="junior">Junior</option>
+                                <option value="senior">Senior</option>
+                                <option value="graduate">Graduate Student</option>
+                            </select>
+                        </div>
+                        </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="individual_budget">What is your budget for housing per month?</label>
+                            <input type="text" class="form-control" id="individual_budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget" name="gbudget" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_number">How many people are you looking for?</label>
+                            <input type="text" class="form-control" id="individual_number" value="<?php echo $profile["number"]; ?>" placeholder="Number of people" name="gnumber" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_gender">Gender:</label>
+                            <input type="text" class="form-control" id="individual_gender" value="<?php echo $profile["gender"]; ?>" placeholder="Your gender" name="ggender" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual_coed">Co-Ed Housing?</label>
+                            <select id="individual_coed" class="form-control" name="gcoed" disabled>
+                                <option value="coedno">No</option>
+                                <option value="coedyes">Yes</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="individual_rin">RIN:</label>
-                        <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="grin" required="required">
-                    </div>
-                    <div class="form-group">
-                        <label for="individual_email">E-mail:</label>
-                        <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="gemail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="individual_age">Age:</label>
-                        <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="gage" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="individual_year">Year in College:</label>
-                        <select id="individual_year" class="form-control" name="gyear">
-                            <option value="freshman">Freshman</option>
-                            <option value="sophomore">Sophomore</option>
-                            <option value="junior">Junior</option>
-                            <option value="senior">Senior</option>
-                            <option value="graduate">Graduate Student</option>
-                        </select>
-                    </div>
-                    </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="individual_budget">What is your budget for housing per month?</label>
-                        <input type="text" class="form-control" id="individual_budget" value="<?php echo $profile["budget"]; ?>" placeholder="Your budget" name="gbudget" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="individual_number">How many people are you looking for?</label>
-                        <input type="text" class="form-control" id="individual_number" value="<?php echo $profile["number"]; ?>" placeholder="Number of people" name="gnumber" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="individual_gender">Gender:</label>
-                        <input type="text" class="form-control" id="individual_gender" value="<?php echo $profile["gender"]; ?>" placeholder="Your gender" name="ggender" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="individual_coed">Co-Ed Housing?</label>
-                        <select id="individual_coed" class="form-control" name="gcoed">
-                            <option value="coedno">No</option>
-                            <option value="coedyes">Yes</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-      </div>
+                </form>
+            </div>
         </div>
     </div>
-      <?php include_once('footer.php') ?>
+    <?php include_once('footer.php') ?>
   </body>
 </html>

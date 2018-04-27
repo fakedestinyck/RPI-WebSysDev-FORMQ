@@ -17,10 +17,10 @@
         font-family: 'Playfair Display', serif;
       }
       body{
-          color: black;
-          background-color:darkgray;
-          font-family: 'Fira Sans', sans-serif;
-          font-size: 200%;
+        color: black;
+        background-color:darkgray;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 200%;
       }
       .format{
         margin-left: 10%;  
@@ -50,6 +50,7 @@
   </head>
   <body id = "bodyforNav">
   <?php include_once('navbar.php'); ?>
+  <!-- BOOTSTRAP CONTAINER WAS USED TO MAKE EASY TO READ COLUMNS -->
   <div class="container">
       <h2>About FORM Q</h2>
       <div class="format">
@@ -68,6 +69,8 @@
               </div>
           </div>
           <h2>Who are we?</h2>
+          <!-- AS WE ARE ADMINISTRATORS OF THIS WEBSITE, OUR USERS NEED TO KNOW MORE DETAILES ABOUT WHO WE ARE AND WHY WE WANTED TO
+          MAKE FORM Q-->
           <div class="row">
               <div class="col-md-2 col-md-offset-1"> 
                   <img src="resources/aboutus/samad.jpg" class="img-circle" style="max-width: 100%;    height: auto;">

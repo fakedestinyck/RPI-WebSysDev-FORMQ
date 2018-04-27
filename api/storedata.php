@@ -58,4 +58,17 @@ if ($email != "") {
     $smtpemailto = $email;
     $contentFromOthers = "Congratulations! You are successfully signed up!";
     include_once("sendmail.php");
+
+    $userQuery = array('user.rcsid' => $rcsid);
+    $result = $collection->findOne($userQuery);
+    if ($result != null) {
+        $user_array=$result["user"];
+        $_SESSION["name"] = $user_array["name"];
+        $_SESSION["rin"] = $user_array["rin"];
+        $_SESSION["email"] = $user_array["email"];
+        $_SESSION["role"] = $user_array["role"];
+        $encrypt = crypt(md5($user_array["name"].$user_array["email"].$user_array["role"]),md5(md5($user_array["rin"])));
+        $_SESSION["token"] = $encrypt;
+        $_SESSION["last_activity"] = time();
+    }
 }
