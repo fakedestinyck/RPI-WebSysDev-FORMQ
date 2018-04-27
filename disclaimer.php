@@ -39,6 +39,9 @@
   <body id="bodyforNav">
     <div class="page-wrap">
       <?php include_once('navbar.php'); ?>
+      <!-- AS WE ARE COLLECTING INFORMATION ABOUT OUR USERS, THEY SHOULD UNDERSTAND WHAT THE WEBSITE IS USED FOR.  IT ALSO DESCRIBES THE ADMINS
+      OF THE WEBSITE AS STUDENTS AND REMOVES RESPONSIBILITY FROM RPI.  THIS IS BASED OFF OF A DISCLAIMER USED BY STUDENT MADE WEBSITES
+      FROM BOSTON UNIVERSITY.  WE ALSO NOTIFY THE USERS THAT WE USE THEIR COOKIES.-->
       <h2>Disclaimer</h2>
         <!-- inspired by https://www.bu.edu/tech/about/policies/websites-disclaimer/-->
         <div class="forstyle" style="color:white; margin-left: 7%;margin-right: 7%">

@@ -2,14 +2,12 @@
 define( 'check', true );
 include_once("api/checkLogin.php");
 include_once("api/connect.php");
-
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
 $group_ids = array(1); // to be passed in
 $allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array(),array('_id'=>-1));
 $count = sizeof($allResults);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,6 +29,8 @@ $count = sizeof($allResults);
     </head>
         <body id = "bodyforNav">
         <div class="page-wrap">
+            <!-- THIS PAGE ALLOWS THE USER TO SELECT WHAT INFORMATION IS NOT IMPORTANT TO THEM WHEN BEING MATCHED -  THAT WAY THE ALGORITHM
+            CAN BE ADJUSTED BASED OFF OF SPECIFICATIONS -->
             <?php include_once('navbar.php'); ?>
             <div class = "container" id = "requests_container">
                 <h2 id = "req_heading" style="color:white">Search</h2>
@@ -38,6 +38,8 @@ $count = sizeof($allResults);
                     <div class = "panel panel-danger" id = "request1">
                         <div class = "panel-heading" style="font-size: 200%;">
                             <p>Please check qualities that are not important to you when searching for a roommate.  Multiple can be checked.</p>
+                            <!-- ALL OF THESE QUESTIONS ARE MAINLY LIFESTYLE QUESTIONS I.E. SOME PEOPLE MAY NOT CARE IF THEIR ROOMMATE WATCHES A LOT
+                            OF TELEVISION-->
                             <input type="checkbox" class="form-check-input" id="smoking">
                             <label class="form-check-label" for="smoking">Smoking Frequency</label><br>
                             <input type="checkbox" class="form-check-input" id="bedtime">
@@ -60,6 +62,7 @@ $count = sizeof($allResults);
                             <label class="form-check-label" for="gamer">Gaming Frequency</label><br>
                             <input type="checkbox" class="form-check-input" id="music">
                             <label class="form-check-label" for="music">Sensitivity to Loud Music</label>
+                            <!-- THIS BUTTON SUBMITS THE USER'S ANSWERS -->
                             <div style="text-align: center;"><button id="button" style="background-color:white; color: black;" class="btn btn-primary" >Submit</button></div>
                         </div>
                     </div>
