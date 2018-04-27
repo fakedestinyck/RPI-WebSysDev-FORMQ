@@ -22,7 +22,9 @@ if ($_SESSION['rcsid'] != null) {
         $answers = $group_answers;
     }
 }
-
+if ($user["name"] != "" && !(isset($_GET["edit"]) && $_GET["edit"] == "true")) {
+    header("Location: user_dashboard.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,20 +93,26 @@ if ($_SESSION['rcsid'] != null) {
   <body  id = "bodyforNav">
   <div class="page-wrap">
     <?php include_once('navbar.php'); ?>
+        <!-- THIS IS A BOOTSTRAP CONTAINER THAT WAS USED TO MAKE MULTIPLE ROWS FOR QUESTIONAIRE.  OUR DIVS WERE HIDDEN AND SHOWN USING 
+        JAVASCRIPT TO ALLOW THE USER TO NAVIGATE.  CLICKING THE SUBMIT BUTTON OR IMAGES ALLOWS THE USER TO GO TO THE NEXT PAGE.  SEE JAVASCRIPT
+        PAGE QUESTIONAIRE.JS FOR MORE DETAILS-->
         <div class="container">
             <form action="questionaire.php" method="post" id="myform">
+            <!-- GROUP OR INDIVIDUAL-->
                 <div id="first" class="row">
                     <h2 class="title">Grouping</h2>
                     <p class="center">Click on group if you want to be in a group</p>
                     <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">Group</h2><img src="resources/pics/groupimg.jpg" id="groupphoto" class="img-thumbnail" class="center" style="width:450px;height:300px;"></div></div>
                     <div class="col-sm-6"><h2 style = "font-size: 140%;">Individual</h2><div class="center"><img src="resources/pics/individualimg.jpeg" id="singlephoto" class="img-thumbnail" style="width:450px;height:300px;"></div></div>
                 </div>
+            <!-- ON OR OFF CAMPUS HOUSING-->
                 <div id="campus">
                     <h2>On campus</h2>
                     <p class="center">Click on an image below to choose on campus or off campus living</p>
                     <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">On Campus</h2><img src="resources/pics/Barton.jpg" id="ocampus" class="img-thumbnail" class="center" style="width:300px;height:300px;"></div></div>
                     <div class="col-sm-6"><div class="center"><h2 style = "font-size: 140%;">Off Campus</h2><img src="resources/pics/troy.JPG" id="offcampus" class="img-thumbnail" style="width:300px;height:300px;"></div></div>
                 </div>
+            <!-- EVERY USER ANSWERS INDIVIDUAL INFORMATION.  THIS INFORMATION WILL BE DISPLAYED ON MATCHING PAGE I.E. NAME AND YEAR-->
                 <div id="secondI" class="row">
                     <h2>Individual Information</h2>
                     <div class="col-sm-6 border-right-container">
@@ -112,7 +120,6 @@ if ($_SESSION['rcsid'] != null) {
                             <label for="individual_name">Name:</label>
                             <input type="text" class="form-control" id="individual_name" value="<?php echo $user["name"]; ?>" placeholder="Your name" name="name" required>
                         </div>
-<!--                        <p>Name:</p><input type="text" name="name">-->
                         <div class="form-group">
                             <label for="individual_rin">RIN:</label>
                             <input type="number" class="form-control" id="individual_rin" value="<?php echo $user["rin"]; ?>" placeholder="Your RIN number" name="rin" required>
@@ -121,14 +128,13 @@ if ($_SESSION['rcsid'] != null) {
                             <label for="individual_email">E-mail:</label>
                             <input type="email" class="form-control" id="individual_email" value="<?php echo $user["email"]; ?>" placeholder="Your e-mail address" name="email" required>
                         </div>
-<!--                        <p>E-mail:</p><input type="text" name="email">-->
                         <div class="form-group">
                             <label for="individual_age">Age:</label>
                             <input type="number" class="form-control" id="individual_age" value="<?php echo $profile["age"]; ?>" placeholder="Your age" name="age" required>
                         </div>
                         <div class="form-group">
                             <label for="individual_year">Year in College:</label>
-                            <select id="individual_year" class="form-control" name="year"><div style="color:black">
+                            <select id="individual_year" class="form-control" name="year" value="<?php echo ucfirst($profile["year"]); ?>"><div style="color:black">
                                 <option value="freshman">Freshman</option>
                                 <option value="sophomore">Sophomore</option>
                                 <option value="junior">Junior</option>
@@ -153,14 +159,14 @@ if ($_SESSION['rcsid'] != null) {
                         </div>
                         <div class="form-group">
                             <label for="individual_coed">Co-Ed Housing?</label>
-                            <select id="individual_coed" class="form-control" name="coed">
+                            <select id="individual_coed" class="form-control" name="coed"  value="<?php echo $profile["coed"]; ?>">
                                 <option value="coedno">No</option>
                                 <option value="coedyes">Yes</option>
                             </select>
                         </div>
                     </div>
                 </div>
-
+            <!-- LIFESTYLE QUESTIONS.  THE AVERAGE OF THESE ANSWERS FOR A GROUP IS USED IN ALGORITHM-->
                 <div id="life">
                     <h2>Life Style</h2>
                     <div class = "col-sm-4">

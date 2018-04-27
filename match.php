@@ -9,8 +9,15 @@ use Library_Mongo as Mongo;
 $dbo = new Mongo();
 $groupids = $_POST["groupid"];
 $group_ids = json_decode($groupids,true);
-var_dump($group_ids);
-$allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array(),array('_id'=>-1));
+$allResults = array();
+foreach ($group_ids as $group_idone) {
+    if ($group_idone == 0){
+        continue;
+    }
+    $allResults[] = $dbo->selectSIS('users','group',array('group_id'=>$group_idone),array('group'),array())[0];
+}
+
+//$allResults = $dbo->selectSIS('users','group',array('group_id'=>$group_ids),array('group'),array());
 $count = sizeof($allResults);
 ?>
 <!DOCTYPE html>
@@ -32,6 +39,8 @@ $count = sizeof($allResults);
         <script type="text/javascript" src = "search.js"></script>
     </head>
     <body id = "bodyforNav">
+        <!-- THIS DISPLAYS MATCHES FOR THE GROUP/USER BASED OFF OF THE ALGORITHM DEVELOPED -->
+        <!-- MULTIPLE RESULTS SHOW UP AND THE PROFILES CAN BE HIDDEN OR SHOWN IF ONE CLICKS THE HEADER OF THE PROFILE -->
         <div class="page-wrap">
             <?php include_once('navbar.php'); ?>
             <div class = "container" id = "requests_container">
@@ -56,7 +65,7 @@ $count = sizeof($allResults);
                     }
                     $numberpeople = count($single_array);
                     foreach ($single_array as $single_row) {
-                        $names .= $single_row['user']['name']. " ";
+                        $names .= $single_row['user']['name']. ", ";
                         $years .= $single_row['profile']['year']. ", ";
                         $ages .= $single_row['profile']['age']. ", ";
                         $answers["q1"] .= $single_row['answers']['q1'] . ", ";
@@ -129,10 +138,8 @@ $count = sizeof($allResults);
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-//                    echo '<div style="text-align: center; "><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" id="requests">Request to Join Group</button></div>';
                 }
                 ?>
-
             </div>
         </div>
         <?php include_once('footer.php') ?>
