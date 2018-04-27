@@ -57,7 +57,9 @@
       slider7.oninput = function() {
           output7.innerHTML = this.value;
       }
-      //to make different parts of questionnaire hide/show
+      //TO MAKE DIFFERENT PARTS OF THE QUESTIONAIRE HIDE/SHOW
+      //MADE USING A COUNTER AND THE NUMBER OF TIMES BUTTONS/IMAGES WERE CLICKED
+      //INITIALLY ALL HIDDEN BESIDES GROUP OR INDIVIDUAL
       var counter=0;
       var isGroupOrNot = false;
       var onOrOffCamput = 'off campus';
@@ -160,6 +162,7 @@
               }
               sendToDatabase(JSON.stringify(content),JSON.stringify(column),"");
           }
+        //HIDE AND SHOW MANIPULATION
           if (counter==7){
               alert("7");
               location.href = 'profile.php';
@@ -231,8 +234,6 @@
                           $("#button").hide();
                       }
                       if (counter===6){
-                          // $("#life").hide();
-                          // $("#pref").show();
                           counter++;
                       }
                       if (counter===7){
@@ -247,17 +248,11 @@
                       $("#button").hide();
                   }
                   if (counter===6){
-                      // $("#life").hide();
-                      // $("#pref").show();
                       counter++;
                   }
                   if (counter===7){
                       location.href = 'profile.php';
                   }
-                  // console.log(xhr);
-                  // console.log("Details: " + desc + "\nError:" + err);
-                  // alert("An error occur: "+err+".\nPlease try again later.");
-                  // location.reload();
               }
           });
       }
