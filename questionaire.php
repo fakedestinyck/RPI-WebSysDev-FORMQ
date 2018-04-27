@@ -1,3 +1,5 @@
+<!-- The questionnaire to obtain user information -->
+
 <?php
 define( 'check', true );
 include_once("api/checkLogin.php");

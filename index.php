@@ -1,3 +1,5 @@
+<!-- Landing page. Gives a brief description of project and Login functionality -->
+
 <?PHP
     include_once("./CAS-1.3.5/CAS.php");
     include_once("api/connect.php");

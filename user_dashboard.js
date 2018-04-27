@@ -1,3 +1,5 @@
+// JavaScript ofr User_Dashboard
+
 function removeRequest(idno){
 	if (confirm("Are you sure you want to remove this request?")){
 		window.location.href = "user_dashboard.php?r="+idno;

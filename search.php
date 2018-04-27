@@ -1,3 +1,5 @@
+<!-- The search page. Users here can check off any categories they do not care about, so it won't be taken into account during a search -->
+
 <?php
 define( 'check', true );
 include_once("api/checkLogin.php");
@@ -36,6 +38,7 @@ $count = sizeof($allResults);
                 <h2 id = "req_heading" style="color:white">Search</h2>
                 <div id = "requests" class = "panel-group">
                     <div class = "panel panel-danger" id = "request1">
+                        <!-- Qualities that user wants to be ignored -->
                         <div class = "panel-heading" style="font-size: 200%;">
                             <p>Please check qualities that are not important to you when searching for a roommate.  Multiple can be checked.</p>
                             <!-- ALL OF THESE QUESTIONS ARE MAINLY LIFESTYLE QUESTIONS I.E. SOME PEOPLE MAY NOT CARE IF THEIR ROOMMATE WATCHES A LOT

@@ -1,3 +1,5 @@
+// JavaScript for the questionnaire
+
   $(document).ready(function(){
       //FOR ALL OF THE SLIDERS
       //reference https://www.w3schools.com/howto/howto_js_rangeslider.asp

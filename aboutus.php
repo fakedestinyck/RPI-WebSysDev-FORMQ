@@ -1,3 +1,5 @@
+<!-- An About Us page for any users to visit and put a face to the creators of the site -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

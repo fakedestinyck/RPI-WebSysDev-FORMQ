@@ -1,3 +1,5 @@
+<!-- Admin Dashboard. Currently allows Admins to Ban reported users or ignore the report -->
+
 <?php
    define( 'check', true );
    include_once("api/checkLogin.php");
@@ -36,30 +38,8 @@
 </head>
 
 <body id="admin-body">
-
 	<div class ="page-wrap">
-      <?php include_once('navbar.php'); ?>
-<!--    <nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">-->
-<!--		  <div class = "container-fluid">-->
-<!--        <div class = "navbar-header">-->
-<!--          <a class = "navbar-brand" id = "header" href = "index.php">Form Q</a>-->
-<!--          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
-<!--            <span class="sr-only">Toggle navigation</span>-->
-<!--            <span class="icon-bar"></span>-->
-<!--            <span class="icon-bar"></span>-->
-<!--            <span class="icon-bar"></span>-->
-<!--          </button>-->
-<!--			  </div>-->
-<!--			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-<!--				  <ul class = "nav navbar-nav navbar-right">-->
-<!--					  <li><a><span class = "glyphicon glyphicon-user"></span>Welcome, --><?php //echo $user_name;?><!-- </a></li>-->
-<!--					  <li><a href = "user_dashboard.php"><span>User Dashboard</span></a></li>-->
-<!--					  <li><a href = "api/logout.php"><span class = "glyphicon glyphicon-log-out"></span>Logout</a></li>-->
-<!--				  </ul>-->
-<!--			  </div>-->
-<!--		  </div>-->
-<!--	  </nav>-->
-
+    <?php include_once('navbar.php'); ?>
 	  <h1 class ="hidden-xs" style="margin-left: 7%;">Admin Dashboard</h1>
 	  <h3 class="hidden-lg hidden-md hidden-sm" style="margin-left: 7%;">Admin Dashboard</h3>
 	  <div id="reported_users" class="panel panel-default">
@@ -71,7 +51,8 @@
 		  </ul>
 	  </div>
 	</div>
-    <?php include_once('footer.php') ?>
+  <?php include_once('footer.php') ?>
+
 <script type="text/javascript">
   $(document).ready(function() {
     var user_data = <?php echo json_encode($s); ?>;

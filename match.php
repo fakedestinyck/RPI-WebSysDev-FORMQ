@@ -1,3 +1,5 @@
+<!-- Displays possible matches for roommates. Should only be accessed after search page. -->
+
 <?php
 define( 'check', true );
 include_once("api/checkLogin.php");

@@ -1,3 +1,5 @@
+// JavaScript for the matches page
+
 function avg_arr_val(arr){
     //this function takes an array of ints and returns the average
     var sum = 0;
