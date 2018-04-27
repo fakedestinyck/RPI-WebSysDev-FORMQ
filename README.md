@@ -126,6 +126,30 @@ This is a large file that went through a lot of changes. It displays the informa
 
 # How to Install 
 
+### mongoDB
+
+Make sure you have mongoDB installed, if not install it here: https://docs.mongodb.com/.
+For the project to work on Windows you need an older version of PHP (5.6), and follow the instructions in the readme.md in the database folder.
+
+### Possible CAS Issues 
+
+If the CAS system doesn't work, change the checkLogin.php file in the api folder to the following:
+<?PHP 
+        defined('check') or die('No direct script access allowed.');
+        session_start();
+        $_SESSION["name"] = ''; //Your name
+        $_SESSION["rin"] = ''; //Your RIN
+        $_SESSION["email"] = ''; //Your email
+        $_SESSION["role"] = 1; //Role 1:Admin, 2:Normal, 3:Banned
+        $_SESSION["rcsid"] = ''; //Your RCSID
+        $_SESSION["token"] = 'empty';
+        $encrypt = 'empty';
+        $user_name = $_SESSION["name"];
+        $user_rin = $_SESSION["rin"];
+        $user_email = $_SESSION["email"];
+        $user_role = $_SESSION["role"]; 
+?>
+
 # Navigation 
 The website is fairly simple to navigate. Users can visit the landing page of the site and go to the About Us or Disclaimer. They can also log in with the CAS system. If it is their first time loggin in, they will be taken to the questionaire.php page in order to fill out informaiton about themselves. After they complete the questionnaire, they are taken to their profile, and have the option to change their information if need be. From there, the user can choose to find roommates, or be taken to their dashboard. On the search page, the user can use the matching functionality, click what is important to them in search.php, and then be taken to match.php which allows them to see their matches. The user can also go to their dashboard in order to add or remove users from their group. Users can logout when they would like as well. Unfortunetly, the team currently does not have a way to re-direct the logout page back to the main site, but this is something the team will pursue in the future. 
 
