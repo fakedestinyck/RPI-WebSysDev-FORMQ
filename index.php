@@ -1,4 +1,4 @@
-<!-- Landing page -->
+<!-- Landing page. Gives a brief description of project and Login functionality -->
 
 <?PHP
 

@@ -1,3 +1,5 @@
+<!-- The search page. Users here can check off any categories they do not care about, so it won't be taken into account during a search -->
+
 <?php
 define( 'check', true );
 include_once("api/checkLogin.php");

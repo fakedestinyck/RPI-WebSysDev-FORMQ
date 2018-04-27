@@ -1,3 +1,5 @@
+<!-- Displays Individual Profile information to user -->
+
 <?php
 define( 'check', true );
 include_once("api/checkLogin.php");

@@ -1,3 +1,5 @@
+<!-- Admin Dashboard. Currently allows Admins to Ban reported users or ignore the report -->
+
 <?php
    define( 'check', true );
    include_once("api/checkLogin.php");
@@ -50,7 +52,7 @@
 	  </div>
 	</div>
   <?php include_once('footer.php') ?>
-  
+
 <script type="text/javascript">
   $(document).ready(function() {
     var user_data = <?php echo json_encode($s); ?>;

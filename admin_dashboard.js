@@ -1,3 +1,5 @@
+// JavaScript for Admin dashboard
+
 // When a user is banned from the dashboard
 function banClick(idno) {
 	if (confirm("Are you sure you want to blacklist this user?")) {

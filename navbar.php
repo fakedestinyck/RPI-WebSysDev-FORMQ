@@ -1,4 +1,4 @@
-<!-- The navbar code that will be used on all pages -->
+<!-- The navbar code that will be used on all pages. Only logged in users should see most functions. -->
 
 <nav id = "admin_nav" class = "navbar navbar-inverse navbar-fixed-top" data-spy="affix">
     <div class = "container-fluid">

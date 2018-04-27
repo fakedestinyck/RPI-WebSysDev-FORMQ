@@ -1,3 +1,5 @@
+// JavaScript for profile.php
+
 $(document).ready(function(){
     function sendToDatabase(content, column) {
         $.ajax({
