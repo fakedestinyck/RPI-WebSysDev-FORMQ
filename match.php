@@ -37,6 +37,8 @@ $count = sizeof($allResults);
         <script type="text/javascript" src = "search.js"></script>
     </head>
     <body id = "bodyforNav">
+        <!-- THIS DISPLAYS MATCHES FOR THE GROUP/USER BASED OFF OF THE ALGORITHM DEVELOPED -->
+        <!-- MULTIPLE RESULTS SHOW UP AND THE PROFILES CAN BE HIDDEN OR SHOWN IF ONE CLICKS THE HEADER OF THE PROFILE -->
         <div class="page-wrap">
             <?php include_once('navbar.php'); ?>
             <div class = "container" id = "requests_container">
@@ -134,10 +136,8 @@ $count = sizeof($allResults);
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-//                    echo '<div style="text-align: center; "><button id="button" style="background-color:white; margin: 1%; color: black;" class="btn btn-primary" id="requests">Request to Join Group</button></div>';
                 }
                 ?>
-
             </div>
         </div>
         <?php include_once('footer.php') ?>
