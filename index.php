@@ -1,21 +1,17 @@
 <?PHP
-
     include_once("./CAS-1.3.5/CAS.php");
     include_once("api/connect.php");
     phpCAS::client(CAS_VERSION_2_0,'cas-auth.rpi.edu',443,'/cas/');
     phpCAS::setDebug("log.log");
     // SSL!
     phpCAS::setCasServerCACert("./cacert.pem");//this is relative to the cas client.php file
-
     if (phpCAS::isAuthenticated())
     {
         define( 'login', true );
         include_once("api/storeretrievedata.php");
         header('location: ./questionaire.php');
     }
-
 ?>
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -30,6 +26,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <!-- THIS IS A BASIC DESCRIPTION OF OUR WEBSITE.  WE USE RPI'S CAS SYSTEM TO ALLOW STUDENTS TO SIGN IN -->
         <div class="full-wrapper">
             <h1 class="page-header">Form Q</h1>
             <div class ="container">
