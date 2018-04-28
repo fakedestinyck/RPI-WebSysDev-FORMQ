@@ -1,0 +1,1 @@
+Please follow the installation instructions and read the code documentation. Create a new branch or fork and make edits there. Afterwards, a member of the development team will review your code, and approve the PR request. Thank you for your interest!
