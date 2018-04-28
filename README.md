@@ -1,5 +1,5 @@
 # RPI-WebSysDev-FORMQ
-Group Project for ITWS 4500
+###Group Project for ITWS 4500
 
 FORM Q is generally targeted at RPI students. At Rensselaer, many students have a difficult time finding roommates. There are resources targeted at helping students find roommates; for example, RPI’s SLL has a survey meant to match students with individual matches with similar characteristics. This may be a good start but it is flawed, with limited questions and options. There are two more important issues with the “solution” made by SLL that the team will fix. The first is that this website does not offer group matching, and the second is that this website is only an option for students looking to live on campus. As such, a large portion of upperclassmen students cannot use the website. Since the team is including features for students who live off campus and students searching for a group, the number of potential users increases greatly.
 
@@ -157,3 +157,6 @@ If a user is an admin, they can also go to the admin dashboard via the navbar. T
 
 # How to Contribute 
 Please follow the installation instructions and read the code documentation. Create a new branch or fork and make edits there. Afterwards, a member of the development team will review your code, and approve the PR request. _Thank you for your interest!_ 
+
+#License
+M.I.T
