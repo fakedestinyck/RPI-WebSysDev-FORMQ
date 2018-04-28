@@ -7,7 +7,7 @@
 //	$smtpemailto = "fakedestinyck@gmail.com";// to whom
 	$smtpuser = "findourroommatesquestionnaire";//SMTP server username
 	$smtppass = "dmf-Tok-u9f-npt";//SMTP server password
-	$mailtitle = "test findourroommatesquestionnaire";//email title
+	$mailtitle = "[Do not reply] Find Our Roommates Questionnaire";//email title
 	$mailcontent = "<h1 style='text-align: center; background-color: red; color: white'>Find Our Roommates Questionnaire</h1>";
 	$mailcontent .= "<h2 style='text-align: center; background-color: #ce1e50; border: solid 5px darkturquoise; width: 70%; margin: 20px auto; color: white; font-weight: 100'>";//content
 	$mailcontent .= $contentFromOthers;

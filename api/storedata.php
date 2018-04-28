@@ -55,12 +55,7 @@ if ($err) {
 echo json_encode($response);
 
 if ($email != "") {
-    $smtpemailto = $email;
-    $contentFromOthers = "Congratulations! You are successfully signed up!";
-    include_once("sendmail.php");
-
-    $userQuery = array('user.rcsid' => $rcsid);
-    $result = $collection->findOne($userQuery);
+    $result = $dbo->selectSIS("users","user",array("rcsid"=>$rcsid))[0];
     if ($result != null) {
         $user_array=$result["user"];
         $_SESSION["name"] = $user_array["name"];
@@ -70,5 +65,21 @@ if ($email != "") {
         $encrypt = crypt(md5($user_array["name"].$user_array["email"].$user_array["role"]),md5(md5($user_array["rin"])));
         $_SESSION["token"] = $encrypt;
         $_SESSION["last_activity"] = time();
+
+        $smtpemailto = $email;
+        $contentFromOthers = "Congratulations ".$user_array["name"]."! You have successfully signed up!<br>";
+        $contentFromOthers .= "Your information: <br><table style='margin-top: 10px; margin-left: auto;margin-right: auto; color: white;'><tbody>";
+        $contentFromOthers .= "<tr><td>Name</td>";
+        $contentFromOthers .= "<td>".$user_array["name"]."</td></tr>";
+        $contentFromOthers .= "<tr><td>RIN</td>";
+        $contentFromOthers .= "<td>".$user_array["rin"]."</td></tr>";
+        $contentFromOthers .= "<tr><td>Email</td>";
+        $contentFromOthers .= "<td>".$user_array["email"]."</td></tr>";
+        $contentFromOthers .= "<tr><td>RCSID</td>";
+        $contentFromOthers .= "<td>".$rcsid."</td></tr>";
+        $contentFromOthers .= "</tbody></table>";
+
+        include_once("sendmail.php");
+
     }
 }

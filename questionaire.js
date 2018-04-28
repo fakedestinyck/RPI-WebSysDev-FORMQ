@@ -122,14 +122,17 @@
                   column = ["user","profile"];
 
               }
+              var formvalidate = age.replace(/\s+/g,"") === "" || age === "0" || budget.replace(/\s+/g,"") === "" || budget === "0";
+              formvalidate = formvalidate || number.replace(/\s+/g,"") === "" || number === "0" || gender.replace(/\s+/g,"") === "";
+              if (name.replace(/\s+/g,"") === "" || rin === "0" || rin.replace(/\s+/g,"") === "" || email.replace(/\s+/g,"") === "" || formvalidate) {
+                  alert("Please fill out all fields!");
+                  return false;
+              }
               console.log(JSON.stringify(column));
               sendToDatabase(JSON.stringify(content),JSON.stringify(column),email);
 
           }
           if (counter==6){
-              // alert("6");
-              // $("#life").hide();
-              // $("#pref").show();
               var allergies = $('#allergies').val();
               var smoke = $('#smoke').val();
               var bedtime = $('#bedtime').val();

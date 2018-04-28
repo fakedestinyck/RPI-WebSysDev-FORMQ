@@ -28,7 +28,7 @@ if (isset($_GET['y'])){
         $contentFromOthers = "You have been added to a group on FORM Q by user ".$_SESSION["rcsid"].'</h2>';
         $contentFromOthers .= '<h2>';
         $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=leave&rcsid='.$_SESSION['rcsid'].'&self='.$y.'&token='.crypt($u[0]['user']['email'].$y,$_SESSION['rcsid']).'">Leave the group</a>';
-        $contentFromOthers .= '<div>nbsp;</div>';
+        $contentFromOthers .= '<div><br></div>';
         $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=spam&rcsid='.$_SESSION['rcsid'].'&self='.$y.'&token='.crypt($u[0]['user']['email'].$y,$_SESSION['rcsid']).'">Report spam and leave the group</a></h2>';
         include_once("api/sendmail.php");
 	 	header("Refresh:0; url=user_dashboard.php");
@@ -195,7 +195,7 @@ if (isset($_GET['d'])){
                                 echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
                             }
                                 ?>
-<!--                           
+
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" id = "view_group1"><!-- The IDs here need to be different based on what number group it is for the user.-->Edit Group Info</button>
