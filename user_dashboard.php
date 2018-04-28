@@ -4,8 +4,9 @@ include_once("api/checkLogin.php");
 include "api/Library_Mongo.php";
 use Library_Mongo as Mongo;
 $dbo = new Mongo();
-$s = $dbo->selectSIS('users','user',array('user_id'=>701));
+$s = $dbo->selectSIS('users','user',array('rcsid'=>$_SESSION["rcsid"]));
 $a = $dbo->selectSIS('users','user',array('requested_group'=>$s[0]['group']['group_id']));
+$g = $dbo->selectSIS('users','group',array("group_id"=>$s[0]['group']['group_id']));
 if (isset($_GET['r'])){
 	$r = $_GET['r'];
 	$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$r));
@@ -14,20 +15,34 @@ if (isset($_GET['r'])){
 if (isset($_GET['y'])){
  	$y = $_GET['y'];
  	$u = $dbo->selectSIS('users','user',array('rcsid'=>$y));
- 	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name" => $s[0]['group']['name'], "group_members"=>array("member1"=>$s[0]['group']['group_members']['member1'],"member2"=>$s[0]['group']['group_members']['member2'],"member3"=>$s[0]['group']['group_members']['member3'],"member4"=>$s[0]['group']['group_members']['member4'],"member5"=>$s[0]['group']['group_members']['member5'],"member6"=>$s[0]['group']['group_members']['member6'],"member7"=>$s[0]['group']['group_members']['member7'],"member8"=>$s[0]['group']['group_members']['member8'],"member9"=>$s[0]['group']['group_members']['member9'],"member10"=>$s[0]['group']['group_members']['member10'])),'group', array('rcsid'=>$y));
- 	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
- 	$g = $dbo->selectSIS('users','group',array('group_id'=>$s[0]['group']['group_id']));
- 	$gn = $g[0]['group']['current_num'];
- 	$gm = $g[0]['group']['group_members'];
- 	$gm['member'.$gn]= $u[0]['user']['name'];
- 	$dbo->updateSIS('users',array('group_members'=>$gm),'group',array('group_id'=>$s[0]['group']['group_id']));
-	$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
- 	header("Refresh:0; url=user_dashboard.php");
-
+ 	if (count($u)==0){
+ 		echo "<script type='text/javascript'>alert('User not found in database');</script>";
+ 		header("Refresh:0; url=user_dashboard.php");
+ 	}
+ 	else {
+        $z=$u[0]['_id'];
+	 	$dbo->updateSIS('users',array("group_id"=>$s[0]['group']['group_id'], "name"=>$s[0]['group']['name']),'group', array(),array('_id'=>$z));
+	 	$dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']+1, "desired_num"=>$s[0]['group']['desired_num']-1),'group',array('group_id'=> $s[0]['group']['group_id']));
+		$dbo->updateSIS('users',array('requested_group'=>0),'user',array('rcsid'=>$y));
+        $smtpemailto = $u[0]['user']['email'];
+        $contentFromOthers = "You have been added to a group on FORM Q by user ".$_SESSION["rcsid"].'</h2>';
+        $contentFromOthers .= '<h2>';
+        $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=leave&rcsid='.$_SESSION['rcsid'].'&self='.$y.'&token='.crypt($u[0]['user']['email'].$y,$_SESSION['rcsid']).'">Leave the group</a>';
+        $contentFromOthers .= '<div><br></div>';
+        $contentFromOthers .= '<a type="button" href="http://ec2-54-158-25-237.compute-1.amazonaws.com/itws4500/api/leaveorspam.php?action=spam&rcsid='.$_SESSION['rcsid'].'&self='.$y.'&token='.crypt($u[0]['user']['email'].$y,$_SESSION['rcsid']).'">Report spam and leave the group</a></h2>';
+        include_once("api/sendmail.php");
+	 	header("Refresh:0; url=user_dashboard.php");
+ 	};
+};
+if (isset($_GET['d'])){
+    $d = $_GET['d'];
+    $dd = $dbo->selectSIS('users','user',array('rcsid'=>$d));
+    $du = $dd[0]['_id'];
+    $dbo->updateSIS('users',array("current_num"=>$s[0]['group']['current_num']-1, "desired_num"=>$s[0]['group']['desired_num']+1),'group',array('group_id'=> $s[0]['group']['group_id']));
+    $dbo->updateSIS('users',array("group_id"=>$du,"name"=>""),'group',array(),array('_id'=>$du));
+    header("Refresh:0; url=user_dashboard.php");
 
 };
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,13 +55,14 @@ if (isset($_GET['y'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Knewave" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="header.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         html, body {
             height: 100%;
         }
         body{
-            background: url('resources/pics/desk.jpeg');
+            background-color: #E0E0E0;
             background-size:150% 150%;
             font-family: 'Oswald', sans-serif;
             font-size: 200%;
@@ -75,7 +91,6 @@ if (isset($_GET['y'])){
         #sch_btn{
             margin-left: 35%;
         }
-
         #groups{
             height: 100%;
             width: 350px;
@@ -88,7 +103,6 @@ if (isset($_GET['y'])){
             padding-top: 20px;	
             margin-top: 3.37%;
         }
-
         #groups a{
             padding: 6px 8px 6px 16px;
             text-decoration: none;
@@ -96,7 +110,6 @@ if (isset($_GET['y'])){
             color: #818181;
             display: block;
         }
-
         #groups button{
             padding: 6px 8px 6px 16px;
             text-decoration: none;
@@ -104,25 +117,20 @@ if (isset($_GET['y'])){
             color: #818181;
             display: block;
         }
-
         #groups button:hover {
             color: #f1f1f1;
         }
-
         @media screen and (max-height: 450px) {
             #groups {padding-top: 15px; margin-top: 3.37%;}
             #groups a {font-size: 18px;}
         }
-
         #requests{
             margin-left: 500px;
             padding-bottom: 20px;
         }
-
         #req_heading{
             margin-left: 500px;
         }
-
         @media (max-width: 768px) {
             ul.container-fluid li.inline {
                 float: left; /*// make .inline items to float on mobile*/
@@ -163,11 +171,12 @@ if (isset($_GET['y'])){
         }
     </style>
 </head>
-<body id="admin-body">
+<body id="bodyforNav"style="background: url('resources/pics/desk.jpeg');">
+	 <?php include_once('navbar.php'); ?>
 	<div class = "page-wrap">
-	<div class="container" id="adduser" style="background-color: white;">
-        <div class="row" style="width: 100%; margin: 0 auto;">
-            <div class="col-sm-3" style="background-color:darkred;">
+	<div class="container" id="adduser">
+        <div class="row" style="width: 100%; margin: 0 auto; background-color: #E0E0E0">
+            <div class="col-sm-3" style="background-color:darkred;color:white">
                 <div id = "modal_groups">
                     <div id="Modal_group1" class="modal fade" role="dialog">
                         <div class="modal-dialog">
@@ -181,16 +190,12 @@ if (isset($_GET['y'])){
                             <p>Current Number: <?php echo $s[0]['group']['current_num'] ?></p>
                             <p>Desired Number: <?php echo $s[0]['group']['desired_num'] ?></p>
                             <p>Members:</p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member1'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member2'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member3'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member4'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member5'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member6'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member7'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member8'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member9'] ?></p>
-                            <p>&emsp;<?php echo $s[0]['group']['group_members']['member10'] ?></p>
+                            <?php 
+                            for($i=0;$i<count($g);$i++){
+                                echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
+                            }
+                                ?>
+
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" id = "view_group1"><!-- The IDs here need to be different based on what number group it is for the user.-->Edit Group Info</button>
@@ -204,52 +209,38 @@ if (isset($_GET['y'])){
                 <!-- These will be automatically generated in the backend from javascript once stuff is in your database. -->
                 <div id = "group_list">
                     <button type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#Modal_group1"><?php echo $s[0]['group']['name'] ?></button>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member1'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member2'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member3'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member4'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member5'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member6'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member7'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member8'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member9'] ?></p>
-                        <p>&emsp;<?php echo $s[0]['group']['group_members']['member10'] ?></p>
+                        <?php 
+                            for($i=0;$i<count($g);$i++){
+                                echo "<p>&emsp;".$g[$i]['user']['name']."</p>";
+                            }
+
+                        ?>
                 </div>
             </div>
-            <h1 style = "text-align:center;">Group Requests</h1>
-            <!-- The following are boxes that need to be built using the backend by pulling info from the db to fill them up.-->
-            <div id = "requests" class = "panel-group">
-             <!-- These will be built by the backend. Javascript will fill in the values. MAke sure that the requests have ids of request 1, 2, etc and then the buttons in them are specific to hiding those requests.-->
-            </div>
-            <div class="addition" style="background-color:darkred;">
+	    <!-- HERE WE ALLOW THE USER TO ADD OR REMOVE MEMBERS TO GROUP -->
+            <h1 style = "text-align:center;">Add or Remove Users</h1>
+	    <div class="addition" style="background-color:darkred;">
                     <div class="form-group">
-                        <div class="col-sm-3">Add Group Member by RCSID</div>
+                        <div class="col-sm-3">
+                            <p>Add Group Member by RCSID</p>
+                            <p>Remove Group Member by RCSID</p>
+                        </div>
                         <div class="col-sm-2">
                             <input type="text" class="form-control" id="groupmember1" placeholder="RCS ID" name="groupmember1" required>
-                            <div id="addrcs"></div>
+                            <input type="text" class="form-control" id="groupmemberr" placeholder="RCS ID" name="groupmemberr" required>
                         </div>
                     </div>
                     <div class="col-sm-2">
                     </div>
-                <div class="col-sm-2">
-                    <div style="text-align: center;"><button type="button" id="addbutton" name="addbutton" style="background-color:white;  color: black;" class="btn btn-primary">Add Another Member</button></div>
+                    <div class="col-sm-2">
+                        <div style="text-align: center;"><button type="button" id="addbutton" name="addbutton" style="background-color:white;  color: black; width: 100%" class="btn btn-primary">Add</button></div>
+                        <div style="text-align: center;"><button type="button" id="removebutton" name="removebutton" style="background-color:white;  color: black; width: 100%;" class="btn btn-primary">Remove</button></div>
                 </div>
-                <div id="toadd"></div>
             </div>
             </div>
         </div>
+	</div>
 	<?php include_once('footer.php') ?>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			var request_data = <?php echo json_encode($a);?>;
-			
-			for (var i = 0; i < request_data.length; i++) {
-				var html = "<div class = \"panel panel-danger\" id = \"request"+i+"\"><div class = \"panel-heading\">"+ request_data[i]['user']['name'] + " requested to join.</div><div class = \"panel-body\"><div>Email: "+request_data[i]['user']['email']+"</div><button type = \"button\" id = \"adder\" class = \"close\" onclick='addRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to add this member to your group!</button><br><button type = \"button\" id = \"remover\" class = \"close\" onclick='removeRequest(\""+request_data[i]['user']['rcsid']+"\");'>Click here to remove this request.</button></div></div>";
-				$("#requests").append(html);
-			}
-
-		})
-	</script>
 	<script type="text/javascript" src = "user_dashboard.js"></script>
 </body>
 </html>

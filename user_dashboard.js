@@ -1,3 +1,4 @@
+// JavaScript ofr User_Dashboard
 
 function removeRequest(idno){
 	if (confirm("Are you sure you want to remove this request?")){
@@ -9,23 +10,30 @@ function addRequest(idno){
 		window.location.href = "user_dashboard.php?y="+idno;
 	};
 };
+function removeMember(idno){
+	if (confirm("Are you sure you want to remove this member from your group?")){
+		window.location.href = "user_dashboard.php?d="+idno;
+	};
+};
+
 $(document).ready(function(){
 	$(".close").click(function(){
 		$(this).parent().parent().slideUp("slow", function(){
 		});
 	});
-  membercounter = 1;
-  var rcsid = [];
+	$(".close").click(function(){
+		$(this).parent().parent().slideUp("slow", function(){
+		});
+	});
   //ALLOWS USERS TO ENTER MORE RCS ids FOR ADDITIONAL TEAM MEMBERS
-  $("#addbutton").click(function(){
-       rcsid.push($("#groupmember"+membercounter).val());
-       addRequest($("#groupmember"+membercounter).val());
-      if (membercounter<=9){
-          membercounter +=1;
-          $("#addrcs").append('<input type="text" class="form-control" id="groupmember'+membercounter+'" placeholder="RCS ID" name="groupmember'+membercounter+'" required>');
-      } else {
-          alert("You can't make a group larger than 10! Sorry")
-      }
+  $("#addbutton").click(function(){;
+      addRequest($("#groupmember1").val());
       console.log(rcsid);
-  })
+
+  });
+  //ALLOWS USERS TO REMOVE RCSIDS
+  $("#removebutton").click(function(){
+      removeMember($("#groupmemberr").val());
+      console.log("#groupmemberr");
+  });
 });

@@ -1,3 +1,5 @@
+// JavaScript for the questionnaire
+
   $(document).ready(function(){
       //FOR ALL OF THE SLIDERS
       //reference https://www.w3schools.com/howto/howto_js_rangeslider.asp
@@ -57,7 +59,9 @@
       slider7.oninput = function() {
           output7.innerHTML = this.value;
       }
-      //to make different parts of questionnaire hide/show
+      //TO MAKE DIFFERENT PARTS OF THE QUESTIONAIRE HIDE/SHOW
+      //MADE USING A COUNTER AND THE NUMBER OF TIMES BUTTONS/IMAGES WERE CLICKED
+      //INITIALLY ALL HIDDEN BESIDES GROUP OR INDIVIDUAL
       var counter=0;
       var isGroupOrNot = false;
       var onOrOffCamput = 'off campus';
@@ -69,16 +73,16 @@
           if (counter==3){
               var content;
               var column;
+              var name = $("#individual_name").val();
+              var rin = $("#individual_rin").val();
+              var email = $("#individual_email").val();
+              var age = $("#individual_age").val();
+              var year = $("#individual_year").val();
+              var budget = $("#individual_budget").val();
+              var number = $("#individual_number").val();
+              var gender = $("#individual_gender").val();
+              var coed = $("#individual_coed").val();
               if (isGroupOrNot) {
-                  var name = $("#group_name").val();
-                  var rin = $("#group_rin").val();
-                  var email = $("#group_email").val();
-                  var age = $("#group_age").val();
-                  var year = $("#group_year").val();
-                  var budget = $("#group_budget").val();
-                  var number = $("#group_number").val();
-                  var gender = $("#group_gender").val();
-                  var coed = $("#group_coed").val();
                   content = [
                       {
                           "name" : name,
@@ -100,15 +104,6 @@
                   ];
                   column = ["user","profile","group"];
               } else {
-                  var name = $("#individual_name").val();
-                  var rin = $("#individual_rin").val();
-                  var email = $("#individual_email").val();
-                  var age = $("#individual_age").val();
-                  var year = $("#individual_year").val();
-                  var budget = $("#individual_budget").val();
-                  var number = $("#individual_number").val();
-                  var gender = $("#individual_gender").val();
-                  var coed = $("#individual_coed").val();
                   content = [
                       {
                           "name" : name,
@@ -127,19 +122,23 @@
                   column = ["user","profile"];
 
               }
+              var formvalidate = age.replace(/\s+/g,"") === "" || age === "0" || budget.replace(/\s+/g,"") === "" || budget === "0";
+              formvalidate = formvalidate || number.replace(/\s+/g,"") === "" || number === "0" || gender.replace(/\s+/g,"") === "";
+              if (name.replace(/\s+/g,"") === "" || rin === "0" || rin.replace(/\s+/g,"") === "" || email.replace(/\s+/g,"") === "" || formvalidate) {
+                  alert("Please fill out all fields!");
+                  return false;
+              }
               console.log(JSON.stringify(column));
-              sendToDatabase(JSON.stringify(content),JSON.stringify(column));
+              sendToDatabase(JSON.stringify(content),JSON.stringify(column),email);
 
           }
           if (counter==6){
-              // alert("6");
-              // $("#life").hide();
-              // $("#pref").show();
               var allergies = $('#allergies').val();
               var smoke = $('#smoke').val();
               var bedtime = $('#bedtime').val();
               var mornnight = $('#mornnight').val();
               var pets = $('#pets').val();
+              var extra = $('#extra').val();
               var content = [
                   {
                       "q1" : allergies,
@@ -153,7 +152,8 @@
                       "q9" : slider7.value,
                       "q10" : slider4.value,
                       "q11" : slider5.value,
-                      "q12" : slider6.value
+                      "q12" : slider6.value,
+                      "notes" : extra
                   },
                   {
                       "on/off campus" : onOrOffCamput
@@ -165,8 +165,9 @@
               } else {
                   column = ["answers","profile"];
               }
-              sendToDatabase(JSON.stringify(content),JSON.stringify(column));
+              sendToDatabase(JSON.stringify(content),JSON.stringify(column),"");
           }
+        //HIDE AND SHOW MANIPULATION
           if (counter==7){
               alert("7");
               location.href = 'profile.php';
@@ -176,7 +177,6 @@
               $("#secondI").show();
               $("#button").show();
               counter+=1;
-              isGroupOrNot = true;
           } else if (counter==1){
               $("#first").hide();
               $("#singlephoto").hide();
@@ -201,6 +201,7 @@
       $("#button").hide();
       $("#groupphoto").click(function(){
           counter=2;
+          isGroupOrNot = true;
           next();
       });
       $("#singlephoto").click(function(){
@@ -221,11 +222,11 @@
       });
 
       // post result to database
-      function sendToDatabase(content, column) {
+      function sendToDatabase(content, column, email) {
           $.ajax({
               url: 'api/storedata.php',
               type: 'post',
-              data: {'action': 'store', 'column': column, 'content': content},
+              data: {'action': 'store', 'column': column, 'content': content, 'email': email},
               success: function(data) {
                   var responseStatus = data.status;
                   if (responseStatus !== 0) {
@@ -238,8 +239,6 @@
                           $("#button").hide();
                       }
                       if (counter===6){
-                          // $("#life").hide();
-                          // $("#pref").show();
                           counter++;
                       }
                       if (counter===7){
@@ -248,10 +247,17 @@
                   }
               },
               error: function(xhr, desc, err) {
-                  console.log(xhr);
-                  console.log("Details: " + desc + "\nError:" + err);
-                  alert("An error occur: "+err+".\nPlease try again later.");
-                  location.reload();
+                  if (counter===3){
+                      $("#campus").show();
+                      $("#secondI").hide();
+                      $("#button").hide();
+                  }
+                  if (counter===6){
+                      counter++;
+                  }
+                  if (counter===7){
+                      location.href = 'profile.php';
+                  }
               }
           });
       }
